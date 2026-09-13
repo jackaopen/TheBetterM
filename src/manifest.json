@@ -1,0 +1,44 @@
+{
+  "manifest_version": 3,
+  "name": "TheBetterM — Moodle, refreshed",
+  "version": "1.0",
+  "description": "A local visual refresh of NCKU Moodle",
+  "content_scripts": [
+    {
+      "matches": [
+        "https://moodle.ncku.edu.tw/*"
+      ],
+      "css": [
+        "styles/theme.css",
+        "styles/interface.css",
+        "styles/pages.css"
+      ],
+      "run_at": "document_start",
+      "all_frames": false,
+      "js": [
+        "appearance.js",
+        "navigation.js"
+      ]
+    }
+  ],
+  "action": {
+    "default_popup": "options.html",
+    "default_title": "TheBetterM — Project links"
+  },
+  "web_accessible_resources": [
+    {
+      "matches": [
+        "https://moodle.ncku.edu.tw/*"
+      ],
+      "resources": [
+        "assets/header.jpg",
+        "assets/site-background.png",
+        "assets/default-avatar.svg"
+      ]
+    }
+  ],
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": true
+  }
+}

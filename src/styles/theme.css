@@ -1,0 +1,1573 @@
+/* ===== moodle ===== */
+/* Main theme: reading pages, glass surfaces, login/user pages, then shared chrome.
+ * Later rules intentionally override earlier ones. Keep this order.
+ * Long page lists limit styling to supported Moodle pages and editing states.
+ */
+@media screen {
+  body:is(#page-site-index, #page-my-index, #page-my-courses, #page-course-index, #page-course-index-category,
+    #page-course-search, #page-calendar-view, #page-mod-forum-index, #page-mod-forum-view,
+    #page-mod-forum-discuss, #page-mod-assign-view, #page-grade-report-user-index,
+    #page-grade-report-overview-index, #page-user-profile, #page-user-view, #page-mod-page-view,
+    #page-mod-book-view, #page-mod-resource-view, #page-mod-folder-view, #page-mod-url-view,
+    #page-course-view-topics, #page-course-view-weeks, #page-search-index, #page-mod-forum-search,
+    #page-user-index, #page-course-view-participants, #page-course-info, #page-course-recent,
+    #page-mod-assign-index, #page-mod-book-index, #page-mod-page-index, #page-mod-resource-index,
+    #page-mod-folder-index, #page-mod-url-index, #page-mod-glossary-index, #page-mod-data-index,
+    #page-mod-wiki-index, #page-mod-glossary-view, #page-mod-glossary-showentry, #page-mod-data-view,
+    #page-mod-wiki-view,
+    [id^="page-course-view-"]):not(.editing):not(:has(form.mform:not(body#page-search-index form),
+    .editor_atto_wrap, .tox-tinymce, [contenteditable="true"], .filemanager)) {
+    --nm-ink: #172e32;
+    --nm-muted: #53666a;
+    --nm-accent: #12665e;
+    --nm-line: #dce5e2;
+    --nm-paper: #ffffff;
+    --nm-surface: #f3f6f3;
+    background-color: var(--nm-surface) !important;
+    color: var(--nm-ink);
+    font-family: "Segoe UI", "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+  }
+  body:is(#page-site-index, #page-my-index, #page-my-courses, #page-course-index, #page-course-index-category,
+    #page-course-search, #page-calendar-view, #page-mod-forum-index, #page-mod-forum-view,
+    #page-mod-forum-discuss, #page-mod-assign-view, #page-grade-report-user-index,
+    #page-grade-report-overview-index, #page-user-profile, #page-user-view, #page-mod-page-view,
+    #page-mod-book-view, #page-mod-resource-view, #page-mod-folder-view, #page-mod-url-view,
+    #page-course-view-topics, #page-course-view-weeks, #page-search-index, #page-mod-forum-search,
+    #page-user-index, #page-course-view-participants, #page-course-info, #page-course-recent,
+    #page-mod-assign-index, #page-mod-book-index, #page-mod-page-index, #page-mod-resource-index,
+    #page-mod-folder-index, #page-mod-url-index, #page-mod-glossary-index, #page-mod-data-index,
+    #page-mod-wiki-index, #page-mod-glossary-view, #page-mod-glossary-showentry, #page-mod-data-view,
+    #page-mod-wiki-view,
+    [id^="page-course-view-"]):not(.editing):not(:has(form.mform:not(body#page-search-index form),
+    .editor_atto_wrap, .tox-tinymce, [contenteditable="true"], .filemanager)) #page {
+    background-color: var(--nm-surface);
+  }
+  body:is(#page-site-index, #page-my-index, #page-my-courses, #page-course-index, #page-course-index-category,
+    #page-course-search, #page-calendar-view, #page-mod-forum-index, #page-mod-forum-view,
+    #page-mod-forum-discuss, #page-mod-assign-view, #page-grade-report-user-index,
+    #page-grade-report-overview-index, #page-user-profile, #page-user-view, #page-mod-page-view,
+    #page-mod-book-view, #page-mod-resource-view, #page-mod-folder-view, #page-mod-url-view,
+    #page-course-view-topics, #page-course-view-weeks, #page-search-index, #page-mod-forum-search,
+    #page-user-index, #page-course-view-participants, #page-course-info, #page-course-recent,
+    #page-mod-assign-index, #page-mod-book-index, #page-mod-page-index, #page-mod-resource-index,
+    #page-mod-folder-index, #page-mod-url-index, #page-mod-glossary-index, #page-mod-data-index,
+    #page-mod-wiki-index, #page-mod-glossary-view, #page-mod-glossary-showentry, #page-mod-data-view,
+    #page-mod-wiki-view,
+    [id^="page-course-view-"]):not(.editing):not(:has(form.mform:not(body#page-search-index form),
+    .editor_atto_wrap, .tox-tinymce, [contenteditable="true"], .filemanager)) #region-main {
+    background-color: var(--nm-paper);
+    border: 1px solid var(--nm-line);
+    border-radius: var(--nm-radius, 10px);
+    padding: clamp(16px, 2.4vw, 32px);
+  }
+  body:is(#page-site-index, #page-my-index, #page-my-courses, #page-course-index, #page-course-index-category,
+    #page-course-search, #page-calendar-view, #page-mod-forum-index, #page-mod-forum-view,
+    #page-mod-forum-discuss, #page-mod-assign-view, #page-grade-report-user-index,
+    #page-grade-report-overview-index, #page-user-profile, #page-user-view, #page-mod-page-view,
+    #page-mod-book-view, #page-mod-resource-view, #page-mod-folder-view, #page-mod-url-view,
+    #page-course-view-topics, #page-course-view-weeks, #page-search-index, #page-mod-forum-search,
+    #page-user-index, #page-course-view-participants, #page-course-info, #page-course-recent,
+    #page-mod-assign-index, #page-mod-book-index, #page-mod-page-index, #page-mod-resource-index,
+    #page-mod-folder-index, #page-mod-url-index, #page-mod-glossary-index, #page-mod-data-index,
+    #page-mod-wiki-index, #page-mod-glossary-view, #page-mod-glossary-showentry, #page-mod-data-view,
+    #page-mod-wiki-view,
+    [id^="page-course-view-"]):not(.editing):not(:has(form.mform:not(body#page-search-index form),
+    .editor_atto_wrap, .tox-tinymce, [contenteditable="true"], .filemanager)) .block.card {
+    border: 1px solid var(--nm-line);
+    border-radius: var(--nm-radius, 10px);
+    box-shadow: var(--nm-shadow, 0 2px 8px rgb(23 46 50 / 6%));
+  }
+  body:is(#page-site-index, #page-my-index, #page-my-courses, #page-course-index, #page-course-index-category,
+    #page-course-search, #page-calendar-view, #page-mod-forum-index, #page-mod-forum-view,
+    #page-mod-forum-discuss, #page-mod-assign-view, #page-grade-report-user-index,
+    #page-grade-report-overview-index, #page-user-profile, #page-user-view, #page-mod-page-view,
+    #page-mod-book-view, #page-mod-resource-view, #page-mod-folder-view, #page-mod-url-view,
+    #page-course-view-topics, #page-course-view-weeks, #page-search-index, #page-mod-forum-search,
+    #page-user-index, #page-course-view-participants, #page-course-info, #page-course-recent,
+    #page-mod-assign-index, #page-mod-book-index, #page-mod-page-index, #page-mod-resource-index,
+    #page-mod-folder-index, #page-mod-url-index, #page-mod-glossary-index, #page-mod-data-index,
+    #page-mod-wiki-index, #page-mod-glossary-view, #page-mod-glossary-showentry, #page-mod-data-view,
+    #page-mod-wiki-view,
+    [id^="page-course-view-"]):not(.editing):not(:has(form.mform:not(body#page-search-index form),
+    .editor_atto_wrap, .tox-tinymce, [contenteditable="true"], .filemanager)) .block .card-title {
+    color: var(--nm-ink);
+    font-size: 1.05rem;
+    font-weight: 700;
+  }
+  body:is(#page-site-index, #page-my-index, #page-my-courses, #page-course-index, #page-course-index-category,
+    #page-course-search, #page-calendar-view, #page-mod-forum-index, #page-mod-forum-view,
+    #page-mod-forum-discuss, #page-mod-assign-view, #page-grade-report-user-index,
+    #page-grade-report-overview-index, #page-user-profile, #page-user-view, #page-mod-page-view,
+    #page-mod-book-view, #page-mod-resource-view, #page-mod-folder-view, #page-mod-url-view,
+    #page-course-view-topics, #page-course-view-weeks, #page-search-index, #page-mod-forum-search,
+    #page-user-index, #page-course-view-participants, #page-course-info, #page-course-recent,
+    #page-mod-assign-index, #page-mod-book-index, #page-mod-page-index, #page-mod-resource-index,
+    #page-mod-folder-index, #page-mod-url-index, #page-mod-glossary-index, #page-mod-data-index,
+    #page-mod-wiki-index, #page-mod-glossary-view, #page-mod-glossary-showentry, #page-mod-data-view,
+    #page-mod-wiki-view,
+    [id^="page-course-view-"]):not(.editing):not(:has(form.mform:not(body#page-search-index form),
+    .editor_atto_wrap, .tox-tinymce, [contenteditable="true"], .filemanager)) #region-main h2 {
+    font-weight: 700;
+    letter-spacing: -.025em;
+  }
+  body:is(#page-site-index, #page-my-index, #page-my-courses, #page-course-index, #page-course-index-category,
+    #page-course-search, #page-calendar-view, #page-mod-forum-index, #page-mod-forum-view,
+    #page-mod-forum-discuss, #page-mod-assign-view, #page-grade-report-user-index,
+    #page-grade-report-overview-index, #page-user-profile, #page-user-view, #page-mod-page-view,
+    #page-mod-book-view, #page-mod-resource-view, #page-mod-folder-view, #page-mod-url-view,
+    #page-course-view-topics, #page-course-view-weeks, #page-search-index, #page-mod-forum-search,
+    #page-user-index, #page-course-view-participants, #page-course-info, #page-course-recent,
+    #page-mod-assign-index, #page-mod-book-index, #page-mod-page-index, #page-mod-resource-index,
+    #page-mod-folder-index, #page-mod-url-index, #page-mod-glossary-index, #page-mod-data-index,
+    #page-mod-wiki-index, #page-mod-glossary-view, #page-mod-glossary-showentry, #page-mod-data-view,
+    #page-mod-wiki-view,
+    [id^="page-course-view-"]):not(.editing):not(:has(form.mform:not(body#page-search-index form),
+    .editor_atto_wrap, .tox-tinymce, [contenteditable="true"], .filemanager)) #region-main
+    a:not(.btn):not(.badge):not(.dropdown-item):not(.text-danger):not(.dimmed):not(.text-muted):not(.active):not(.page-link):not(.list-group-item):not(.active
+    *) {
+    color: var(--nm-accent);
+    text-underline-offset: 3px;
+  }
+  body:is(#page-site-index, #page-my-index, #page-my-courses, #page-course-index, #page-course-index-category,
+    #page-course-search, #page-calendar-view, #page-mod-forum-index, #page-mod-forum-view,
+    #page-mod-forum-discuss, #page-mod-assign-view, #page-grade-report-user-index,
+    #page-grade-report-overview-index, #page-user-profile, #page-user-view, #page-mod-page-view,
+    #page-mod-book-view, #page-mod-resource-view, #page-mod-folder-view, #page-mod-url-view,
+    #page-course-view-topics, #page-course-view-weeks, #page-search-index, #page-mod-forum-search,
+    #page-user-index, #page-course-view-participants, #page-course-info, #page-course-recent,
+    #page-mod-assign-index, #page-mod-book-index, #page-mod-page-index, #page-mod-resource-index,
+    #page-mod-folder-index, #page-mod-url-index, #page-mod-glossary-index, #page-mod-data-index,
+    #page-mod-wiki-index, #page-mod-glossary-view, #page-mod-glossary-showentry, #page-mod-data-view,
+    #page-mod-wiki-view,
+    [id^="page-course-view-"]):not(.editing):not(:has(form.mform:not(body#page-search-index form),
+    .editor_atto_wrap, .tox-tinymce, [contenteditable="true"], .filemanager)) #region-main a:not(.btn):hover {
+    text-decoration: underline;
+  }
+
+
+  body:is(#page-site-index, #page-my-index, #page-my-courses, #page-course-index, #page-course-index-category,
+    #page-course-search, #page-calendar-view, #page-mod-forum-index, #page-mod-forum-view,
+    #page-mod-forum-discuss, #page-mod-assign-view, #page-grade-report-user-index,
+    #page-grade-report-overview-index, #page-user-profile, #page-user-view, #page-mod-page-view,
+    #page-mod-book-view, #page-mod-resource-view, #page-mod-folder-view, #page-mod-url-view,
+    #page-course-view-topics, #page-course-view-weeks, #page-search-index, #page-mod-forum-search,
+    #page-user-index, #page-course-view-participants, #page-course-info, #page-course-recent,
+    #page-mod-assign-index, #page-mod-book-index, #page-mod-page-index, #page-mod-resource-index,
+    #page-mod-folder-index, #page-mod-url-index, #page-mod-glossary-index, #page-mod-data-index,
+    #page-mod-wiki-index, #page-mod-glossary-view, #page-mod-glossary-showentry, #page-mod-data-view,
+    #page-mod-wiki-view,
+    [id^="page-course-view-"]):not(.editing):not(:has(form.mform:not(body#page-search-index form),
+    .editor_atto_wrap, .tox-tinymce, [contenteditable="true"], .filemanager)) .form-control {
+    border-radius: var(--nm-control-radius, 6px);
+    border-color: #a8bbb5;
+  }
+  body:is(#page-site-index, #page-my-index, #page-my-courses, #page-course-index, #page-course-index-category,
+    #page-course-search, #page-calendar-view, #page-mod-forum-index, #page-mod-forum-view,
+    #page-mod-forum-discuss, #page-mod-assign-view, #page-grade-report-user-index,
+    #page-grade-report-overview-index, #page-user-profile, #page-user-view, #page-mod-page-view,
+    #page-mod-book-view, #page-mod-resource-view, #page-mod-folder-view, #page-mod-url-view,
+    #page-course-view-topics, #page-course-view-weeks, #page-search-index, #page-mod-forum-search,
+    #page-user-index, #page-course-view-participants, #page-course-info, #page-course-recent,
+    #page-mod-assign-index, #page-mod-book-index, #page-mod-page-index, #page-mod-resource-index,
+    #page-mod-folder-index, #page-mod-url-index, #page-mod-glossary-index, #page-mod-data-index,
+    #page-mod-wiki-index, #page-mod-glossary-view, #page-mod-glossary-showentry, #page-mod-data-view,
+    #page-mod-wiki-view,
+    [id^="page-course-view-"]):not(.editing):not(:has(form.mform:not(body#page-search-index form),
+    .editor_atto_wrap, .tox-tinymce, [contenteditable="true"], .filemanager)) .dropdown-menu {
+    border-color: var(--nm-line);
+    border-radius: var(--nm-control-radius, 6px);
+    box-shadow: var(--nm-shadow, 0 2px 8px rgb(23 46 50 / 6%));
+  }
+  body:is(#page-site-index, #page-my-index, #page-my-courses, #page-course-index, #page-course-index-category,
+    #page-course-search, #page-calendar-view, #page-mod-forum-index, #page-mod-forum-view,
+    #page-mod-forum-discuss, #page-mod-assign-view, #page-grade-report-user-index,
+    #page-grade-report-overview-index, #page-user-profile, #page-user-view, #page-mod-page-view,
+    #page-mod-book-view, #page-mod-resource-view, #page-mod-folder-view, #page-mod-url-view,
+    #page-course-view-topics, #page-course-view-weeks, #page-search-index, #page-mod-forum-search,
+    #page-user-index, #page-course-view-participants, #page-course-info, #page-course-recent,
+    #page-mod-assign-index, #page-mod-book-index, #page-mod-page-index, #page-mod-resource-index,
+    #page-mod-folder-index, #page-mod-url-index, #page-mod-glossary-index, #page-mod-data-index,
+    #page-mod-wiki-index, #page-mod-glossary-view, #page-mod-glossary-showentry, #page-mod-data-view,
+    #page-mod-wiki-view,
+    [id^="page-course-view-"]):not(.editing):not(:has(form.mform:not(body#page-search-index form),
+    .editor_atto_wrap, .tox-tinymce, [contenteditable="true"], .filemanager)) .page-link {
+    border-color: var(--nm-line);
+  }
+  body:is(#page-site-index, #page-my-index, #page-my-courses, #page-course-index, #page-course-index-category,
+    #page-course-search, #page-calendar-view, #page-mod-forum-index, #page-mod-forum-view,
+    #page-mod-forum-discuss, #page-mod-assign-view, #page-grade-report-user-index,
+    #page-grade-report-overview-index, #page-user-profile, #page-user-view, #page-mod-page-view,
+    #page-mod-book-view, #page-mod-resource-view, #page-mod-folder-view, #page-mod-url-view,
+    #page-course-view-topics, #page-course-view-weeks, #page-search-index, #page-mod-forum-search,
+    #page-user-index, #page-course-view-participants, #page-course-info, #page-course-recent,
+    #page-mod-assign-index, #page-mod-book-index, #page-mod-page-index, #page-mod-resource-index,
+    #page-mod-folder-index, #page-mod-url-index, #page-mod-glossary-index, #page-mod-data-index,
+    #page-mod-wiki-index, #page-mod-glossary-view, #page-mod-glossary-showentry, #page-mod-data-view,
+    #page-mod-wiki-view,
+    [id^="page-course-view-"]):not(.editing):not(:has(form.mform:not(body#page-search-index form),
+    .editor_atto_wrap, .tox-tinymce, [contenteditable="true"], .filemanager)) .page-item.active .page-link {
+    color: white;
+    background-color: var(--nm-accent);
+    border-color: var(--nm-accent);
+  }
+  /* Front page and catalog — keep category collapse hooks and tree structure. */
+  body:is(#page-site-index, #page-my-index, #page-my-courses, #page-course-index, #page-course-index-category,
+    #page-course-search, #page-calendar-view, #page-mod-forum-index, #page-mod-forum-view,
+    #page-mod-forum-discuss, #page-mod-assign-view, #page-grade-report-user-index,
+    #page-grade-report-overview-index, #page-user-profile, #page-user-view, #page-mod-page-view,
+    #page-mod-book-view, #page-mod-resource-view, #page-mod-folder-view, #page-mod-url-view,
+    #page-course-view-topics, #page-course-view-weeks, #page-search-index, #page-mod-forum-search,
+    #page-user-index, #page-course-view-participants, #page-course-info, #page-course-recent,
+    #page-mod-assign-index, #page-mod-book-index, #page-mod-page-index, #page-mod-resource-index,
+    #page-mod-folder-index, #page-mod-url-index, #page-mod-glossary-index, #page-mod-data-index,
+    #page-mod-wiki-index, #page-mod-glossary-view, #page-mod-glossary-showentry, #page-mod-data-view,
+    #page-mod-wiki-view,
+    [id^="page-course-view-"]):not(.editing):not(:has(form.mform:not(body#page-search-index form),
+    .editor_atto_wrap, .tox-tinymce, [contenteditable="true"], .filemanager)) #frontpage-category-names {
+    margin-top: 2rem;
+  }
+  body:is(#page-site-index, #page-my-index, #page-my-courses, #page-course-index, #page-course-index-category,
+    #page-course-search, #page-calendar-view, #page-mod-forum-index, #page-mod-forum-view,
+    #page-mod-forum-discuss, #page-mod-assign-view, #page-grade-report-user-index,
+    #page-grade-report-overview-index, #page-user-profile, #page-user-view, #page-mod-page-view,
+    #page-mod-book-view, #page-mod-resource-view, #page-mod-folder-view, #page-mod-url-view,
+    #page-course-view-topics, #page-course-view-weeks, #page-search-index, #page-mod-forum-search,
+    #page-user-index, #page-course-view-participants, #page-course-info, #page-course-recent,
+    #page-mod-assign-index, #page-mod-book-index, #page-mod-page-index, #page-mod-resource-index,
+    #page-mod-folder-index, #page-mod-url-index, #page-mod-glossary-index, #page-mod-data-index,
+    #page-mod-wiki-index, #page-mod-glossary-view, #page-mod-glossary-showentry, #page-mod-data-view,
+    #page-mod-wiki-view,
+    [id^="page-course-view-"]):not(.editing):not(:has(form.mform:not(body#page-search-index form),
+    .editor_atto_wrap, .tox-tinymce, [contenteditable="true"], .filemanager)) #frontpage-category-names > h2 {
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--nm-line);
+  }
+  body:is(#page-site-index, #page-my-index, #page-my-courses, #page-course-index, #page-course-index-category,
+    #page-course-search, #page-calendar-view, #page-mod-forum-index, #page-mod-forum-view,
+    #page-mod-forum-discuss, #page-mod-assign-view, #page-grade-report-user-index,
+    #page-grade-report-overview-index, #page-user-profile, #page-user-view, #page-mod-page-view,
+    #page-mod-book-view, #page-mod-resource-view, #page-mod-folder-view, #page-mod-url-view,
+    #page-course-view-topics, #page-course-view-weeks, #page-search-index, #page-mod-forum-search,
+    #page-user-index, #page-course-view-participants, #page-course-info, #page-course-recent,
+    #page-mod-assign-index, #page-mod-book-index, #page-mod-page-index, #page-mod-resource-index,
+    #page-mod-folder-index, #page-mod-url-index, #page-mod-glossary-index, #page-mod-data-index,
+    #page-mod-wiki-index, #page-mod-glossary-view, #page-mod-glossary-showentry, #page-mod-data-view,
+    #page-mod-wiki-view,
+    [id^="page-course-view-"]):not(.editing):not(:has(form.mform:not(body#page-search-index form),
+    .editor_atto_wrap, .tox-tinymce, [contenteditable="true"], .filemanager)) .course_category_tree
+    .category[data-depth="1"] {
+    margin: 12px 0;
+    padding: 16px 18px;
+    border: 1px solid var(--nm-line);
+    border-radius: var(--nm-radius, 10px);
+    background-color: #f8faf8;
+  }
+  body:is(#page-site-index, #page-my-index, #page-my-courses, #page-course-index, #page-course-index-category,
+    #page-course-search, #page-calendar-view, #page-mod-forum-index, #page-mod-forum-view,
+    #page-mod-forum-discuss, #page-mod-assign-view, #page-grade-report-user-index,
+    #page-grade-report-overview-index, #page-user-profile, #page-user-view, #page-mod-page-view,
+    #page-mod-book-view, #page-mod-resource-view, #page-mod-folder-view, #page-mod-url-view,
+    #page-course-view-topics, #page-course-view-weeks, #page-search-index, #page-mod-forum-search,
+    #page-user-index, #page-course-view-participants, #page-course-info, #page-course-recent,
+    #page-mod-assign-index, #page-mod-book-index, #page-mod-page-index, #page-mod-resource-index,
+    #page-mod-folder-index, #page-mod-url-index, #page-mod-glossary-index, #page-mod-data-index,
+    #page-mod-wiki-index, #page-mod-glossary-view, #page-mod-glossary-showentry, #page-mod-data-view,
+    #page-mod-wiki-view,
+    [id^="page-course-view-"]):not(.editing):not(:has(form.mform:not(body#page-search-index form),
+    .editor_atto_wrap, .tox-tinymce, [contenteditable="true"], .filemanager)) .course_category_tree
+    .category[data-depth="1"]:hover {
+    border-color: #8bad9f;
+  }
+  body:is(#page-site-index, #page-my-index, #page-my-courses, #page-course-index, #page-course-index-category,
+    #page-course-search, #page-calendar-view, #page-mod-forum-index, #page-mod-forum-view,
+    #page-mod-forum-discuss, #page-mod-assign-view, #page-grade-report-user-index,
+    #page-grade-report-overview-index, #page-user-profile, #page-user-view, #page-mod-page-view,
+    #page-mod-book-view, #page-mod-resource-view, #page-mod-folder-view, #page-mod-url-view,
+    #page-course-view-topics, #page-course-view-weeks, #page-search-index, #page-mod-forum-search,
+    #page-user-index, #page-course-view-participants, #page-course-info, #page-course-recent,
+    #page-mod-assign-index, #page-mod-book-index, #page-mod-page-index, #page-mod-resource-index,
+    #page-mod-folder-index, #page-mod-url-index, #page-mod-glossary-index, #page-mod-data-index,
+    #page-mod-wiki-index, #page-mod-glossary-view, #page-mod-glossary-showentry, #page-mod-data-view,
+    #page-mod-wiki-view,
+    [id^="page-course-view-"]):not(.editing):not(:has(form.mform:not(body#page-search-index form),
+    .editor_atto_wrap, .tox-tinymce, [contenteditable="true"], .filemanager)) .course_category_tree
+    .category[data-depth="1"] > .info > .categoryname {
+    font-size: 1.15rem;
+    font-weight: 650;
+    line-height: 1.5;
+  }
+  body:is(#page-site-index, #page-my-index, #page-my-courses, #page-course-index, #page-course-index-category,
+    #page-course-search, #page-calendar-view, #page-mod-forum-index, #page-mod-forum-view,
+    #page-mod-forum-discuss, #page-mod-assign-view, #page-grade-report-user-index,
+    #page-grade-report-overview-index, #page-user-profile, #page-user-view, #page-mod-page-view,
+    #page-mod-book-view, #page-mod-resource-view, #page-mod-folder-view, #page-mod-url-view,
+    #page-course-view-topics, #page-course-view-weeks, #page-search-index, #page-mod-forum-search,
+    #page-user-index, #page-course-view-participants, #page-course-info, #page-course-recent,
+    #page-mod-assign-index, #page-mod-book-index, #page-mod-page-index, #page-mod-resource-index,
+    #page-mod-folder-index, #page-mod-url-index, #page-mod-glossary-index, #page-mod-data-index,
+    #page-mod-wiki-index, #page-mod-glossary-view, #page-mod-glossary-showentry, #page-mod-data-view,
+    #page-mod-wiki-view,
+    [id^="page-course-view-"]):not(.editing):not(:has(form.mform:not(body#page-search-index form),
+    .editor_atto_wrap, .tox-tinymce, [contenteditable="true"], .filemanager)) #coursesearch {
+    padding: 18px;
+    margin-top: 24px;
+    border-radius: var(--nm-radius, 10px);
+    background-color: #edf4f0;
+  }
+  body:is(#page-site-index, #page-my-index, #page-my-courses, #page-course-index, #page-course-index-category,
+    #page-course-search, #page-calendar-view, #page-mod-forum-index, #page-mod-forum-view,
+    #page-mod-forum-discuss, #page-mod-assign-view, #page-grade-report-user-index,
+    #page-grade-report-overview-index, #page-user-profile, #page-user-view, #page-mod-page-view,
+    #page-mod-book-view, #page-mod-resource-view, #page-mod-folder-view, #page-mod-url-view,
+    #page-course-view-topics, #page-course-view-weeks, #page-search-index, #page-mod-forum-search,
+    #page-user-index, #page-course-view-participants, #page-course-info, #page-course-recent,
+    #page-mod-assign-index, #page-mod-book-index, #page-mod-page-index, #page-mod-resource-index,
+    #page-mod-folder-index, #page-mod-url-index, #page-mod-glossary-index, #page-mod-data-index,
+    #page-mod-wiki-index, #page-mod-glossary-view, #page-mod-glossary-showentry, #page-mod-data-view,
+    #page-mod-wiki-view,
+    [id^="page-course-view-"]):not(.editing):not(:has(form.mform:not(body#page-search-index form),
+    .editor_atto_wrap, .tox-tinymce, [contenteditable="true"], .filemanager)) .coursebox {
+    border: 1px solid var(--nm-line);
+    border-radius: var(--nm-radius, 10px);
+    margin-block: 12px;
+  }
+  /* Dashboard — card dimensions and responsive grid stay owned by Moodle. */
+  body:is(#page-site-index, #page-my-index, #page-my-courses, #page-course-index, #page-course-index-category,
+    #page-course-search, #page-calendar-view, #page-mod-forum-index, #page-mod-forum-view,
+    #page-mod-forum-discuss, #page-mod-assign-view, #page-grade-report-user-index,
+    #page-grade-report-overview-index, #page-user-profile, #page-user-view, #page-mod-page-view,
+    #page-mod-book-view, #page-mod-resource-view, #page-mod-folder-view, #page-mod-url-view,
+    #page-course-view-topics, #page-course-view-weeks, #page-search-index, #page-mod-forum-search,
+    #page-user-index, #page-course-view-participants, #page-course-info, #page-course-recent,
+    #page-mod-assign-index, #page-mod-book-index, #page-mod-page-index, #page-mod-resource-index,
+    #page-mod-folder-index, #page-mod-url-index, #page-mod-glossary-index, #page-mod-data-index,
+    #page-mod-wiki-index, #page-mod-glossary-view, #page-mod-glossary-showentry, #page-mod-data-view,
+    #page-mod-wiki-view,
+    [id^="page-course-view-"]):not(.editing):not(:has(form.mform:not(body#page-search-index form),
+    .editor_atto_wrap, .tox-tinymce, [contenteditable="true"], .filemanager)) .block_myoverview
+    .dashboard-card {
+    border: 1px solid var(--nm-line);
+    border-radius: var(--nm-radius, 10px);
+    box-shadow: var(--nm-shadow, 0 2px 8px rgb(23 46 50 / 6%));
+  }
+  body:is(#page-site-index, #page-my-index, #page-my-courses, #page-course-index, #page-course-index-category,
+    #page-course-search, #page-calendar-view, #page-mod-forum-index, #page-mod-forum-view,
+    #page-mod-forum-discuss, #page-mod-assign-view, #page-grade-report-user-index,
+    #page-grade-report-overview-index, #page-user-profile, #page-user-view, #page-mod-page-view,
+    #page-mod-book-view, #page-mod-resource-view, #page-mod-folder-view, #page-mod-url-view,
+    #page-course-view-topics, #page-course-view-weeks, #page-search-index, #page-mod-forum-search,
+    #page-user-index, #page-course-view-participants, #page-course-info, #page-course-recent,
+    #page-mod-assign-index, #page-mod-book-index, #page-mod-page-index, #page-mod-resource-index,
+    #page-mod-folder-index, #page-mod-url-index, #page-mod-glossary-index, #page-mod-data-index,
+    #page-mod-wiki-index, #page-mod-glossary-view, #page-mod-glossary-showentry, #page-mod-data-view,
+    #page-mod-wiki-view,
+    [id^="page-course-view-"]):not(.editing):not(:has(form.mform:not(body#page-search-index form),
+    .editor_atto_wrap, .tox-tinymce, [contenteditable="true"], .filemanager)) .block_myoverview
+    .dashboard-card .coursename {
+    font-weight: 650;
+  }
+  /* Course — preserve activity completion, drag/drop and section-toggle hooks. */
+  body:is(#page-site-index, #page-my-index, #page-my-courses, #page-course-index, #page-course-index-category,
+    #page-course-search, #page-calendar-view, #page-mod-forum-index, #page-mod-forum-view,
+    #page-mod-forum-discuss, #page-mod-assign-view, #page-grade-report-user-index,
+    #page-grade-report-overview-index, #page-user-profile, #page-user-view, #page-mod-page-view,
+    #page-mod-book-view, #page-mod-resource-view, #page-mod-folder-view, #page-mod-url-view,
+    #page-course-view-topics, #page-course-view-weeks, #page-search-index, #page-mod-forum-search,
+    #page-user-index, #page-course-view-participants, #page-course-info, #page-course-recent,
+    #page-mod-assign-index, #page-mod-book-index, #page-mod-page-index, #page-mod-resource-index,
+    #page-mod-folder-index, #page-mod-url-index, #page-mod-glossary-index, #page-mod-data-index,
+    #page-mod-wiki-index, #page-mod-glossary-view, #page-mod-glossary-showentry, #page-mod-data-view,
+    #page-mod-wiki-view,
+    [id^="page-course-view-"]):not(.editing):not(:has(form.mform:not(body#page-search-index form),
+    .editor_atto_wrap, .tox-tinymce, [contenteditable="true"], .filemanager)) .course-content li.section.main
+    {
+    border: 1px solid #c7d5d1;
+    border-radius: var(--nm-radius, 10px);
+    margin-block: 16px;
+    padding: 20px;
+  }
+  body:is(#page-site-index, #page-my-index, #page-my-courses, #page-course-index, #page-course-index-category,
+    #page-course-search, #page-calendar-view, #page-mod-forum-index, #page-mod-forum-view,
+    #page-mod-forum-discuss, #page-mod-assign-view, #page-grade-report-user-index,
+    #page-grade-report-overview-index, #page-user-profile, #page-user-view, #page-mod-page-view,
+    #page-mod-book-view, #page-mod-resource-view, #page-mod-folder-view, #page-mod-url-view,
+    #page-course-view-topics, #page-course-view-weeks, #page-search-index, #page-mod-forum-search,
+    #page-user-index, #page-course-view-participants, #page-course-info, #page-course-recent,
+    #page-mod-assign-index, #page-mod-book-index, #page-mod-page-index, #page-mod-resource-index,
+    #page-mod-folder-index, #page-mod-url-index, #page-mod-glossary-index, #page-mod-data-index,
+    #page-mod-wiki-index, #page-mod-glossary-view, #page-mod-glossary-showentry, #page-mod-data-view,
+    #page-mod-wiki-view,
+    [id^="page-course-view-"]):not(.editing):not(:has(form.mform:not(body#page-search-index form),
+    .editor_atto_wrap, .tox-tinymce, [contenteditable="true"], .filemanager)) :is(.course-content .sectionname, .forumpost .subject) {
+    font-weight: 700;
+  }
+  /* Read-only forum surfaces; no rules target editor contents. */
+  body:is(#page-site-index, #page-my-index, #page-my-courses, #page-course-index, #page-course-index-category,
+    #page-course-search, #page-calendar-view, #page-mod-forum-index, #page-mod-forum-view,
+    #page-mod-forum-discuss, #page-mod-assign-view, #page-grade-report-user-index,
+    #page-grade-report-overview-index, #page-user-profile, #page-user-view, #page-mod-page-view,
+    #page-mod-book-view, #page-mod-resource-view, #page-mod-folder-view, #page-mod-url-view,
+    #page-course-view-topics, #page-course-view-weeks, #page-search-index, #page-mod-forum-search,
+    #page-user-index, #page-course-view-participants, #page-course-info, #page-course-recent,
+    #page-mod-assign-index, #page-mod-book-index, #page-mod-page-index, #page-mod-resource-index,
+    #page-mod-folder-index, #page-mod-url-index, #page-mod-glossary-index, #page-mod-data-index,
+    #page-mod-wiki-index, #page-mod-glossary-view, #page-mod-glossary-showentry, #page-mod-data-view,
+    #page-mod-wiki-view,
+    [id^="page-course-view-"]):not(.editing):not(:has(form.mform:not(body#page-search-index form),
+    .editor_atto_wrap, .tox-tinymce, [contenteditable="true"], .filemanager)) .forumpost {
+    border-color: var(--nm-line);
+    border-radius: var(--nm-radius, 10px);
+    box-shadow: var(--nm-shadow, 0 2px 8px rgb(23 46 50 / 6%));
+  }
+  /* Tables: no cell color overrides (status/grade semantics remain intact). */
+  body:is(#page-site-index, #page-my-index, #page-my-courses, #page-course-index, #page-course-index-category,
+    #page-course-search, #page-calendar-view, #page-mod-forum-index, #page-mod-forum-view,
+    #page-mod-forum-discuss, #page-mod-assign-view, #page-grade-report-user-index,
+    #page-grade-report-overview-index, #page-user-profile, #page-user-view, #page-mod-page-view,
+    #page-mod-book-view, #page-mod-resource-view, #page-mod-folder-view, #page-mod-url-view,
+    #page-course-view-topics, #page-course-view-weeks, #page-search-index, #page-mod-forum-search,
+    #page-user-index, #page-course-view-participants, #page-course-info, #page-course-recent,
+    #page-mod-assign-index, #page-mod-book-index, #page-mod-page-index, #page-mod-resource-index,
+    #page-mod-folder-index, #page-mod-url-index, #page-mod-glossary-index, #page-mod-data-index,
+    #page-mod-wiki-index, #page-mod-glossary-view, #page-mod-glossary-showentry, #page-mod-data-view,
+    #page-mod-wiki-view,
+    [id^="page-course-view-"]):not(.editing):not(:has(form.mform:not(body#page-search-index form),
+    .editor_atto_wrap, .tox-tinymce, [contenteditable="true"], .filemanager)) :is(.generaltable, .block_book_toc),
+  body:is(#page-site-index, #page-my-index, #page-my-courses, #page-course-index, #page-course-index-category,
+    #page-course-search, #page-calendar-view, #page-mod-forum-index, #page-mod-forum-view,
+    #page-mod-forum-discuss, #page-mod-assign-view, #page-grade-report-user-index,
+    #page-grade-report-overview-index, #page-user-profile, #page-user-view, #page-mod-page-view,
+    #page-mod-book-view, #page-mod-resource-view, #page-mod-folder-view, #page-mod-url-view,
+    #page-course-view-topics, #page-course-view-weeks, #page-search-index, #page-mod-forum-search,
+    #page-user-index, #page-course-view-participants, #page-course-info, #page-course-recent,
+    #page-mod-assign-index, #page-mod-book-index, #page-mod-page-index, #page-mod-resource-index,
+    #page-mod-folder-index, #page-mod-url-index, #page-mod-glossary-index, #page-mod-data-index,
+    #page-mod-wiki-index, #page-mod-glossary-view, #page-mod-glossary-showentry, #page-mod-data-view,
+    #page-mod-wiki-view,
+    [id^="page-course-view-"]):not(.editing):not(:has(form.mform:not(body#page-search-index form),
+    .editor_atto_wrap, .tox-tinymce, [contenteditable="true"], .filemanager)) .maincalendar .calendarmonth {
+    border-color: var(--nm-line);
+  }
+  body:is(#page-site-index, #page-my-index, #page-my-courses, #page-course-index, #page-course-index-category,
+    #page-course-search, #page-calendar-view, #page-mod-forum-index, #page-mod-forum-view,
+    #page-mod-forum-discuss, #page-mod-assign-view, #page-grade-report-user-index,
+    #page-grade-report-overview-index, #page-user-profile, #page-user-view, #page-mod-page-view,
+    #page-mod-book-view, #page-mod-resource-view, #page-mod-folder-view, #page-mod-url-view,
+    #page-course-view-topics, #page-course-view-weeks, #page-search-index, #page-mod-forum-search,
+    #page-user-index, #page-course-view-participants, #page-course-info, #page-course-recent,
+    #page-mod-assign-index, #page-mod-book-index, #page-mod-page-index, #page-mod-resource-index,
+    #page-mod-folder-index, #page-mod-url-index, #page-mod-glossary-index, #page-mod-data-index,
+    #page-mod-wiki-index, #page-mod-glossary-view, #page-mod-glossary-showentry, #page-mod-data-view,
+    #page-mod-wiki-view,
+    [id^="page-course-view-"]):not(.editing):not(:has(form.mform:not(body#page-search-index form),
+    .editor_atto_wrap, .tox-tinymce, [contenteditable="true"], .filemanager)) .generaltable th {
+    font-weight: 650;
+  }
+  /* Calendar: retain event colors, date links, navigation and table geometry. */
+  body:is(#page-site-index, #page-my-index, #page-my-courses, #page-course-index, #page-course-index-category,
+    #page-course-search, #page-calendar-view, #page-mod-forum-index, #page-mod-forum-view,
+    #page-mod-forum-discuss, #page-mod-assign-view, #page-grade-report-user-index,
+    #page-grade-report-overview-index, #page-user-profile, #page-user-view, #page-mod-page-view,
+    #page-mod-book-view, #page-mod-resource-view, #page-mod-folder-view, #page-mod-url-view,
+    #page-course-view-topics, #page-course-view-weeks, #page-search-index, #page-mod-forum-search,
+    #page-user-index, #page-course-view-participants, #page-course-info, #page-course-recent,
+    #page-mod-assign-index, #page-mod-book-index, #page-mod-page-index, #page-mod-resource-index,
+    #page-mod-folder-index, #page-mod-url-index, #page-mod-glossary-index, #page-mod-data-index,
+    #page-mod-wiki-index, #page-mod-glossary-view, #page-mod-glossary-showentry, #page-mod-data-view,
+    #page-mod-wiki-view,
+    [id^="page-course-view-"]):not(.editing):not(:has(form.mform:not(body#page-search-index form),
+    .editor_atto_wrap, .tox-tinymce, [contenteditable="true"], .filemanager)) .maincalendar .calendar-controls
+    {
+    padding-block: 12px;
+  }
+
+  /* Calendar view switcher: keep the trigger readable over the glass page surface. */
+  body#page-calendar-view.moodle-ncku-edu-tw .maincalendar
+    :is(#calendarviewdropdown, .calendarviewdropdown):is(button, select, .btn),
+  body#page-calendar-view.moodle-ncku-edu-tw .maincalendar
+    :is(#calendarviewdropdown, .calendarviewdropdown) :is(button, select, .btn) {
+    color: var(--nm-ink, #172e32) !important;
+    background-color: rgb(255 255 255 / 92%) !important;
+    border-color: #8fa9a0 !important;
+    opacity: 1;
+  }
+
+  body#page-calendar-view.moodle-ncku-edu-tw .maincalendar
+    :is(#calendarviewdropdown, .calendarviewdropdown):is(button, select, .btn):hover,
+  body#page-calendar-view.moodle-ncku-edu-tw .maincalendar
+    :is(#calendarviewdropdown, .calendarviewdropdown) :is(button, select, .btn):hover {
+    color: #0d4f47 !important;
+    background-color: #fff !important;
+    border-color: var(--nm-accent, #12665e) !important;
+  }
+  /* Book navigation remains the original tree, not a rewritten contents list. */
+}
+@media screen and (max-width: 600px) {
+  body:is(#page-site-index, #page-my-index, #page-my-courses, #page-course-index, #page-course-index-category,
+    #page-course-search, #page-calendar-view, #page-mod-forum-index, #page-mod-forum-view,
+    #page-mod-forum-discuss, #page-mod-assign-view, #page-grade-report-user-index,
+    #page-grade-report-overview-index, #page-user-profile, #page-user-view, #page-mod-page-view,
+    #page-mod-book-view, #page-mod-resource-view, #page-mod-folder-view, #page-mod-url-view,
+    #page-course-view-topics, #page-course-view-weeks, #page-search-index, #page-mod-forum-search,
+    #page-user-index, #page-course-view-participants, #page-course-info, #page-course-recent,
+    #page-mod-assign-index, #page-mod-book-index, #page-mod-page-index, #page-mod-resource-index,
+    #page-mod-folder-index, #page-mod-url-index, #page-mod-glossary-index, #page-mod-data-index,
+    #page-mod-wiki-index, #page-mod-glossary-view, #page-mod-glossary-showentry, #page-mod-data-view,
+    #page-mod-wiki-view,
+    [id^="page-course-view-"]):not(.editing):not(:has(form.mform:not(body#page-search-index form),
+    .editor_atto_wrap, .tox-tinymce, [contenteditable="true"], .filemanager)) .course_category_tree
+    .category[data-depth="1"],
+  body:is(#page-site-index, #page-my-index, #page-my-courses, #page-course-index, #page-course-index-category,
+    #page-course-search, #page-calendar-view, #page-mod-forum-index, #page-mod-forum-view,
+    #page-mod-forum-discuss, #page-mod-assign-view, #page-grade-report-user-index,
+    #page-grade-report-overview-index, #page-user-profile, #page-user-view, #page-mod-page-view,
+    #page-mod-book-view, #page-mod-resource-view, #page-mod-folder-view, #page-mod-url-view,
+    #page-course-view-topics, #page-course-view-weeks, #page-search-index, #page-mod-forum-search,
+    #page-user-index, #page-course-view-participants, #page-course-info, #page-course-recent,
+    #page-mod-assign-index, #page-mod-book-index, #page-mod-page-index, #page-mod-resource-index,
+    #page-mod-folder-index, #page-mod-url-index, #page-mod-glossary-index, #page-mod-data-index,
+    #page-mod-wiki-index, #page-mod-glossary-view, #page-mod-glossary-showentry, #page-mod-data-view,
+    #page-mod-wiki-view,
+    [id^="page-course-view-"]):not(.editing):not(:has(form.mform:not(body#page-search-index form),
+    .editor_atto_wrap, .tox-tinymce, [contenteditable="true"], .filemanager)) #coursesearch,
+  body:is(#page-site-index, #page-my-index, #page-my-courses, #page-course-index, #page-course-index-category,
+    #page-course-search, #page-calendar-view, #page-mod-forum-index, #page-mod-forum-view,
+    #page-mod-forum-discuss, #page-mod-assign-view, #page-grade-report-user-index,
+    #page-grade-report-overview-index, #page-user-profile, #page-user-view, #page-mod-page-view,
+    #page-mod-book-view, #page-mod-resource-view, #page-mod-folder-view, #page-mod-url-view,
+    #page-course-view-topics, #page-course-view-weeks, #page-search-index, #page-mod-forum-search,
+    #page-user-index, #page-course-view-participants, #page-course-info, #page-course-recent,
+    #page-mod-assign-index, #page-mod-book-index, #page-mod-page-index, #page-mod-resource-index,
+    #page-mod-folder-index, #page-mod-url-index, #page-mod-glossary-index, #page-mod-data-index,
+    #page-mod-wiki-index, #page-mod-glossary-view, #page-mod-glossary-showentry, #page-mod-data-view,
+    #page-mod-wiki-view,
+    [id^="page-course-view-"]):not(.editing):not(:has(form.mform:not(body#page-search-index form),
+    .editor_atto_wrap, .tox-tinymce, [contenteditable="true"], .filemanager)) .course-content li.section.main {
+    padding: 12px;
+  }
+}
+
+/* Grade reports, sidebar navigation and forum hierarchy. */
+@media screen {
+  /* Do not recolor grade cells: Moodle uses their colors for status/visibility. */
+  body:is(#page-site-index, #page-my-index, #page-my-courses, #page-course-index, #page-course-index-category,
+    #page-course-search, #page-calendar-view, #page-mod-forum-index, #page-mod-forum-view,
+    #page-mod-forum-discuss, #page-mod-assign-view, #page-grade-report-user-index,
+    #page-grade-report-overview-index, #page-user-profile, #page-user-view, #page-mod-page-view,
+    #page-mod-book-view, #page-mod-resource-view, #page-mod-folder-view, #page-mod-url-view,
+    #page-course-view-topics, #page-course-view-weeks, #page-search-index, #page-mod-forum-search,
+    #page-user-index, #page-course-view-participants, #page-course-info, #page-course-recent,
+    #page-mod-assign-index, #page-mod-book-index, #page-mod-page-index, #page-mod-resource-index,
+    #page-mod-folder-index, #page-mod-url-index, #page-mod-glossary-index, #page-mod-data-index,
+    #page-mod-wiki-index, #page-mod-glossary-view, #page-mod-glossary-showentry, #page-mod-data-view,
+    #page-mod-wiki-view,
+    [id^="page-course-view-"]):not(.editing):not(:has(form.mform:not(body#page-search-index form),
+    .editor_atto_wrap, .tox-tinymce, [contenteditable="true"],
+    .filemanager)):is(#page-grade-report-user-index, #page-grade-report-overview-index) :is(.user-grade,
+    .generaltable) {
+    width: 100%;
+    border: 1px solid var(--nm-line);
+    margin-block: 20px;
+    font-size: .95rem;
+  }
+  body:is(#page-site-index, #page-my-index, #page-my-courses, #page-course-index, #page-course-index-category,
+    #page-course-search, #page-calendar-view, #page-mod-forum-index, #page-mod-forum-view,
+    #page-mod-forum-discuss, #page-mod-assign-view, #page-grade-report-user-index,
+    #page-grade-report-overview-index, #page-user-profile, #page-user-view, #page-mod-page-view,
+    #page-mod-book-view, #page-mod-resource-view, #page-mod-folder-view, #page-mod-url-view,
+    #page-course-view-topics, #page-course-view-weeks, #page-search-index, #page-mod-forum-search,
+    #page-user-index, #page-course-view-participants, #page-course-info, #page-course-recent,
+    #page-mod-assign-index, #page-mod-book-index, #page-mod-page-index, #page-mod-resource-index,
+    #page-mod-folder-index, #page-mod-url-index, #page-mod-glossary-index, #page-mod-data-index,
+    #page-mod-wiki-index, #page-mod-glossary-view, #page-mod-glossary-showentry, #page-mod-data-view,
+    #page-mod-wiki-view,
+    [id^="page-course-view-"]):not(.editing):not(:has(form.mform:not(body#page-search-index form),
+    .editor_atto_wrap, .tox-tinymce, [contenteditable="true"],
+    .filemanager)):is(#page-grade-report-user-index, #page-grade-report-overview-index) :is(.user-grade,
+    .generaltable) :is(th, td) {
+    padding: 14px 16px;
+    border-color: var(--nm-line);
+    vertical-align: top;
+    line-height: 1.5;
+  }
+  body:is(#page-site-index, #page-my-index, #page-my-courses, #page-course-index, #page-course-index-category,
+    #page-course-search, #page-calendar-view, #page-mod-forum-index, #page-mod-forum-view,
+    #page-mod-forum-discuss, #page-mod-assign-view, #page-grade-report-user-index,
+    #page-grade-report-overview-index, #page-user-profile, #page-user-view, #page-mod-page-view,
+    #page-mod-book-view, #page-mod-resource-view, #page-mod-folder-view, #page-mod-url-view,
+    #page-course-view-topics, #page-course-view-weeks, #page-search-index, #page-mod-forum-search,
+    #page-user-index, #page-course-view-participants, #page-course-info, #page-course-recent,
+    #page-mod-assign-index, #page-mod-book-index, #page-mod-page-index, #page-mod-resource-index,
+    #page-mod-folder-index, #page-mod-url-index, #page-mod-glossary-index, #page-mod-data-index,
+    #page-mod-wiki-index, #page-mod-glossary-view, #page-mod-glossary-showentry, #page-mod-data-view,
+    #page-mod-wiki-view,
+    [id^="page-course-view-"]):not(.editing):not(:has(form.mform:not(body#page-search-index form),
+    .editor_atto_wrap, .tox-tinymce, [contenteditable="true"],
+    .filemanager)):is(#page-grade-report-user-index, #page-grade-report-overview-index) :is(.user-grade,
+    .generaltable) :is(thead th, th.header) {
+    background-color: #edf4f0;
+    color: var(--nm-ink);
+    font-size: .85rem;
+    font-weight: 700;
+  }
+  body:is(#page-site-index, #page-my-index, #page-my-courses, #page-course-index, #page-course-index-category,
+    #page-course-search, #page-calendar-view, #page-mod-forum-index, #page-mod-forum-view,
+    #page-mod-forum-discuss, #page-mod-assign-view, #page-grade-report-user-index,
+    #page-grade-report-overview-index, #page-user-profile, #page-user-view, #page-mod-page-view,
+    #page-mod-book-view, #page-mod-resource-view, #page-mod-folder-view, #page-mod-url-view,
+    #page-course-view-topics, #page-course-view-weeks, #page-search-index, #page-mod-forum-search,
+    #page-user-index, #page-course-view-participants, #page-course-info, #page-course-recent,
+    #page-mod-assign-index, #page-mod-book-index, #page-mod-page-index, #page-mod-resource-index,
+    #page-mod-folder-index, #page-mod-url-index, #page-mod-glossary-index, #page-mod-data-index,
+    #page-mod-wiki-index, #page-mod-glossary-view, #page-mod-glossary-showentry, #page-mod-data-view,
+    #page-mod-wiki-view,
+    [id^="page-course-view-"]):not(.editing):not(:has(form.mform:not(body#page-search-index form),
+    .editor_atto_wrap, .tox-tinymce, [contenteditable="true"],
+    .filemanager)):is(#page-grade-report-user-index, #page-grade-report-overview-index) .user-grade
+    :is(.column-grade, .column-percentage, .column-range, .column-weight, .column-contributiontocoursetotal) {
+    font-variant-numeric: tabular-nums;
+  }
+  body:is(#page-site-index, #page-my-index, #page-my-courses, #page-course-index, #page-course-index-category,
+    #page-course-search, #page-calendar-view, #page-mod-forum-index, #page-mod-forum-view,
+    #page-mod-forum-discuss, #page-mod-assign-view, #page-grade-report-user-index,
+    #page-grade-report-overview-index, #page-user-profile, #page-user-view, #page-mod-page-view,
+    #page-mod-book-view, #page-mod-resource-view, #page-mod-folder-view, #page-mod-url-view,
+    #page-course-view-topics, #page-course-view-weeks, #page-search-index, #page-mod-forum-search,
+    #page-user-index, #page-course-view-participants, #page-course-info, #page-course-recent,
+    #page-mod-assign-index, #page-mod-book-index, #page-mod-page-index, #page-mod-resource-index,
+    #page-mod-folder-index, #page-mod-url-index, #page-mod-glossary-index, #page-mod-data-index,
+    #page-mod-wiki-index, #page-mod-glossary-view, #page-mod-glossary-showentry, #page-mod-data-view,
+    #page-mod-wiki-view,
+    [id^="page-course-view-"]):not(.editing):not(:has(form.mform:not(body#page-search-index form),
+    .editor_atto_wrap, .tox-tinymce, [contenteditable="true"],
+    .filemanager)):is(#page-grade-report-user-index, #page-grade-report-overview-index) .user-grade
+    .column-feedback {
+    line-height: 1.65;
+  }
+  body:is(#page-site-index, #page-my-index, #page-my-courses, #page-course-index, #page-course-index-category,
+    #page-course-search, #page-calendar-view, #page-mod-forum-index, #page-mod-forum-view,
+    #page-mod-forum-discuss, #page-mod-assign-view, #page-grade-report-user-index,
+    #page-grade-report-overview-index, #page-user-profile, #page-user-view, #page-mod-page-view,
+    #page-mod-book-view, #page-mod-resource-view, #page-mod-folder-view, #page-mod-url-view,
+    #page-course-view-topics, #page-course-view-weeks, #page-search-index, #page-mod-forum-search,
+    #page-user-index, #page-course-view-participants, #page-course-info, #page-course-recent,
+    #page-mod-assign-index, #page-mod-book-index, #page-mod-page-index, #page-mod-resource-index,
+    #page-mod-folder-index, #page-mod-url-index, #page-mod-glossary-index, #page-mod-data-index,
+    #page-mod-wiki-index, #page-mod-glossary-view, #page-mod-glossary-showentry, #page-mod-data-view,
+    #page-mod-wiki-view,
+    [id^="page-course-view-"]):not(.editing):not(:has(form.mform:not(body#page-search-index form),
+    .editor_atto_wrap, .tox-tinymce, [contenteditable="true"],
+    .filemanager)):is(#page-grade-report-user-index, #page-grade-report-overview-index) .user-grade
+    :is(.baggt, .baggb) {
+    font-weight: 700;
+    border-top-width: 2px;
+  }
+  body:is(#page-site-index, #page-my-index, #page-my-courses, #page-course-index, #page-course-index-category,
+    #page-course-search, #page-calendar-view, #page-mod-forum-index, #page-mod-forum-view,
+    #page-mod-forum-discuss, #page-mod-assign-view, #page-grade-report-user-index,
+    #page-grade-report-overview-index, #page-user-profile, #page-user-view, #page-mod-page-view,
+    #page-mod-book-view, #page-mod-resource-view, #page-mod-folder-view, #page-mod-url-view,
+    #page-course-view-topics, #page-course-view-weeks, #page-search-index, #page-mod-forum-search,
+    #page-user-index, #page-course-view-participants, #page-course-info, #page-course-recent,
+    #page-mod-assign-index, #page-mod-book-index, #page-mod-page-index, #page-mod-resource-index,
+    #page-mod-folder-index, #page-mod-url-index, #page-mod-glossary-index, #page-mod-data-index,
+    #page-mod-wiki-index, #page-mod-glossary-view, #page-mod-glossary-showentry, #page-mod-data-view,
+    #page-mod-wiki-view,
+    [id^="page-course-view-"]):not(.editing):not(:has(form.mform:not(body#page-search-index form),
+    .editor_atto_wrap, .tox-tinymce, [contenteditable="true"], .filemanager)):is(#page-mod-forum-view,
+    #page-mod-forum-index, #page-mod-forum-search) :is(.discussion-list, .forumheaderlist) {
+    width: 100%;
+    border: 1px solid var(--nm-line);
+    margin-block: 20px;
+  }
+  body:is(#page-site-index, #page-my-index, #page-my-courses, #page-course-index, #page-course-index-category,
+    #page-course-search, #page-calendar-view, #page-mod-forum-index, #page-mod-forum-view,
+    #page-mod-forum-discuss, #page-mod-assign-view, #page-grade-report-user-index,
+    #page-grade-report-overview-index, #page-user-profile, #page-user-view, #page-mod-page-view,
+    #page-mod-book-view, #page-mod-resource-view, #page-mod-folder-view, #page-mod-url-view,
+    #page-course-view-topics, #page-course-view-weeks, #page-search-index, #page-mod-forum-search,
+    #page-user-index, #page-course-view-participants, #page-course-info, #page-course-recent,
+    #page-mod-assign-index, #page-mod-book-index, #page-mod-page-index, #page-mod-resource-index,
+    #page-mod-folder-index, #page-mod-url-index, #page-mod-glossary-index, #page-mod-data-index,
+    #page-mod-wiki-index, #page-mod-glossary-view, #page-mod-glossary-showentry, #page-mod-data-view,
+    #page-mod-wiki-view,
+    [id^="page-course-view-"]):not(.editing):not(:has(form.mform:not(body#page-search-index form),
+    .editor_atto_wrap, .tox-tinymce, [contenteditable="true"], .filemanager)):is(#page-mod-forum-view,
+    #page-mod-forum-index, #page-mod-forum-search) :is(.discussion-list, .forumheaderlist) thead th {
+    background-color: #edf4f0;
+    color: var(--nm-ink);
+    border-color: var(--nm-line);
+    font-size: .85rem;
+    font-weight: 700;
+    padding-block: 14px;
+  }
+  body:is(#page-site-index, #page-my-index, #page-my-courses, #page-course-index, #page-course-index-category,
+    #page-course-search, #page-calendar-view, #page-mod-forum-index, #page-mod-forum-view,
+    #page-mod-forum-discuss, #page-mod-assign-view, #page-grade-report-user-index,
+    #page-grade-report-overview-index, #page-user-profile, #page-user-view, #page-mod-page-view,
+    #page-mod-book-view, #page-mod-resource-view, #page-mod-folder-view, #page-mod-url-view,
+    #page-course-view-topics, #page-course-view-weeks, #page-search-index, #page-mod-forum-search,
+    #page-user-index, #page-course-view-participants, #page-course-info, #page-course-recent,
+    #page-mod-assign-index, #page-mod-book-index, #page-mod-page-index, #page-mod-resource-index,
+    #page-mod-folder-index, #page-mod-url-index, #page-mod-glossary-index, #page-mod-data-index,
+    #page-mod-wiki-index, #page-mod-glossary-view, #page-mod-glossary-showentry, #page-mod-data-view,
+    #page-mod-wiki-view,
+    [id^="page-course-view-"]):not(.editing):not(:has(form.mform:not(body#page-search-index form),
+    .editor_atto_wrap, .tox-tinymce, [contenteditable="true"], .filemanager)):is(#page-mod-forum-view,
+    #page-mod-forum-index, #page-mod-forum-search) :is(.discussion-list, .forumheaderlist) tbody :is(th, td) {
+    border-color: var(--nm-line);
+    vertical-align: middle;
+  }
+  body:is(#page-site-index, #page-my-index, #page-my-courses, #page-course-index, #page-course-index-category,
+    #page-course-search, #page-calendar-view, #page-mod-forum-index, #page-mod-forum-view,
+    #page-mod-forum-discuss, #page-mod-assign-view, #page-grade-report-user-index,
+    #page-grade-report-overview-index, #page-user-profile, #page-user-view, #page-mod-page-view,
+    #page-mod-book-view, #page-mod-resource-view, #page-mod-folder-view, #page-mod-url-view,
+    #page-course-view-topics, #page-course-view-weeks, #page-search-index, #page-mod-forum-search,
+    #page-user-index, #page-course-view-participants, #page-course-info, #page-course-recent,
+    #page-mod-assign-index, #page-mod-book-index, #page-mod-page-index, #page-mod-resource-index,
+    #page-mod-folder-index, #page-mod-url-index, #page-mod-glossary-index, #page-mod-data-index,
+    #page-mod-wiki-index, #page-mod-glossary-view, #page-mod-glossary-showentry, #page-mod-data-view,
+    #page-mod-wiki-view,
+    [id^="page-course-view-"]):not(.editing):not(:has(form.mform:not(body#page-search-index form),
+    .editor_atto_wrap, .tox-tinymce, [contenteditable="true"], .filemanager)):is(#page-mod-forum-view,
+    #page-mod-forum-index, #page-mod-forum-search) :is(.discussion-list, .forumheaderlist) .topic
+    a:not(.badge):not(.btn) {
+    font-weight: 650;
+    line-height: 1.5;
+  }
+  body:is(#page-site-index, #page-my-index, #page-my-courses, #page-course-index, #page-course-index-category,
+    #page-course-search, #page-calendar-view, #page-mod-forum-index, #page-mod-forum-view,
+    #page-mod-forum-discuss, #page-mod-assign-view, #page-grade-report-user-index,
+    #page-grade-report-overview-index, #page-user-profile, #page-user-view, #page-mod-page-view,
+    #page-mod-book-view, #page-mod-resource-view, #page-mod-folder-view, #page-mod-url-view,
+    #page-course-view-topics, #page-course-view-weeks, #page-search-index, #page-mod-forum-search,
+    #page-user-index, #page-course-view-participants, #page-course-info, #page-course-recent,
+    #page-mod-assign-index, #page-mod-book-index, #page-mod-page-index, #page-mod-resource-index,
+    #page-mod-folder-index, #page-mod-url-index, #page-mod-glossary-index, #page-mod-data-index,
+    #page-mod-wiki-index, #page-mod-glossary-view, #page-mod-glossary-showentry, #page-mod-data-view,
+    #page-mod-wiki-view,
+    [id^="page-course-view-"]):not(.editing):not(:has(form.mform:not(body#page-search-index form),
+    .editor_atto_wrap, .tox-tinymce, [contenteditable="true"], .filemanager)):is(#page-mod-forum-view,
+    #page-mod-forum-discuss, #page-mod-forum-search) .forum-post-container {
+    margin-block: 18px;
+  }
+  body:is(#page-site-index, #page-my-index, #page-my-courses, #page-course-index, #page-course-index-category,
+    #page-course-search, #page-calendar-view, #page-mod-forum-index, #page-mod-forum-view,
+    #page-mod-forum-discuss, #page-mod-assign-view, #page-grade-report-user-index,
+    #page-grade-report-overview-index, #page-user-profile, #page-user-view, #page-mod-page-view,
+    #page-mod-book-view, #page-mod-resource-view, #page-mod-folder-view, #page-mod-url-view,
+    #page-course-view-topics, #page-course-view-weeks, #page-search-index, #page-mod-forum-search,
+    #page-user-index, #page-course-view-participants, #page-course-info, #page-course-recent,
+    #page-mod-assign-index, #page-mod-book-index, #page-mod-page-index, #page-mod-resource-index,
+    #page-mod-folder-index, #page-mod-url-index, #page-mod-glossary-index, #page-mod-data-index,
+    #page-mod-wiki-index, #page-mod-glossary-view, #page-mod-glossary-showentry, #page-mod-data-view,
+    #page-mod-wiki-view,
+    [id^="page-course-view-"]):not(.editing):not(:has(form.mform:not(body#page-search-index form),
+    .editor_atto_wrap, .tox-tinymce, [contenteditable="true"], .filemanager)):is(#page-mod-forum-view,
+    #page-mod-forum-discuss, #page-mod-forum-search) .forumpost {
+    padding: clamp(14px, 2vw, 24px) !important;
+    border: 1px solid var(--nm-line) !important;
+    border-radius: var(--nm-radius, 10px);
+    box-shadow: var(--nm-shadow, 0 2px 8px rgb(23 46 50 / 6%));
+  }
+  body:is(#page-site-index, #page-my-index, #page-my-courses, #page-course-index, #page-course-index-category,
+    #page-course-search, #page-calendar-view, #page-mod-forum-index, #page-mod-forum-view,
+    #page-mod-forum-discuss, #page-mod-assign-view, #page-grade-report-user-index,
+    #page-grade-report-overview-index, #page-user-profile, #page-user-view, #page-mod-page-view,
+    #page-mod-book-view, #page-mod-resource-view, #page-mod-folder-view, #page-mod-url-view,
+    #page-course-view-topics, #page-course-view-weeks, #page-search-index, #page-mod-forum-search,
+    #page-user-index, #page-course-view-participants, #page-course-info, #page-course-recent,
+    #page-mod-assign-index, #page-mod-book-index, #page-mod-page-index, #page-mod-resource-index,
+    #page-mod-folder-index, #page-mod-url-index, #page-mod-glossary-index, #page-mod-data-index,
+    #page-mod-wiki-index, #page-mod-glossary-view, #page-mod-glossary-showentry, #page-mod-data-view,
+    #page-mod-wiki-view,
+    [id^="page-course-view-"]):not(.editing):not(:has(form.mform:not(body#page-search-index form),
+    .editor_atto_wrap, .tox-tinymce, [contenteditable="true"], .filemanager)):is(#page-mod-forum-view,
+    #page-mod-forum-discuss, #page-mod-forum-search) .forumpost.unread {
+    border-inline-start: 4px solid var(--nm-accent) !important;
+  }
+  body:is(#page-site-index, #page-my-index, #page-my-courses, #page-course-index, #page-course-index-category,
+    #page-course-search, #page-calendar-view, #page-mod-forum-index, #page-mod-forum-view,
+    #page-mod-forum-discuss, #page-mod-assign-view, #page-grade-report-user-index,
+    #page-grade-report-overview-index, #page-user-profile, #page-user-view, #page-mod-page-view,
+    #page-mod-book-view, #page-mod-resource-view, #page-mod-folder-view, #page-mod-url-view,
+    #page-course-view-topics, #page-course-view-weeks, #page-search-index, #page-mod-forum-search,
+    #page-user-index, #page-course-view-participants, #page-course-info, #page-course-recent,
+    #page-mod-assign-index, #page-mod-book-index, #page-mod-page-index, #page-mod-resource-index,
+    #page-mod-folder-index, #page-mod-url-index, #page-mod-glossary-index, #page-mod-data-index,
+    #page-mod-wiki-index, #page-mod-glossary-view, #page-mod-glossary-showentry, #page-mod-data-view,
+    #page-mod-wiki-view,
+    [id^="page-course-view-"]):not(.editing):not(:has(form.mform:not(body#page-search-index form),
+    .editor_atto_wrap, .tox-tinymce, [contenteditable="true"], .filemanager)):is(#page-mod-forum-view,
+    #page-mod-forum-discuss, #page-mod-forum-search) .forumpost .header {
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--nm-line);
+  }
+  body:is(#page-site-index, #page-my-index, #page-my-courses, #page-course-index, #page-course-index-category,
+    #page-course-search, #page-calendar-view, #page-mod-forum-index, #page-mod-forum-view,
+    #page-mod-forum-discuss, #page-mod-assign-view, #page-grade-report-user-index,
+    #page-grade-report-overview-index, #page-user-profile, #page-user-view, #page-mod-page-view,
+    #page-mod-book-view, #page-mod-resource-view, #page-mod-folder-view, #page-mod-url-view,
+    #page-course-view-topics, #page-course-view-weeks, #page-search-index, #page-mod-forum-search,
+    #page-user-index, #page-course-view-participants, #page-course-info, #page-course-recent,
+    #page-mod-assign-index, #page-mod-book-index, #page-mod-page-index, #page-mod-resource-index,
+    #page-mod-folder-index, #page-mod-url-index, #page-mod-glossary-index, #page-mod-data-index,
+    #page-mod-wiki-index, #page-mod-glossary-view, #page-mod-glossary-showentry, #page-mod-data-view,
+    #page-mod-wiki-view,
+    [id^="page-course-view-"]):not(.editing):not(:has(form.mform:not(body#page-search-index form),
+    .editor_atto_wrap, .tox-tinymce, [contenteditable="true"], .filemanager)):is(#page-mod-forum-view,
+    #page-mod-forum-discuss, #page-mod-forum-search) .forumpost :is(.subject, h3.h6) {
+    font-size: 1.1rem;
+    font-weight: 700;
+    line-height: 1.45;
+  }
+  body:is(#page-site-index, #page-my-index, #page-my-courses, #page-course-index, #page-course-index-category,
+    #page-course-search, #page-calendar-view, #page-mod-forum-index, #page-mod-forum-view,
+    #page-mod-forum-discuss, #page-mod-assign-view, #page-grade-report-user-index,
+    #page-grade-report-overview-index, #page-user-profile, #page-user-view, #page-mod-page-view,
+    #page-mod-book-view, #page-mod-resource-view, #page-mod-folder-view, #page-mod-url-view,
+    #page-course-view-topics, #page-course-view-weeks, #page-search-index, #page-mod-forum-search,
+    #page-user-index, #page-course-view-participants, #page-course-info, #page-course-recent,
+    #page-mod-assign-index, #page-mod-book-index, #page-mod-page-index, #page-mod-resource-index,
+    #page-mod-folder-index, #page-mod-url-index, #page-mod-glossary-index, #page-mod-data-index,
+    #page-mod-wiki-index, #page-mod-glossary-view, #page-mod-glossary-showentry, #page-mod-data-view,
+    #page-mod-wiki-view,
+    [id^="page-course-view-"]):not(.editing):not(:has(form.mform:not(body#page-search-index form),
+    .editor_atto_wrap, .tox-tinymce, [contenteditable="true"], .filemanager)):is(#page-mod-forum-view,
+    #page-mod-forum-discuss, #page-mod-forum-search) .forumpost .post-content-container {
+    line-height: 1.75;
+  }
+  body:is(#page-site-index, #page-my-index, #page-my-courses, #page-course-index, #page-course-index-category,
+    #page-course-search, #page-calendar-view, #page-mod-forum-index, #page-mod-forum-view,
+    #page-mod-forum-discuss, #page-mod-assign-view, #page-grade-report-user-index,
+    #page-grade-report-overview-index, #page-user-profile, #page-user-view, #page-mod-page-view,
+    #page-mod-book-view, #page-mod-resource-view, #page-mod-folder-view, #page-mod-url-view,
+    #page-course-view-topics, #page-course-view-weeks, #page-search-index, #page-mod-forum-search,
+    #page-user-index, #page-course-view-participants, #page-course-info, #page-course-recent,
+    #page-mod-assign-index, #page-mod-book-index, #page-mod-page-index, #page-mod-resource-index,
+    #page-mod-folder-index, #page-mod-url-index, #page-mod-glossary-index, #page-mod-data-index,
+    #page-mod-wiki-index, #page-mod-glossary-view, #page-mod-glossary-showentry, #page-mod-data-view,
+    #page-mod-wiki-view,
+    [id^="page-course-view-"]):not(.editing):not(:has(form.mform:not(body#page-search-index form),
+    .editor_atto_wrap, .tox-tinymce, [contenteditable="true"], .filemanager)):is(#page-mod-forum-view,
+    #page-mod-forum-discuss, #page-mod-forum-search) .forumpost .post-actions {
+    border-top: 1px solid var(--nm-line);
+    padding-top: 10px;
+    margin-top: 14px;
+  }
+}
+@media screen and (max-width: 600px) {
+  body:is(#page-site-index, #page-my-index, #page-my-courses, #page-course-index, #page-course-index-category,
+    #page-course-search, #page-calendar-view, #page-mod-forum-index, #page-mod-forum-view,
+    #page-mod-forum-discuss, #page-mod-assign-view, #page-grade-report-user-index,
+    #page-grade-report-overview-index, #page-user-profile, #page-user-view, #page-mod-page-view,
+    #page-mod-book-view, #page-mod-resource-view, #page-mod-folder-view, #page-mod-url-view,
+    #page-course-view-topics, #page-course-view-weeks, #page-search-index, #page-mod-forum-search,
+    #page-user-index, #page-course-view-participants, #page-course-info, #page-course-recent,
+    #page-mod-assign-index, #page-mod-book-index, #page-mod-page-index, #page-mod-resource-index,
+    #page-mod-folder-index, #page-mod-url-index, #page-mod-glossary-index, #page-mod-data-index,
+    #page-mod-wiki-index, #page-mod-glossary-view, #page-mod-glossary-showentry, #page-mod-data-view,
+    #page-mod-wiki-view,
+    [id^="page-course-view-"]):not(.editing):not(:has(form.mform:not(body#page-search-index form),
+    .editor_atto_wrap, .tox-tinymce, [contenteditable="true"],
+    .filemanager)):is(#page-grade-report-user-index, #page-grade-report-overview-index) :is(.user-grade,
+    .generaltable) :is(th, td) {
+    padding: 10px 8px;
+    font-size: .85rem;
+  }
+}
+
+
+/* ===== surfaces ===== */
+/* Site background and banner. Content surfaces stay translucent. */
+@media screen {
+  body.moodle-ncku-edu-tw:not(.editing):is(#page-site-index, #page-my-index, [id^="page-"]) {
+    background-color: #b9d7eb !important;
+    background-image: url("chrome-extension://__MSG_@@extension_id__/assets/site-background.png") !important;
+    background-attachment: fixed !important;
+    background-size: cover !important;
+    background-position: center center !important;
+    background-repeat: no-repeat !important;
+  }
+  body.moodle-ncku-edu-tw:not(.editing):is(#page-site-index, #page-my-index, [id^="page-"]) #page-wrapper,
+  body.moodle-ncku-edu-tw:not(.editing):is(#page-site-index, #page-my-index, [id^="page-"]) #page,
+  body.moodle-ncku-edu-tw:not(.editing):is(#page-site-index, #page-my-index, [id^="page-"]) #page-content,
+  body.moodle-ncku-edu-tw:not(.editing):is(#page-site-index, #page-my-index, [id^="page-"]) #region-main-box,
+  body.moodle-ncku-edu-tw:not(.editing):is(#page-site-index, #page-my-index, [id^="page-"]) #learningcontent {
+    background-color: transparent !important;
+  }
+
+  body.moodle-ncku-edu-tw:not(.editing):is(#page-site-index, #page-my-index, [id^="page-"]) #region-main {
+    background-color: rgb(242 247 245 / 78%) !important;
+    -webkit-backdrop-filter: blur(3px) saturate(96%) brightness(98%);
+    backdrop-filter: blur(3px) saturate(96%) brightness(98%);
+  }
+  body.moodle-ncku-edu-tw:not(.editing):is(#page-site-index, #page-my-index, [id^="page-"]) #page-header
+    .customimage {
+    background-image: url("chrome-extension://__MSG_@@extension_id__/assets/header.jpg") !important;
+    background-size: cover !important;
+    background-position: center center !important;
+    background-repeat: no-repeat !important;
+  }
+}
+@media screen and (max-width: 600px) {
+  body.moodle-ncku-edu-tw:not(.editing):is(#page-site-index, #page-my-index, [id^="page-"]) {
+    background-attachment: scroll !important;
+    background-position: center center !important;
+  }
+  body.moodle-ncku-edu-tw:not(.editing):is(#page-site-index, #page-my-index, [id^="page-"]) #region-main {
+    background-color: rgb(244 248 247 / 84%) !important;
+  }
+  body.moodle-ncku-edu-tw:not(.editing):is(#page-site-index, #page-my-index, [id^="page-"]) #page-header
+    .customimage {
+    background-position: center center !important;
+  }
+}
+/* Transparent glass surfaces keep the bundled background visible through the shell. */
+@media screen {
+  body.moodle-ncku-edu-tw:not(.editing):is(#page-site-index, #page-my-index, [id^="page-"]) .block.card {
+    background-color: rgb(255 255 255 / 52%) !important;
+  }
+  body.moodle-ncku-edu-tw:not(.editing):is(#page-site-index, #page-my-index, [id^="page-"]) .card-body {
+    background-color: transparent;
+  }
+}
+@media screen and (max-width: 600px) {
+  body.moodle-ncku-edu-tw:not(.editing):is(#page-site-index, #page-my-index, [id^="page-"]) .block.card {
+    background-color: rgb(255 255 255 / 64%) !important;
+  }
+}
+/* Keep the remaining chrome translucent so the bundled image is the page atmosphere. */
+@media screen {
+  body.moodle-ncku-edu-tw:not(.editing):is(#page-site-index, #page-my-index, [id^="page-"]) footer {
+    background-color: rgb(23 46 50 / 58%) !important;
+  }
+
+  /* Glass notification and message panels; keep native geometry and state. */
+  body:is(#page-site-index, #page-my-index, #page-my-courses, #page-course-index, #page-course-index-category,
+    #page-course-search, #page-calendar-view, #page-mod-forum-index, #page-mod-forum-view,
+    #page-mod-forum-discuss, #page-mod-assign-view, #page-grade-report-user-index,
+    #page-grade-report-overview-index, #page-user-profile, #page-user-view, #page-mod-page-view,
+    #page-mod-book-view, #page-mod-resource-view, #page-mod-folder-view, #page-mod-url-view,
+    #page-course-view-topics, #page-course-view-weeks, #page-search-index, #page-mod-forum-search,
+    #page-user-index, #page-course-view-participants, #page-course-info, #page-course-recent,
+    #page-mod-assign-index, #page-mod-book-index, #page-mod-page-index, #page-mod-resource-index,
+    #page-mod-folder-index, #page-mod-url-index, #page-mod-glossary-index, #page-mod-data-index,
+    #page-mod-wiki-index, #page-mod-glossary-view, #page-mod-glossary-showentry, #page-mod-data-view,
+    #page-mod-wiki-view,
+    [id^="page-course-view-"]):not(.editing):not(:has(form.mform:not(body#page-search-index form),
+    .editor_atto_wrap, .tox-tinymce, [contenteditable="true"], .filemanager)) .popover-region-container {
+    background-color: rgb(255 255 255 / 82%);
+    border-color: #c6d9d1;
+    border-radius: var(--nm-radius, 10px);
+    box-shadow: var(--nm-shadow, 0 2px 8px rgb(23 46 50 / 6%));
+    backdrop-filter: blur(12px);
+    color: #172e32;
+  }
+  body:is(#page-site-index, #page-my-index, #page-my-courses, #page-course-index, #page-course-index-category,
+    #page-course-search, #page-calendar-view, #page-mod-forum-index, #page-mod-forum-view,
+    #page-mod-forum-discuss, #page-mod-assign-view, #page-grade-report-user-index,
+    #page-grade-report-overview-index, #page-user-profile, #page-user-view, #page-mod-page-view,
+    #page-mod-book-view, #page-mod-resource-view, #page-mod-folder-view, #page-mod-url-view,
+    #page-course-view-topics, #page-course-view-weeks, #page-search-index, #page-mod-forum-search,
+    #page-user-index, #page-course-view-participants, #page-course-info, #page-course-recent,
+    #page-mod-assign-index, #page-mod-book-index, #page-mod-page-index, #page-mod-resource-index,
+    #page-mod-folder-index, #page-mod-url-index, #page-mod-glossary-index, #page-mod-data-index,
+    #page-mod-wiki-index, #page-mod-glossary-view, #page-mod-glossary-showentry, #page-mod-data-view,
+    #page-mod-wiki-view,
+    [id^="page-course-view-"]):not(.editing):not(:has(form.mform:not(body#page-search-index form),
+    .editor_atto_wrap, .tox-tinymce, [contenteditable="true"], .filemanager)) .popover-region-header-container
+    {
+    background-color: rgb(237 244 240 / 70%);
+    border-bottom-color: #d4e3da;
+    border-radius: 13px 13px 0 0;
+  }
+  body:is(#page-site-index, #page-my-index, #page-my-courses, #page-course-index, #page-course-index-category,
+    #page-course-search, #page-calendar-view, #page-mod-forum-index, #page-mod-forum-view,
+    #page-mod-forum-discuss, #page-mod-assign-view, #page-grade-report-user-index,
+    #page-grade-report-overview-index, #page-user-profile, #page-user-view, #page-mod-page-view,
+    #page-mod-book-view, #page-mod-resource-view, #page-mod-folder-view, #page-mod-url-view,
+    #page-course-view-topics, #page-course-view-weeks, #page-search-index, #page-mod-forum-search,
+    #page-user-index, #page-course-view-participants, #page-course-info, #page-course-recent,
+    #page-mod-assign-index, #page-mod-book-index, #page-mod-page-index, #page-mod-resource-index,
+    #page-mod-folder-index, #page-mod-url-index, #page-mod-glossary-index, #page-mod-data-index,
+    #page-mod-wiki-index, #page-mod-glossary-view, #page-mod-glossary-showentry, #page-mod-data-view,
+    #page-mod-wiki-view,
+    [id^="page-course-view-"]):not(.editing):not(:has(form.mform:not(body#page-search-index form),
+    .editor_atto_wrap, .tox-tinymce, [contenteditable="true"], .filemanager)) .popover-region-header-text {
+    color: #172e32;
+    font-weight: 700;
+  }
+  body:is(#page-site-index, #page-my-index, #page-my-courses, #page-course-index, #page-course-index-category,
+    #page-course-search, #page-calendar-view, #page-mod-forum-index, #page-mod-forum-view,
+    #page-mod-forum-discuss, #page-mod-assign-view, #page-grade-report-user-index,
+    #page-grade-report-overview-index, #page-user-profile, #page-user-view, #page-mod-page-view,
+    #page-mod-book-view, #page-mod-resource-view, #page-mod-folder-view, #page-mod-url-view,
+    #page-course-view-topics, #page-course-view-weeks, #page-search-index, #page-mod-forum-search,
+    #page-user-index, #page-course-view-participants, #page-course-info, #page-course-recent,
+    #page-mod-assign-index, #page-mod-book-index, #page-mod-page-index, #page-mod-resource-index,
+    #page-mod-folder-index, #page-mod-url-index, #page-mod-glossary-index, #page-mod-data-index,
+    #page-mod-wiki-index, #page-mod-glossary-view, #page-mod-glossary-showentry, #page-mod-data-view,
+    #page-mod-wiki-view,
+    [id^="page-course-view-"]):not(.editing):not(:has(form.mform:not(body#page-search-index form),
+    .editor_atto_wrap, .tox-tinymce, [contenteditable="true"], .filemanager))
+    .popover-region-content-container {
+    background-color: transparent;
+  }
+  body:is(#page-site-index, #page-my-index, #page-my-courses, #page-course-index, #page-course-index-category,
+    #page-course-search, #page-calendar-view, #page-mod-forum-index, #page-mod-forum-view,
+    #page-mod-forum-discuss, #page-mod-assign-view, #page-grade-report-user-index,
+    #page-grade-report-overview-index, #page-user-profile, #page-user-view, #page-mod-page-view,
+    #page-mod-book-view, #page-mod-resource-view, #page-mod-folder-view, #page-mod-url-view,
+    #page-course-view-topics, #page-course-view-weeks, #page-search-index, #page-mod-forum-search,
+    #page-user-index, #page-course-view-participants, #page-course-info, #page-course-recent,
+    #page-mod-assign-index, #page-mod-book-index, #page-mod-page-index, #page-mod-resource-index,
+    #page-mod-folder-index, #page-mod-url-index, #page-mod-glossary-index, #page-mod-data-index,
+    #page-mod-wiki-index, #page-mod-glossary-view, #page-mod-glossary-showentry, #page-mod-data-view,
+    #page-mod-wiki-view,
+    [id^="page-course-view-"]):not(.editing):not(:has(form.mform:not(body#page-search-index form),
+    .editor_atto_wrap, .tox-tinymce, [contenteditable="true"], .filemanager)) .popover-region-footer-container
+    {
+    background-color: rgb(237 244 240 / 70%);
+    border-top-color: #d4e3da;
+    border-radius: 0 0 13px 13px;
+  }
+  body:is(#page-site-index, #page-my-index, #page-my-courses, #page-course-index, #page-course-index-category,
+    #page-course-search, #page-calendar-view, #page-mod-forum-index, #page-mod-forum-view,
+    #page-mod-forum-discuss, #page-mod-assign-view, #page-grade-report-user-index,
+    #page-grade-report-overview-index, #page-user-profile, #page-user-view, #page-mod-page-view,
+    #page-mod-book-view, #page-mod-resource-view, #page-mod-folder-view, #page-mod-url-view,
+    #page-course-view-topics, #page-course-view-weeks, #page-search-index, #page-mod-forum-search,
+    #page-user-index, #page-course-view-participants, #page-course-info, #page-course-recent,
+    #page-mod-assign-index, #page-mod-book-index, #page-mod-page-index, #page-mod-resource-index,
+    #page-mod-folder-index, #page-mod-url-index, #page-mod-glossary-index, #page-mod-data-index,
+    #page-mod-wiki-index, #page-mod-glossary-view, #page-mod-glossary-showentry, #page-mod-data-view,
+    #page-mod-wiki-view,
+    [id^="page-course-view-"]):not(.editing):not(:has(form.mform:not(body#page-search-index form),
+    .editor_atto_wrap, .tox-tinymce, [contenteditable="true"], .filemanager)) .popover-region-footer-container
+    a {
+    color: #12665e;
+    font-weight: 650;
+    text-underline-offset: 3px;
+  }
+
+  /* Search filters are read-only forms, not rich-text editors. */
+  body#page-search-index:not(.editing):not(:has(.editor_atto_wrap, .tox-tinymce, [contenteditable="true"],
+    .filemanager)) #region-main {
+    color: #172e32;
+    border: 1px solid rgb(255 255 255 / 65%);
+    border-radius: var(--nm-radius, 10px);
+    padding: clamp(16px, 2.4vw, 32px);
+  }
+  body#page-search-index:not(.editing):not(:has(.editor_atto_wrap, .tox-tinymce, [contenteditable="true"],
+    .filemanager)) #region-main form.mform,
+  body#page-search-index:not(.editing):not(:has(.editor_atto_wrap, .tox-tinymce, [contenteditable="true"],
+    .filemanager)) .search-results {
+    background: rgb(255 255 255 / 72%);
+    border: 1px solid rgb(255 255 255 / 80%);
+    border-radius: var(--nm-radius, 10px);
+    padding: clamp(14px, 2vw, 24px);
+    margin-bottom: 1.25rem;
+    color: #172e32;
+  }
+  body#page-search-index:not(.editing):not(:has(.editor_atto_wrap, .tox-tinymce, [contenteditable="true"],
+    .filemanager)) #region-main :is(.form-control, .custom-select) {
+    border: 1px solid #91aba4;
+    border-radius: var(--nm-control-radius, 6px);
+    background-color: rgb(255 255 255 / 90%);
+    color: #172e32;
+    max-width: 100%;
+  }
+  body#page-search-index:not(.editing):not(:has(.editor_atto_wrap, .tox-tinymce, [contenteditable="true"],
+    .filemanager)) #region-main .btn-primary {
+
+    padding: .6rem 1rem;
+  }
+  body#page-search-index:not(.editing):not(:has(.editor_atto_wrap, .tox-tinymce, [contenteditable="true"],
+    .filemanager)) #region-main :is(input, select, button, a):focus-visible {
+    outline: 3px solid #a45b00;
+    outline-offset: 3px;
+  }
+  body#page-search-index:not(.editing):not(:has(.editor_atto_wrap, .tox-tinymce, [contenteditable="true"],
+    .filemanager)) .search-results :is(h3, h4) {
+    font-size: 1.2rem;
+    line-height: 1.5;
+    font-weight: 700;
+    overflow-wrap: anywhere;
+  }
+  body#page-search-index:not(.editing):not(:has(.editor_atto_wrap, .tox-tinymce, [contenteditable="true"],
+    .filemanager)) .search-results a { color: #12665e; text-underline-offset: 3px; }
+  body:is(#page-site-index, #page-my-index, #page-my-courses, #page-course-index, #page-course-index-category,
+    #page-course-search, #page-calendar-view, #page-mod-forum-index, #page-mod-forum-view,
+    #page-mod-forum-discuss, #page-mod-assign-view, #page-grade-report-user-index,
+    #page-grade-report-overview-index, #page-user-profile, #page-user-view, #page-mod-page-view,
+    #page-mod-book-view, #page-mod-resource-view, #page-mod-folder-view, #page-mod-url-view,
+    #page-course-view-topics, #page-course-view-weeks, #page-search-index, #page-mod-forum-search,
+    #page-user-index, #page-course-view-participants, #page-course-info, #page-course-recent,
+    #page-mod-assign-index, #page-mod-book-index, #page-mod-page-index, #page-mod-resource-index,
+    #page-mod-folder-index, #page-mod-url-index, #page-mod-glossary-index, #page-mod-data-index,
+    #page-mod-wiki-index, #page-mod-glossary-view, #page-mod-glossary-showentry, #page-mod-data-view,
+    #page-mod-wiki-view,
+    [id^="page-course-view-"]):not(.editing):not(:has(form.mform:not(body#page-search-index form),
+    .editor_atto_wrap, .tox-tinymce, [contenteditable="true"], .filemanager)):is(#page-user-view,
+    #page-user-profile) .userprofile .profile_tree .node_category {
+    background-color: rgb(255 255 255 / 70%);
+    border: 1px solid rgb(255 255 255 / 80%);
+    border-radius: var(--nm-radius, 10px);
+    box-shadow: var(--nm-shadow, 0 2px 8px rgb(23 46 50 / 6%));
+    overflow-wrap: anywhere;
+  }
+  body:is(#page-site-index, #page-my-index, #page-my-courses, #page-course-index, #page-course-index-category,
+    #page-course-search, #page-calendar-view, #page-mod-forum-index, #page-mod-forum-view,
+    #page-mod-forum-discuss, #page-mod-assign-view, #page-grade-report-user-index,
+    #page-grade-report-overview-index, #page-user-profile, #page-user-view, #page-mod-page-view,
+    #page-mod-book-view, #page-mod-resource-view, #page-mod-folder-view, #page-mod-url-view,
+    #page-course-view-topics, #page-course-view-weeks, #page-search-index, #page-mod-forum-search,
+    #page-user-index, #page-course-view-participants, #page-course-info, #page-course-recent,
+    #page-mod-assign-index, #page-mod-book-index, #page-mod-page-index, #page-mod-resource-index,
+    #page-mod-folder-index, #page-mod-url-index, #page-mod-glossary-index, #page-mod-data-index,
+    #page-mod-wiki-index, #page-mod-glossary-view, #page-mod-glossary-showentry, #page-mod-data-view,
+    #page-mod-wiki-view,
+    [id^="page-course-view-"]):not(.editing):not(:has(form.mform:not(body#page-search-index form),
+    .editor_atto_wrap, .tox-tinymce, [contenteditable="true"], .filemanager)):is(#page-user-view,
+    #page-user-profile) .profile_tree .node_category .card-body { padding: 1.25rem; }
+  body:is(#page-site-index, #page-my-index, #page-my-courses, #page-course-index, #page-course-index-category,
+    #page-course-search, #page-calendar-view, #page-mod-forum-index, #page-mod-forum-view,
+    #page-mod-forum-discuss, #page-mod-assign-view, #page-grade-report-user-index,
+    #page-grade-report-overview-index, #page-user-profile, #page-user-view, #page-mod-page-view,
+    #page-mod-book-view, #page-mod-resource-view, #page-mod-folder-view, #page-mod-url-view,
+    #page-course-view-topics, #page-course-view-weeks, #page-search-index, #page-mod-forum-search,
+    #page-user-index, #page-course-view-participants, #page-course-info, #page-course-recent,
+    #page-mod-assign-index, #page-mod-book-index, #page-mod-page-index, #page-mod-resource-index,
+    #page-mod-folder-index, #page-mod-url-index, #page-mod-glossary-index, #page-mod-data-index,
+    #page-mod-wiki-index, #page-mod-glossary-view, #page-mod-glossary-showentry, #page-mod-data-view,
+    #page-mod-wiki-view,
+    [id^="page-course-view-"]):not(.editing):not(:has(form.mform:not(body#page-search-index form),
+    .editor_atto_wrap, .tox-tinymce, [contenteditable="true"], .filemanager)):is(#page-user-view,
+    #page-user-profile) .profile_tree h3 {
+    font-weight: 750;
+    color: #12574f;
+    border-bottom: 1px solid rgb(18 102 94 / 18%);
+    padding-bottom: .7rem;
+  }
+  body:is(#page-site-index, #page-my-index, #page-my-courses, #page-course-index, #page-course-index-category,
+    #page-course-search, #page-calendar-view, #page-mod-forum-index, #page-mod-forum-view,
+    #page-mod-forum-discuss, #page-mod-assign-view, #page-grade-report-user-index,
+    #page-grade-report-overview-index, #page-user-profile, #page-user-view, #page-mod-page-view,
+    #page-mod-book-view, #page-mod-resource-view, #page-mod-folder-view, #page-mod-url-view,
+    #page-course-view-topics, #page-course-view-weeks, #page-search-index, #page-mod-forum-search,
+    #page-user-index, #page-course-view-participants, #page-course-info, #page-course-recent,
+    #page-mod-assign-index, #page-mod-book-index, #page-mod-page-index, #page-mod-resource-index,
+    #page-mod-folder-index, #page-mod-url-index, #page-mod-glossary-index, #page-mod-data-index,
+    #page-mod-wiki-index, #page-mod-glossary-view, #page-mod-glossary-showentry, #page-mod-data-view,
+    #page-mod-wiki-view,
+    [id^="page-course-view-"]):not(.editing):not(:has(form.mform:not(body#page-search-index form),
+    .editor_atto_wrap, .tox-tinymce, [contenteditable="true"], .filemanager)):is(#page-user-view,
+    #page-user-profile) .profile_tree .contentnode { margin-block: .65rem; line-height: 1.65; }
+  /* Surface-only drawer rules: no transforms, sizing, visibility or scroll overrides. */
+  body.moodle-ncku-edu-tw:not(.editing) .drawer.bg-white {
+    background-color: rgb(242 248 245 / 88%) !important;
+    color: #172e32;
+    backdrop-filter: blur(14px);
+    border-color: rgb(18 102 94 / 18%);
+    box-shadow: var(--nm-shadow, 0 2px 8px rgb(23 46 50 / 6%));
+  }
+  body.moodle-ncku-edu-tw:not(.editing) .drawer .message-app,
+  body.moodle-ncku-edu-tw:not(.editing) .drawer .message-app .bg-white {
+    background-color: rgb(255 255 255 / 55%) !important;
+  }
+  body.moodle-ncku-edu-tw:not(.editing) .drawer :is(.closewidget, .header-container, .footer-container) {
+    background-color: rgb(234 245 239 / 80%);
+    border-color: rgb(18 102 94 / 18%);
+  }
+
+  /* Only Moodle core's default f1/f2 image endpoints, never pluginfile user photos.
+     CSS replacement retains src, alt, dimensions, links and dynamically added images. */
+  body.moodle-ncku-edu-tw img:is([src^="https://moodle.ncku.edu.tw/theme/image.php/"],
+    [src^="//moodle.ncku.edu.tw/theme/image.php/"],
+    [src^="/theme/image.php/"])[src*="/core/"]:is([src$="/u/f1"], [src$="/u/f2"]) {
+    content: url("chrome-extension://__MSG_@@extension_id__/assets/default-avatar.svg");
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  /* Public login: dedicated scope keeps authentication controls and help intact. */
+  body#page-login-index {
+    color: #172e32;
+    font-family: "Segoe UI", "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.65;
+  }
+  body#page-login-index #page { padding: clamp(20px, 4vw, 56px) 16px; }
+  body#page-login-index #region-main {
+    background: transparent !important;
+    border: 0;
+    padding: 0;
+  }
+  body#page-login-index [role="main"] > .row > :is(.col-xl-6, .col-sm-8) {
+    flex: 0 1 920px;
+    max-width: 920px;
+    min-width: 0;
+  }
+  body#page-login-index [role="main"] > .my-1 { margin: 0 !important; }
+  body#page-login-index .card {
+    background: rgb(255 255 255 / 86%);
+    border: 1px solid rgb(255 255 255 / 85%);
+    border-radius: var(--nm-radius, 10px);
+    box-shadow: var(--nm-shadow, 0 2px 8px rgb(23 46 50 / 6%));
+    backdrop-filter: blur(16px);
+  }
+  body#page-login-index .card-header {
+    background: transparent;
+    border-bottom: 1px solid #dce7e2;
+    border-radius: 24px 24px 0 0;
+    padding: 28px 24px;
+    color: #174c46;
+    font-size: clamp(1.35rem, 3vw, 1.9rem);
+    font-weight: 750;
+    letter-spacing: -.025em;
+  }
+  body#page-login-index .card-body { padding: clamp(22px, 4vw, 40px); }
+  body#page-login-index .card-body > .row { gap: 32px; margin: 0; }
+  body#page-login-index .card-body > .row > .col-md-5 {
+    flex: 1 1 260px;
+    max-width: none;
+    min-width: 0;
+    padding: 0;
+  }
+  body#page-login-index .card-body > .row > .col-md-5 + .col-md-5 {
+    background: #eff5f2;
+    border: 1px solid #dce7e2;
+    border-radius: var(--nm-radius, 10px);
+    padding: 20px 24px;
+    color: #465e59;
+    align-self: flex-start;
+  }
+  body#page-login-index #login { margin-top: 0 !important; }
+  body#page-login-index #login label.sr-only {
+    position: static;
+    width: auto;
+    height: auto;
+    padding: 0;
+    margin: 0 0 7px;
+    clip: auto;
+    clip-path: none;
+    white-space: normal;
+  }
+  body#page-login-index #login label { font-weight: 600; font-size: .9rem; }
+  :is(body#page-login-index, body#page-site-index) #login
+    :is(.form-control, input[type="text"], input[type="password"], .reg_vcode) {
+    box-sizing: border-box;
+    width: 100%;
+    min-height: 48px;
+    border: 1px solid #b8ccc5;
+    border-radius: var(--nm-control-radius, 6px);
+    background: #fff;
+    color: #172e32;
+    padding: 10px 14px;
+    font-size: 1rem;
+  }
+  body#page-login-index .login-form-recaptcha {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+  }
+  body#page-login-index #imgcode { border-radius: var(--nm-control-radius, 6px); cursor: pointer; max-width:
+    100%; }
+  body#page-login-index .rememberpass { display: flex; align-items: center; gap: 8px; }
+  body#page-login-index .rememberpass label { margin: 0; }
+  body#page-login-index #rememberusername { accent-color: #12665e; width: 17px; height: 17px; }
+  body#page-login-index :is(#loginbtn, #guestlogin .btn) {
+    min-height: 48px;
+    
+    padding: 10px 16px;
+    font-weight: 650;
+    white-space: normal;
+  }
+  body#page-login-index #loginbtn { background: #12665e; border-color: #12665e; color: #fff; box-shadow:
+    var(--nm-shadow, 0 2px 8px rgb(23 46 50 / 6%)); }
+  body#page-login-index #loginbtn:hover { background: #0c514b; border-color: #0c514b; }
+  body#page-login-index #guestlogin .btn {  border: 1px solid #b8ccc5;  }
+
+  body#page-login-index a:not(.btn) { color: #12665e; text-decoration: underline; text-underline-offset: 3px;
+    }
+  body#page-login-index :is(input, button, a):focus-visible { outline: 3px solid #218579; outline-offset: 3px;
+    box-shadow: none; }
+  body#page-login-index .card-title h2 { font-size: 1.3rem; font-weight: 700; margin-bottom: 22px; }
+  body#page-login-index table { width: 100%; table-layout: fixed; border: 0; border-collapse: collapse;
+    line-height: 1.8; }
+  body#page-login-index :is(th, td) { border: 1px solid #dce7e2; padding: 14px 18px; overflow-wrap: anywhere;
+    vertical-align: top; }
+  body#page-login-index th { background: #eff5f2; font-weight: 600; }
+  body#page-login-index th[scope="row"] { width: 32%; }
+  body#page-login-index th[scope="col"] { background: #e0eee7; color: #174c46; }
+  body#page-login-index [role="main"] > .row.mt-3 { margin-top: 24px !important; }
+}
+@media screen and (max-width: 575px) {
+  body#page-login-index #page { padding: 20px 8px; }
+  body#page-login-index .card { border-radius: var(--nm-radius, 10px); }
+  body#page-login-index .card-body { padding: 22px 18px; }
+  body#page-login-index .card-body > .row { gap: 24px; }
+  body#page-login-index :is(th, td) { padding: 10px; }
+}
+@media screen {
+  body#page-login-index table { table-layout: auto; }
+  body#page-login-index footer a:not(.btn) { color: #fff; }
+}
+@media screen and (max-width: 575px) {
+  body#page-login-index table :is(tbody, tr, th, td) { display: block; width: auto; }
+  body#page-login-index table th[scope="row"] { width: auto; }
+}
+
+
+
+/* ===== user-route-base ===== */
+/* User routes: surface-only form styling, independent of reading-page fallbacks.
+ * Core 3.9 profile renderer/preferences template used as structural references.
+ * No wildcard user routes: action endpoints and embedded widgets stay native.
+ */
+@media screen {
+  body:is(#page-user-profile, #page-user-view, #page-user-index, #page-user-preferences, #page-user-edit,
+    #page-user-editadvanced, #page-user-forum, #page-user-editor, #page-user-language,
+    #page-user-calendar):not(.editing) {
+    color: #172e32;
+    font-family: "Segoe UI", "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+  }
+  body:is(#page-user-profile, #page-user-view, #page-user-index, #page-user-preferences, #page-user-edit,
+    #page-user-editadvanced, #page-user-forum, #page-user-editor, #page-user-language,
+    #page-user-calendar):not(.editing) #page #region-main {
+    background-color: rgb(255 255 255 / 92%) !important;
+    border: 1px solid rgb(255 255 255 / 80%);
+    border-radius: var(--nm-radius, 10px);
+    padding: clamp(18px, 3vw, 36px);
+    box-shadow: var(--nm-shadow, 0 2px 8px rgb(23 46 50 / 6%));
+  }
+  body:is(#page-user-profile, #page-user-view, #page-user-index, #page-user-preferences, #page-user-edit,
+    #page-user-editadvanced, #page-user-forum, #page-user-editor, #page-user-language,
+    #page-user-calendar):not(.editing) #page-header .card { border-radius: var(--nm-radius, 10px); }
+  body:is(#page-user-profile, #page-user-view, #page-user-index, #page-user-preferences, #page-user-edit,
+    #page-user-editadvanced, #page-user-forum, #page-user-editor, #page-user-language,
+    #page-user-calendar):not(.editing) #region-main > :is(h2, h3),
+  body:is(#page-user-profile, #page-user-view, #page-user-index, #page-user-preferences, #page-user-edit,
+    #page-user-editadvanced, #page-user-forum, #page-user-editor, #page-user-language,
+    #page-user-calendar):not(.editing) #region-main [role="main"] > :is(h2, h3) {
+    color: #174c46;
+    font-weight: 750;
+    letter-spacing: -.025em;
+    margin-bottom: 1.4rem;
+    overflow-wrap: anywhere;
+  }
+  body:is(#page-user-profile, #page-user-view, #page-user-index, #page-user-preferences, #page-user-edit,
+    #page-user-editadvanced, #page-user-forum, #page-user-editor, #page-user-language,
+    #page-user-calendar):not(.editing) .userprofile .description { line-height: 1.8; overflow-wrap: anywhere;
+    }
+  body:is(#page-user-profile, #page-user-view, #page-user-index, #page-user-preferences, #page-user-edit,
+    #page-user-editadvanced, #page-user-forum, #page-user-editor, #page-user-language,
+    #page-user-calendar):not(.editing) .profile_tree { column-count: 2; column-gap: 24px; }
+  body:is(#page-user-profile, #page-user-view, #page-user-index, #page-user-preferences, #page-user-edit,
+    #page-user-editadvanced, #page-user-forum, #page-user-editor, #page-user-language,
+    #page-user-calendar):not(.editing) .profile_tree .node_category {
+    background: #f5f9f7;
+    border: 1px solid #dce7e2;
+    border-radius: var(--nm-radius, 10px);
+    break-inside: avoid;
+    box-shadow: none;
+    max-width: 100%;
+    overflow-wrap: anywhere;
+  }
+  body:is(#page-user-profile, #page-user-view, #page-user-index, #page-user-preferences, #page-user-edit,
+    #page-user-editadvanced, #page-user-forum, #page-user-editor, #page-user-language,
+    #page-user-calendar):not(.editing) .profile_tree .node_category .card-body { padding: 24px; }
+  body:is(#page-user-profile, #page-user-view, #page-user-index, #page-user-preferences, #page-user-edit,
+    #page-user-editadvanced, #page-user-forum, #page-user-editor, #page-user-language,
+    #page-user-calendar):not(.editing) .profile_tree h3 { font-size: 1.15rem; color: #174c46; font-weight:
+    700; }
+  body:is(#page-user-profile, #page-user-view, #page-user-index, #page-user-preferences, #page-user-edit,
+    #page-user-editadvanced, #page-user-forum, #page-user-editor, #page-user-language,
+    #page-user-calendar):not(.editing) .profile_tree ul { padding-left: 1.15rem; margin-bottom: 0; }
+  body:is(#page-user-profile, #page-user-view, #page-user-index, #page-user-preferences, #page-user-edit,
+    #page-user-editadvanced, #page-user-forum, #page-user-editor, #page-user-language,
+    #page-user-calendar):not(.editing) .profile_tree .contentnode { margin-block: 12px; line-height: 1.7; }
+  body:is(#page-user-profile, #page-user-view, #page-user-index, #page-user-preferences, #page-user-edit,
+    #page-user-editadvanced, #page-user-forum, #page-user-editor, #page-user-language,
+    #page-user-calendar):not(.editing) .profile_tree dt { font-size: .9rem; color: #526960; font-weight: 600;
+    }
+  body:is(#page-user-profile, #page-user-view, #page-user-index, #page-user-preferences, #page-user-edit,
+    #page-user-editadvanced, #page-user-forum, #page-user-editor, #page-user-language,
+    #page-user-calendar):not(.editing) .profile_tree dd { margin: 4px 0 0; }
+  body:is(#page-user-profile, #page-user-view, #page-user-index, #page-user-preferences, #page-user-edit,
+    #page-user-editadvanced, #page-user-forum, #page-user-editor, #page-user-language,
+    #page-user-calendar):not(.editing) :is(.profile_tree, .userprofile .description) a:not(.btn) { color:
+    #12665e; text-decoration: underline; text-underline-offset: 3px; }
+  body:is(#page-user-profile, #page-user-view, #page-user-index, #page-user-preferences, #page-user-edit,
+    #page-user-editadvanced, #page-user-forum, #page-user-editor, #page-user-language,
+    #page-user-calendar):not(.editing):is(#page-user-preferences) #region-main .card {
+    background: #f5f9f7;
+    border: 1px solid #dce7e2;
+    border-radius: var(--nm-radius, 10px);
+    box-shadow: var(--nm-shadow, 0 2px 8px rgb(23 46 50 / 6%));
+  }
+  body:is(#page-user-profile, #page-user-view, #page-user-index, #page-user-preferences, #page-user-edit,
+    #page-user-editadvanced, #page-user-forum, #page-user-editor, #page-user-language,
+    #page-user-calendar):not(.editing):is(#page-user-preferences) #region-main .card-body { padding: 24px; }
+  body:is(#page-user-profile, #page-user-view, #page-user-index, #page-user-preferences, #page-user-edit,
+    #page-user-editadvanced, #page-user-forum, #page-user-editor, #page-user-language,
+    #page-user-calendar):not(.editing):is(#page-user-preferences) #region-main .card-title { color: #174c46;
+    font-size: 1.15rem; font-weight: 700; }
+  body:is(#page-user-profile, #page-user-view, #page-user-index, #page-user-preferences, #page-user-edit,
+    #page-user-editadvanced, #page-user-forum, #page-user-editor, #page-user-language,
+    #page-user-calendar):not(.editing):is(#page-user-preferences) #region-main .card-text a {
+    display: block;
+    padding: 10px 12px;
+    margin: 4px -12px;
+    border-radius: var(--nm-control-radius, 6px);
+    color: #12665e;
+    overflow-wrap: anywhere;
+    text-underline-offset: 3px;
+  }
+  body:is(#page-user-profile, #page-user-view, #page-user-index, #page-user-preferences, #page-user-edit,
+    #page-user-editadvanced, #page-user-forum, #page-user-editor, #page-user-language,
+    #page-user-calendar):not(.editing):is(#page-user-preferences) #region-main .card-text a:hover {
+    background: #e0eee7; }
+  body:is(#page-user-profile, #page-user-view, #page-user-index, #page-user-preferences, #page-user-edit,
+    #page-user-editadvanced, #page-user-forum, #page-user-editor, #page-user-language,
+    #page-user-calendar):not(.editing) #region-main form.mform > fieldset {
+    border: 1px solid #dce7e2;
+    border-radius: var(--nm-radius, 10px);
+    padding: 18px;
+    margin-block: 20px;
+    min-width: 0;
+    background: #f8faf9;
+  }
+  body:is(#page-user-profile, #page-user-view, #page-user-index, #page-user-preferences, #page-user-edit,
+    #page-user-editadvanced, #page-user-forum, #page-user-editor, #page-user-language,
+    #page-user-calendar):not(.editing) #region-main form.mform > fieldset > legend { width: auto;
+    padding-inline: 8px; font-size: 1.1rem; font-weight: 650; color: #174c46; }
+  body:is(#page-user-profile, #page-user-view, #page-user-index, #page-user-preferences, #page-user-edit,
+    #page-user-editadvanced, #page-user-forum, #page-user-editor, #page-user-language,
+    #page-user-calendar):not(.editing) #region-main .fitem > .col-form-label { font-weight: 600; color:
+    #354f47; }
+  /* Exclude editor, upload, autocomplete and validation/disabled states. */
+  body:is(#page-user-profile, #page-user-view, #page-user-index, #page-user-preferences, #page-user-edit,
+    #page-user-editadvanced, #page-user-forum, #page-user-editor, #page-user-language,
+    #page-user-calendar):not(.editing) #region-main :is(input.form-control, select.custom-select,
+    select.form-control, textarea.form-control):not(:is(.editor_atto_wrap, .tox-tinymce, .filemanager,
+    .filepicker, [data-region="form_autocomplete-input"])
+    *):not([role="combobox"]):not(:disabled):not([readonly]):not(.is-invalid):not([aria-invalid="true"]) {
+    border: 1px solid #9fbab0;
+    border-radius: var(--nm-control-radius, 6px);
+    background-color: #fff;
+    color: #172e32;
+    max-width: 100%;
+    min-height: 44px;
+  }
+  body:is(#page-user-profile, #page-user-view, #page-user-index, #page-user-preferences, #page-user-edit,
+    #page-user-editadvanced, #page-user-forum, #page-user-editor, #page-user-language,
+    #page-user-calendar):not(.editing) #region-main :is(.btn-primary,
+    .btn-secondary):not(:is(.editor_atto_wrap, .tox-tinymce, .filemanager, .filepicker)
+    *):not(:disabled):not(.disabled) {  min-height: 42px; }
+
+  body:is(#page-user-profile, #page-user-view, #page-user-index, #page-user-preferences, #page-user-edit,
+    #page-user-editadvanced, #page-user-forum, #page-user-editor, #page-user-language,
+    #page-user-calendar):not(.editing) #region-main :is(a, button, input, select,
+    textarea):not(:is(.editor_atto_wrap, .tox-tinymce, .filemanager, .filepicker) *):focus-visible { outline:
+    3px solid #a45b00; outline-offset: 3px; }
+  body:is(#page-user-profile, #page-user-view, #page-user-index, #page-user-preferences, #page-user-edit,
+    #page-user-editadvanced, #page-user-forum, #page-user-editor, #page-user-language,
+    #page-user-calendar):not(.editing):is(#page-user-index) #region-main :is(.userlist, #participantsform) {
+    min-width: 0; }
+  body:is(#page-user-profile, #page-user-view, #page-user-index, #page-user-preferences, #page-user-edit,
+    #page-user-editadvanced, #page-user-forum, #page-user-editor, #page-user-language,
+    #page-user-calendar):not(.editing):is(#page-user-index) #region-main .table-responsive { border: 1px solid
+    #dce7e2; border-radius: var(--nm-radius, 10px); }
+  body:is(#page-user-profile, #page-user-view, #page-user-index, #page-user-preferences, #page-user-edit,
+    #page-user-editadvanced, #page-user-forum, #page-user-editor, #page-user-language,
+    #page-user-calendar):not(.editing):is(#page-user-index) #participants :is(th, td) { padding: 14px;
+    vertical-align: middle; }
+  body:is(#page-user-profile, #page-user-view, #page-user-index, #page-user-preferences, #page-user-edit,
+    #page-user-editadvanced, #page-user-forum, #page-user-editor, #page-user-language,
+    #page-user-calendar):not(.editing):is(#page-user-index) #participants th { background: #eff5f2; color:
+    #174c46; }
+  body:is(#page-user-profile, #page-user-view, #page-user-index, #page-user-preferences, #page-user-edit,
+    #page-user-editadvanced, #page-user-forum, #page-user-editor, #page-user-language,
+    #page-user-calendar):not(.editing):is(#page-user-index) #participants tbody tr:hover { background:
+    #f1f7f4; }
+}
+@media screen and (max-width: 767px) {
+  body:is(#page-user-profile, #page-user-view, #page-user-index, #page-user-preferences, #page-user-edit,
+    #page-user-editadvanced, #page-user-forum, #page-user-editor, #page-user-language,
+    #page-user-calendar):not(.editing) .profile_tree { column-count: 1; }
+  body:is(#page-user-profile, #page-user-view, #page-user-index, #page-user-preferences, #page-user-edit,
+    #page-user-editadvanced, #page-user-forum, #page-user-editor, #page-user-language,
+    #page-user-calendar):not(.editing) #region-main { padding: 18px; border-radius: var(--nm-radius, 10px); }
+  body:is(#page-user-profile, #page-user-view, #page-user-index, #page-user-preferences, #page-user-edit,
+    #page-user-editadvanced, #page-user-forum, #page-user-editor, #page-user-language,
+    #page-user-calendar):not(.editing) #region-main form.mform > fieldset { padding: 12px; }
+}
+
+/* Full messaging page only. Moodle owns pane geometry, scroll and visibility. */
+@media screen {
+  body#page-message-index { color: #172e32; font-family: "Segoe UI", "Noto Sans TC", "Microsoft JhengHei",
+    sans-serif; }
+  body#page-message-index #page #region-main { background-color: rgb(255 255 255 / 92%) !important; border:
+    1px solid #dce7e2; border-radius: var(--nm-radius, 10px); box-shadow: var(--nm-shadow, 0 2px 8px rgb(23 46
+    50 / 6%)); }
+  body#page-message-index #page-header .card { border-radius: var(--nm-radius, 10px); }
+  body#page-message-index #region-main .message-app.main { background: #f5f9f7 !important; border-color:
+    #dce7e2 !important; border-radius: var(--nm-radius, 10px); color: #172e32; }
+  body#page-message-index .message-app.main .conversationcontainer { background: #eff5f2; border-radius: 16px
+    0 0 16px; }
+  body#page-message-index .message-app.main :is(.header-container, .panel-header-container, .footer-container)
+    { background: #fff; border-color: #dce7e2 !important; }
+  body#page-message-index .message-app.main :is(.header-container, .panel-header-container) { border-bottom:
+    1px solid #dce7e2; }
+  body#page-message-index .message-app.main .footer-container { border-top: 1px solid #dce7e2; border-radius:
+    0 0 16px 0; }
+  body#page-message-index .message-app.main .body-container { background: #f5f9f7; }
+  body#page-message-index .message-app.main .conversationcontainer a[data-conversation-id] { background:
+    transparent; border-color: #dce7e2; color: #172e32; padding-block: 6px !important; }
+  body#page-message-index .message-app.main .conversationcontainer a[data-conversation-id]:hover { background:
+    #e0eee7; }
+  body#page-message-index .message-app.main .conversationcontainer a[data-conversation-id]:is(.active,
+    [aria-current="true"], [aria-selected="true"]) { background: #d8eee5; box-shadow: inset 4px 0 #12665e;
+    color: #123f37; }
+  body#page-message-index .message-app.main [data-region="unread-count"] { background: #12665e !important;
+    color: #fff; }
+  body#page-message-index .message-app.main .overview-section-toggle { color: #174c46; font-weight: 650; }
+  body#page-message-index .message-app.main :is(input.form-control,
+    textarea.form-control):not(:disabled):not([aria-invalid="true"]) { background: #fff !important; border:
+    1px solid #9fbab0; border-radius: var(--nm-control-radius, 6px); color: #172e32; }
+  body#page-message-index .message-app.main input.form-control { min-height: 40px; }
+  body#page-message-index .message-app.main textarea[data-region="send-message-txt"] { padding: 10px 12px;
+    line-height: 1.6; min-width: 0; }
+  body#page-message-index .message-app.main
+    [data-action="send-message"]:not(:disabled):not([aria-disabled="true"]) { background: #12665e; color:
+    #fff; border-radius: var(--nm-control-radius, 6px); }
+  body#page-message-index .message-app.main
+    [data-action="send-message"]:not(:disabled):not([aria-disabled="true"]):hover { background: #0c514b; }
+  body#page-message-index .message-app.main .message { border-radius: 14px !important; padding: 12px 14px
+    !important; box-shadow: var(--nm-shadow, 0 2px 8px rgb(23 46 50 / 6%)); }
+  body#page-message-index .message-app.main .message.send { background: #d8eee5; color: #173f35; }
+  body#page-message-index .message-app.main .message.send .tail { border-bottom-color: #d8eee5; }
+  body#page-message-index .message-app.main .message.received { background: #fff; color: #172e32; }
+  body#page-message-index .message-app.main .message.received .tail { border-bottom-color: #fff; }
+  body#page-message-index .message-app.main .message .time { color: #526960; }
+  body#page-message-index .message-app.main [data-region="text-container"] { line-height: 1.7; overflow-wrap:
+    anywhere; }
+  body#page-message-index .message-app.main [data-region="text-container"] a { color: #12574f;
+    text-decoration: underline; text-underline-offset: 3px; }
+  body#page-message-index .message-app.main [data-region="text-container"] :is(img, video) { max-width: 100%;
+    height: auto; }
+  body#page-message-index .message-app.main .message.clickable:hover { filter: none; box-shadow:
+    var(--nm-shadow, 0 2px 8px rgb(23 46 50 / 6%)); }
+  body#page-message-index .message-app.main .message[aria-selected="true"] { outline: 2px solid #12665e;
+    outline-offset: 2px; }
+  body#page-message-index .message-app.main :is(a, button, input, textarea, [tabindex]):focus-visible {
+    outline: 3px solid #a45b00; outline-offset: 2px; }
+}
+@media screen and (max-width: 575px) {
+  body#page-message-index #page #region-main { border-radius: var(--nm-radius, 10px); }
+  body#page-message-index .message-app.main .message { padding: 10px !important; }
+}
+
