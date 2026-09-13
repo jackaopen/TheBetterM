@@ -1,0 +1,64 @@
+name: TheBetterM Verify and Build
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+concurrency:
+  group: windows-private-build-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  build:
+    name: environment cache-setup
+    runs-on: windows-2025
+    timeout-minutes: 30
+    
+    defaults:
+      run:
+        shell: pwsh
+
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v7
+
+      - name: Validate extension with Chrome
+        run: |
+          $ErrorActionPreference = "Stop"
+          $chromePath = "C:\Program Files\Google\Chrome\Application\chrome.exe"
+          
+          & $chromePath `
+          --pack-extension=src `
+          --no-message-box
+
+          if ($LASTEXITCODE -ne 0) {
+              Write-Error "Extension validation failed with exit code $LASTEXITCODE"
+              exit $LASTEXITCODE
+          }
+          write-Host "Extension validation completed successfully."
+
+      - name: pack extension
+        run: |
+          $ErrorActionPreference = "Stop"
+          & 7z a TheBetterM.zip .\src\*
+
+          if ($LASTEXITCODE -ne 0) {
+              Write-Error "7-Zip failed with exit code $LASTEXITCODE"
+              exit $LASTEXITCODE
+          }
+          write-Host "Extension pack completed successfully."
+
+      - name: Github Attestation
+        uses: actions/attest@v4
+        with:
+          subject-path: TheBetterM.zip
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: TheBetterM.zip
+

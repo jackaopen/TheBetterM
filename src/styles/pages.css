@@ -1,0 +1,977 @@
+/* ===== activities ===== */
+/* Read-only and overview activity pages. Interactive layout remains Moodle-owned. */
+@media screen {
+  body:is(
+    #page-mod-questionnaire-view, #page-mod-questionnaire-index,
+    #page-mod-attendance-view, #page-mod-attendance-index,
+    #page-mod-choice-view, #page-mod-choice-index,
+    #page-mod-quiz-view, #page-mod-quiz-index,
+    #page-mod-lightboxgallery-view,
+    #page-mod-forum-user, #page-mod-forum-post
+  ):not(.editing) #region-main :is(.card, .generalbox, .box) {
+    border: 1px solid var(--nm-line, #dce5e2);
+    border-radius: var(--nm-radius, 10px);
+    background: rgb(255 255 255 / 82%);
+    box-shadow: var(--nm-shadow, 0 2px 8px rgb(23 46 50 / 6%));
+  }
+
+  body:is(
+    #page-mod-questionnaire-view, #page-mod-questionnaire-index,
+    #page-mod-attendance-view, #page-mod-attendance-index,
+    #page-mod-choice-view, #page-mod-choice-index,
+    #page-mod-quiz-view, #page-mod-quiz-index,
+    #page-mod-lightboxgallery-view,
+    #page-mod-forum-user, #page-mod-forum-post
+  ):not(.editing) #region-main :is(.table-responsive, .no-overflow) {
+    border-radius: var(--nm-control-radius, 6px);
+    overflow-x: auto;
+  }
+
+  body:is(
+    #page-mod-questionnaire-view, #page-mod-questionnaire-index,
+    #page-mod-attendance-view, #page-mod-attendance-index,
+    #page-mod-choice-view, #page-mod-choice-index,
+    #page-mod-quiz-view, #page-mod-quiz-index,
+    #page-mod-lightboxgallery-view,
+    #page-mod-forum-user, #page-mod-forum-post
+  ):not(.editing) #region-main :is(table.generaltable, table.table) {
+    width: 100%;
+    border-color: var(--nm-line, #dce5e2);
+    background: rgb(255 255 255 / 72%);
+  }
+
+  body:is(
+    #page-mod-questionnaire-view, #page-mod-questionnaire-index,
+    #page-mod-attendance-view, #page-mod-attendance-index,
+    #page-mod-choice-view, #page-mod-choice-index,
+    #page-mod-quiz-view, #page-mod-quiz-index,
+    #page-mod-lightboxgallery-view,
+    #page-mod-forum-user, #page-mod-forum-post
+  ):not(.editing) #region-main :is(table.generaltable, table.table) :is(th, td) {
+    padding: 10px 12px;
+    border-color: var(--nm-line, #dce5e2);
+  }
+
+  body#page-mod-lightboxgallery-view:not(.editing) #region-main img {
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--nm-control-radius, 6px);
+  }
+
+  /* Folder activity view — transparent shell with only the file tree visible. */
+  body#page-mod-folder-view:not(.editing) #region-main .generalbox.foldertree,
+  body#page-mod-folder-view:not(.editing) #region-main .foldertree {
+    margin-block: 1rem;
+    padding: 0;
+    background: transparent !important;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  body#page-mod-folder-view:not(.editing) #region-main .foldertree :is(ul, .file-tree) {
+    margin-bottom: 0;
+  }
+
+  body#page-mod-folder-view:not(.editing) #region-main .foldertree li {
+    padding-block: .3rem;
+    line-height: 1.55;
+  }
+
+  body#page-mod-folder-view:not(.editing) #region-main .foldertree a {
+    color: var(--nm-accent, #12665e);
+    text-underline-offset: 3px;
+  }
+
+  body#page-mod-folder-view:not(.editing) #region-main .foldertree :is(.filemanager, .fp-repo-items,
+    .fp-content) {
+    background: transparent !important;
+    border: 0;
+    box-shadow: none;
+  }
+
+  /* Attendance table and filters — rounded table, flat rows, compact controls. */
+  body:is(#page-mod-attendance-view, #page-mod-attendance-index):not(.editing)
+    #region-main table.generaltable.attwidth.boxaligncenter {
+    width: 100%;
+    margin: 1rem auto;
+    border: 1px solid #c7d5d1;
+    border-collapse: separate !important;
+    border-spacing: 0;
+    border-radius: calc(var(--nm-radius, 10px) + 2px);
+    background: transparent;
+    box-shadow: none;
+    overflow: hidden;
+  }
+
+  body:is(#page-mod-attendance-view, #page-mod-attendance-index):not(.editing)
+    #region-main table.generaltable.attwidth.boxaligncenter :is(th, td) {
+    padding: .7rem .85rem;
+    vertical-align: middle;
+    border-width: 0 0 1px;
+    border-style: solid;
+    border-color: #dce5e2;
+  }
+
+  body:is(#page-mod-attendance-view, #page-mod-attendance-index):not(.editing)
+    #region-main table.generaltable.attwidth.boxaligncenter :is(thead th, th.header, .attheader) {
+    color: var(--nm-ink, #172e32);
+    font-weight: 700;
+    background: #edf4f0 !important;
+  }
+
+  body:is(#page-mod-attendance-view, #page-mod-attendance-index):not(.editing)
+    #region-main table.generaltable.attwidth.boxaligncenter tbody tr {
+    background: rgb(255 255 255 / 62%);
+    box-shadow: none;
+  }
+
+  body:is(#page-mod-attendance-view, #page-mod-attendance-index):not(.editing)
+    #region-main table.generaltable.attwidth.boxaligncenter tbody tr:hover {
+    background: rgb(237 244 240 / 72%);
+  }
+
+  body:is(#page-mod-attendance-view, #page-mod-attendance-index):not(.editing)
+    #region-main table.generaltable.attwidth.boxaligncenter tbody tr:last-child > :is(th, td) {
+    border-bottom: 0;
+  }
+
+  body:is(#page-mod-attendance-view, #page-mod-attendance-index):not(.editing)
+    #region-main .attfiltercontrols {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: .65rem;
+    margin-block: 1rem;
+    padding: .75rem 0;
+    border-block: 1px solid rgb(18 102 94 / 14%);
+    background: transparent;
+    box-shadow: none;
+  }
+
+  body:is(#page-mod-attendance-view, #page-mod-attendance-index):not(.editing)
+    #region-main .attfiltercontrols :is(select, input, .form-control, .custom-select, .btn) {
+    min-height: 38px;
+    
+  }
+
+  /* Attendance introduction — flat, readable lead-in above the controls. */
+  body#page-mod-attendance-view:not(.editing) #region-main #intro {
+    margin: .75rem 0 1.25rem;
+    padding: 1rem 1.15rem;
+    color: var(--nm-ink, #172e32);
+    line-height: 1.7;
+    background: rgb(237 244 240 / 62%) !important;
+    border: 1px solid rgb(18 102 94 / 18%);
+    border-left: 4px solid var(--nm-accent, #12665e);
+    border-radius: var(--nm-control-radius, 6px);
+    box-shadow: none;
+  }
+
+  body#page-mod-attendance-view:not(.editing) #region-main #intro > :first-child {
+    margin-top: 0;
+  }
+
+  body#page-mod-attendance-view:not(.editing) #region-main #intro > :last-child {
+    margin-bottom: 0;
+  }
+
+  body#page-mod-attendance-view:not(.editing) #region-main #intro :is(h2, h3, h4, strong) {
+    color: #12574f;
+  }
+
+  body#page-mod-attendance-view:not(.editing) #region-main #intro a {
+    color: var(--nm-accent, #12665e);
+    font-weight: 600;
+    text-underline-offset: 3px;
+  }
+
+
+}
+/* Simplified route styling — flat surfaces, exact activity widgets only. */
+@media screen {
+  body:is(#page-mod-questionnaire-myreport, #page-mod-choice-view, #page-mod-quiz-view):not(.editing)
+    #region-main {
+    --activity-accent: var(--nm-accent, #12665e);
+    --activity-ink: var(--nm-ink, #172e32);
+    --activity-muted: #697778;
+    --activity-line: var(--nm-line, #d5dfdc);
+    --activity-soft: rgb(237 244 240 / 62%);
+  }
+
+  /* Compact information panels used by the three activity pages. */
+  body:is(#page-mod-questionnaire-myreport, #page-mod-choice-view, #page-mod-quiz-view):not(.editing)
+    #region-main .box.py-3.generalbox {
+    margin: .9rem 0;
+    padding: .9rem 1rem !important;
+    color: var(--activity-ink);
+    line-height: 1.6;
+    background: rgb(255 255 255 / 58%) !important;
+    border: 1px solid var(--activity-line) !important;
+    border-left: 4px solid rgb(18 102 94 / 62%) !important;
+    border-radius: 8px;
+    box-shadow: none !important;
+  }
+
+  body:is(#page-mod-questionnaire-myreport, #page-mod-choice-view, #page-mod-quiz-view):not(.editing)
+    #region-main .box.py-3.generalbox > :first-child {
+    margin-top: 0;
+  }
+
+  body:is(#page-mod-questionnaire-myreport, #page-mod-choice-view, #page-mod-quiz-view):not(.editing)
+    #region-main .box.py-3.generalbox > :last-child {
+    margin-bottom: 0;
+  }
+
+  body:is(#page-mod-questionnaire-myreport, #page-mod-choice-view, #page-mod-quiz-view):not(.editing)
+    #region-main .box.py-3.generalbox.expired {
+    color: #734747;
+    background: rgb(255 247 247 / 70%) !important;
+    border-color: #e4caca !important;
+    border-left-color: #b95f62 !important;
+    opacity: 1;
+  }
+
+  body:is(#page-mod-questionnaire-myreport, #page-mod-choice-view, #page-mod-quiz-view):not(.editing)
+    #region-main .chart-area {
+    display: grid;
+    place-items: center;
+    width: 100%;
+    min-width: 0;
+    margin: 1rem 0;
+    padding: clamp(.75rem, 2vw, 1.25rem);
+    background: rgb(255 255 255 / 50%) !important;
+    border: 1px solid var(--activity-line) !important;
+    border-radius: 9px;
+    box-shadow: none !important;
+    overflow-x: auto;
+  }
+
+  body:is(#page-mod-questionnaire-myreport, #page-mod-choice-view, #page-mod-quiz-view):not(.editing)
+    #region-main .box.py-3.generalbox .chart-area {
+    min-height: clamp(340px, 42vw, 560px);
+  }
+
+  body:is(#page-mod-questionnaire-myreport, #page-mod-choice-view, #page-mod-quiz-view):not(.editing)
+    #region-main .box.py-3.generalbox .chart-area > * {
+    width: 100% !important;
+    max-width: 1100px !important;
+  }
+
+  body:is(#page-mod-questionnaire-myreport, #page-mod-choice-view, #page-mod-quiz-view):not(.editing)
+    #region-main .chart-area :is(canvas, svg, img) {
+    display: block;
+    width: 100% !important;
+    max-width: 1100px !important;
+    height: auto !important;
+    margin-inline: auto;
+  }
+
+  /* Questionnaire report: one clear surface, transparent inner content. */
+  body#page-mod-questionnaire-myreport:not(.editing) #region-main
+    .mod_questionnaire_reportpage.generalbox {
+    margin: 0;
+    padding: clamp(.85rem, 2vw, 1.35rem) !important;
+    background: rgb(255 255 255 / 68%) !important;
+    border: 1px solid var(--activity-line) !important;
+    border-radius: 11px;
+    box-shadow: none !important;
+  }
+
+  body#page-mod-questionnaire-myreport:not(.editing) #region-main
+    .mod_questionnaire_reportpage > .box.generalbox {
+    margin: 0;
+    padding: 0;
+    background: transparent !important;
+    border: 0 !important;
+    border-radius: 0;
+    box-shadow: none !important;
+  }
+  body#page-mod-questionnaire-myreport:not(.editing) #region-main .respondentsnavbar {
+    margin: .75rem 0;
+    padding: .55rem .75rem;
+    color: var(--activity-muted);
+    text-align: center;
+    background: var(--activity-soft) !important;
+    border: 0 !important;
+    border-radius: 6px;
+    box-shadow: none !important;
+  }
+
+  body#page-mod-questionnaire-myreport:not(.editing) #region-main .individualresp {
+    margin: .75rem 0;
+    padding: 0;
+    background: transparent !important;
+    border: 1px solid var(--activity-line) !important;
+    border-radius: 7px;
+    box-shadow: none !important;
+    overflow: hidden;
+  }
+
+  body#page-mod-questionnaire-myreport:not(.editing) #region-main .individualresp .qn-info {
+    color: var(--activity-accent);
+    background: var(--activity-soft);
+  }
+
+  body#page-mod-questionnaire-myreport:not(.editing) #region-main .individualresp .qn-question {
+    margin: 0;
+    padding: .7rem .85rem;
+    color: var(--activity-ink);
+    background: transparent;
+    border-bottom: 1px solid var(--activity-line);
+  }
+
+  body#page-mod-questionnaire-myreport:not(.editing) #region-main .individualresp .qn-answer {
+    margin: 0;
+    padding: .7rem .85rem;
+  }
+
+  body#page-mod-questionnaire-myreport:not(.editing) #region-main .respdate {
+    color: var(--activity-muted);
+    border-color: var(--activity-line);
+  }
+
+  /* Choice page. */
+  body#page-mod-choice-view:not(.editing) #region-main #intro.generalbox {
+    margin-bottom: 1rem;
+    padding: 0 0 .85rem;
+    background: transparent !important;
+    border: 0 !important;
+    border-bottom: 1px solid var(--activity-line) !important;
+    border-radius: 0;
+    box-shadow: none !important;
+  }
+
+  body#page-mod-choice-view:not(.editing) #region-main form:is(.horizontal, .vertical) {
+    margin-bottom: 1.25rem;
+    padding: 0;
+    background: transparent;
+    border: 0;
+  }
+
+  body#page-mod-choice-view:not(.editing) #region-main form:is(.horizontal, .vertical) ul.choices {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: .5rem;
+    margin: 0 0 .85rem;
+    padding: 0;
+  }
+
+  body#page-mod-choice-view:not(.editing) #region-main ul.choices > li.option {
+    margin: 0 !important;
+    padding: .65rem .75rem;
+    background: transparent;
+    border: 1px solid var(--activity-line);
+    border-radius: 6px;
+  }
+
+  body#page-mod-choice-view:not(.editing) #region-main ul.choices > li.option:has(input:checked) {
+    background: var(--activity-soft);
+    border-color: rgb(18 102 94 / 46%);
+  }
+
+  body#page-mod-choice-view:not(.editing) #region-main ul.choices > li.option:has(input:disabled) {
+    color: var(--activity-muted);
+    background: rgb(239 242 241 / 55%);
+    border-style: dashed;
+  }
+
+  body#page-mod-choice-view:not(.editing) #region-main ul.choices > li.clearfloat {
+    display: none;
+  }
+
+  body#page-mod-choice-view:not(.editing) #region-main .response {
+    width: 100%;
+    margin: 1rem 0;
+    border: 1px solid var(--activity-line);
+    border-radius: 7px;
+    overflow-x: auto;
+  }
+
+  body#page-mod-choice-view:not(.editing) #region-main table.results.names {
+    width: 100%;
+    margin: 0;
+    background: transparent;
+    border: 0 !important;
+  }
+
+  body#page-mod-choice-view:not(.editing) #region-main table.results.names :is(th, td) {
+    padding: .6rem .7rem;
+    border-color: var(--activity-line);
+  }
+
+  /* Quiz page. */
+  body#page-mod-quiz-view:not(.editing) #region-main .tertiary-navigation {
+    margin: 0 0 1rem;
+    padding: 0;
+    background: transparent;
+  }
+
+  body#page-mod-quiz-view:not(.editing) #region-main .quizstartbuttondiv {
+    margin-left: auto !important;
+    padding: 0 !important;
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
+  }
+
+  body#page-mod-quiz-view:not(.editing) #region-main #intro.generalbox {
+    margin-bottom: 1rem;
+    padding: .75rem .9rem;
+    background: var(--activity-soft) !important;
+    border: 0 !important;
+    border-left: 3px solid var(--activity-accent) !important;
+    border-radius: 0 6px 6px 0;
+    box-shadow: none !important;
+  }
+
+  body#page-mod-quiz-view:not(.editing) #region-main
+    ul.list-unstyled.row.row-cols-1.row-cols-md-2.no-gutters {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: .6rem;
+    margin: 0;
+  }
+
+  body#page-mod-quiz-view:not(.editing) #region-main
+    ul.list-unstyled.row.row-cols-1.row-cols-md-2.no-gutters > li.col {
+    width: 100%;
+    max-width: none;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  body#page-mod-quiz-view:not(.editing) #region-main
+    ul.list-unstyled.row.row-cols-1.row-cols-md-2.no-gutters .card {
+    background: transparent !important;
+    border: 1px solid var(--activity-line) !important;
+    border-radius: 7px;
+    box-shadow: none !important;
+  }
+
+  body#page-mod-quiz-view:not(.editing) #region-main
+    ul.list-unstyled.row.row-cols-1.row-cols-md-2.no-gutters .card-header {
+    padding: .6rem .75rem !important;
+    background: var(--activity-soft);
+    border-bottom: 1px solid var(--activity-line) !important;
+  }
+
+  body#page-mod-quiz-view:not(.editing) #region-main table.quizreviewsummary {
+    margin: 0 !important;
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
+  }
+
+  body#page-mod-quiz-view:not(.editing) #region-main table.quizreviewsummary :is(th, td) {
+    padding: .42rem .7rem;
+    border-color: var(--activity-line);
+  }
+}
+
+@media screen and (max-width: 767px) {
+  body#page-mod-choice-view:not(.editing) #region-main form:is(.horizontal, .vertical) ul.choices {
+    grid-template-columns: 1fr;
+  }
+}
+/* Quiz review page — summary, reviewed questions, feedback, and navigation. */
+@media screen {
+  body#page-mod-quiz-review:not(.editing) #region-main {
+    --review-accent: var(--nm-accent, #12665e);
+    --review-ink: var(--nm-ink, #172e32);
+    --review-muted: #667576;
+    --review-line: var(--nm-line, #d5dfdc);
+    --review-soft: rgb(237 244 240 / 62%);
+  }
+
+  body#page-mod-quiz-review:not(.editing) #region-main table.quizreviewsummary {
+    width: 100%;
+    margin: 0 0 1.25rem !important;
+    background: rgb(255 255 255 / 58%) !important;
+    border: 1px solid var(--review-line) !important;
+    border-collapse: separate;
+    border-spacing: 0;
+    border-radius: 8px;
+    box-shadow: none !important;
+    overflow: hidden;
+  }
+
+  body#page-mod-quiz-review:not(.editing) #region-main table.quizreviewsummary :is(th, td) {
+    padding: .58rem .75rem;
+    vertical-align: top;
+    border-width: 0 0 1px;
+    border-style: solid;
+    border-color: var(--review-line);
+    overflow: hidden;
+  }
+
+  body#page-mod-quiz-review:not(.editing) #region-main table.quizreviewsummary th {
+    width: 30%;
+    color: var(--review-muted);
+    font-weight: 600;
+    background: var(--review-soft);
+  }
+
+  body#page-mod-quiz-review:not(.editing) #region-main table.quizreviewsummary tr:last-child > * {
+    border-bottom: 0;
+  }
+
+  body#page-mod-quiz-review:not(.editing) #region-main .que {
+    display: grid;
+    grid-template-columns: minmax(105px, 135px) minmax(0, 1fr);
+    margin: 0 0 1rem;
+    background: rgb(255 255 255 / 55%);
+    border: 1px solid var(--review-line);
+    border-radius: 8px;
+    box-shadow: none;
+    overflow: visible;
+    overflow-wrap: anywhere;
+    white-space: normal;
+  }
+
+  body#page-mod-quiz-review:not(.editing) #region-main .que .info {
+    float: none;
+    width: auto;
+    margin: 0;
+    padding: .8rem .75rem;
+    color: var(--review-muted);
+    background: var(--review-soft);
+    border: 0;
+    border-right: 1px solid var(--review-line);
+    border-radius: 0;
+  }
+
+  body#page-mod-quiz-review:not(.editing) #region-main .que .info > :first-child {
+    margin-top: 0;
+  }
+
+  body#page-mod-quiz-review:not(.editing) #region-main .que .info > :last-child {
+    margin-bottom: 0;
+  }
+
+  body#page-mod-quiz-review:not(.editing) #region-main .que .content {
+    min-width: 0;
+    margin: 0;
+    padding: .85rem 1rem 1rem;
+  }
+
+  body#page-mod-quiz-review:not(.editing) #region-main .que .formulation {
+    margin: 0 0 .8rem;
+    padding: .85rem;
+    color: var(--review-ink);
+    background: transparent;
+    border: 0;
+    border-bottom: 1px solid var(--review-line);
+    border-radius: 0;
+  }
+
+  body#page-mod-quiz-review:not(.editing) #region-main .que .qtext {
+    margin-bottom: .85rem;
+    color: var(--review-ink);
+    line-height: 1.65;
+  }
+
+  body#page-mod-quiz-review:not(.editing) #region-main .que :is(.outcome, .comment) {
+    margin: .7rem 0 0;
+    padding: .65rem .75rem;
+    line-height: 1.55;
+    border: 0;
+    border-left: 3px solid rgb(18 102 94 / 34%);
+    border-radius: 0 6px 6px 0;
+    box-shadow: none;
+  }
+
+  body#page-mod-quiz-review:not(.editing) #region-main .que .state {
+    color: var(--review-ink);
+    font-weight: 700;
+  }
+
+  body#page-mod-quiz-review:not(.editing) #region-main
+    .submitbtns:has(.mod_quiz-prev-nav, .mod_quiz-next-nav) {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: .65rem;
+    margin: 1.25rem 0 0;
+    padding-top: .9rem;
+    border-top: 1px solid var(--review-line);
+  }
+
+  body#page-mod-quiz-review:not(.editing) #region-main
+    :is(.mod_quiz-prev-nav, .mod_quiz-next-nav) {
+    display: inline-flex;
+    align-items: center;
+    min-height: 38px;
+    padding: .45rem .75rem;
+    color: var(--review-accent);
+    background: transparent;
+    border: 1px solid rgb(18 102 94 / 32%);
+    border-radius: 6px;
+    text-decoration: none;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  body#page-mod-quiz-review:not(.editing) #region-main .que {
+    grid-template-columns: 1fr;
+  }
+
+  body#page-mod-quiz-review:not(.editing) #region-main .que .info {
+    border-right: 0;
+    border-bottom: 1px solid var(--review-line);
+  }
+
+  body#page-mod-quiz-review:not(.editing) #region-main table.quizreviewsummary th {
+    width: 40%;
+  }
+}
+
+/* ===== statistics ===== */
+/* NCKU's statistics pages are standalone Bootstrap pages with no Moodle body ID. */
+@media screen {
+  .navbar.navbar-custom {
+    background: rgb(250 253 251 / 92%);
+    border-bottom: 1px solid rgb(42 79 66 / 16%);
+    box-shadow: 0 8px 24px rgb(23 46 50 / 8%);
+    backdrop-filter: blur(14px);
+  }
+
+  .navbar.navbar-custom :is(.navbar-brand, .nav-link) {
+    color: #173f38;
+  }
+
+  .navbar.navbar-custom .nav-link:hover {
+    color: #12665e;
+    background: rgb(210 234 222 / 60%);
+    border-radius: 6px;
+  }
+
+  .chartdep {
+    min-width: 0;
+    overflow: hidden;
+    border: 1px solid #dce5e2;
+    border-radius: 10px;
+    background: rgb(255 255 255 / 88%);
+    box-shadow: 0 8px 28px rgb(23 46 50 / 8%);
+  }
+
+  .chartdep :is(.canvasjs-chart-container, .canvasjs-chart-canvas) {
+    max-width: 100%;
+  }
+
+  body:not([id]) > .container table,
+  body[id=""] > .container table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    overflow: hidden;
+    border: 1px solid #dce5e2;
+    border-radius: 10px;
+    background: rgb(255 255 255 / 90%);
+  }
+
+  body:not([id]) > .container table :is(th, td),
+  body[id=""] > .container table :is(th, td) {
+    padding: 10px 12px;
+    border-color: #dce5e2;
+  }
+
+  body:not([id]) > .container table tr:nth-child(even),
+  body[id=""] > .container table tr:nth-child(even) {
+    background: rgb(236 246 241 / 68%);
+  }
+
+  #theFooter.navbar-inverse {
+    margin-top: 24px;
+    padding: 18px;
+    background: rgb(23 46 50 / 86%);
+    color: #fff;
+  }
+
+  body#page-report-usersessions-user:not(.editing) #region-main :is(.table-responsive, .no-overflow) {
+    overflow-x: auto;
+    border: 1px solid var(--nm-line, #dce5e2);
+    border-radius: var(--nm-radius, 10px);
+  }
+}
+
+
+
+/* ===== forms ===== */
+/* Shared Moodle form skin. Editors, file pickers and validation states stay native. */
+@media screen {
+  body#page-login-change-password:not(.editing) #region-main > :is(.card, .generalbox, .box) {
+    border: 1px solid var(--nm-line, #dce5e2);
+    border-radius: var(--nm-radius, 10px);
+    background: rgb(255 255 255 / 84%);
+  }
+
+  body.moodle-ncku-edu-tw[id^="page-"]:not(.editing) #region-main form.mform {
+    padding: clamp(14px, 2vw, 24px);
+    border: 1px solid var(--nm-line, #dce5e2);
+    border-radius: var(--nm-radius, 10px);
+    background: rgb(255 255 255 / 78%);
+  }
+
+  body.moodle-ncku-edu-tw[id^="page-"]:not(.editing) #region-main form.mform fieldset {
+    min-width: 0;
+    margin: 0 0 18px;
+    padding: 14px;
+    border: 1px solid var(--nm-line, #dce5e2);
+    border-radius: var(--nm-control-radius, 6px);
+  }
+
+  body.moodle-ncku-edu-tw[id^="page-"]:not(.editing) #region-main form.mform legend {
+    width: auto;
+    padding-inline: 8px;
+    color: #174c46;
+    font-size: 1.05rem;
+    font-weight: 650;
+  }
+
+  body.moodle-ncku-edu-tw[id^="page-"]:not(.editing) #region-main form.mform :is(.fitem, .form-group) {
+    margin-bottom: 14px;
+  }
+
+  body.moodle-ncku-edu-tw[id^="page-"]:not(.editing) #region-main form.mform .col-form-label {
+    color: #354f47;
+    font-weight: 600;
+  }
+
+  body.moodle-ncku-edu-tw[id^="page-"]:not(.editing) #region-main form.mform
+    :is(input.form-control, select.form-control, select.custom-select,
+      textarea.form-control):not(:is(.editor_atto_wrap, .tox-tinymce, .filemanager, .filepicker,
+      [data-region="form_autocomplete-input"])
+      *):not(:disabled):not([readonly]):not(.is-invalid):not([aria-invalid="true"]) {
+    min-height: 42px;
+    border: 1px solid #9fbab0;
+    border-radius: var(--nm-control-radius, 6px);
+    background: #fff;
+    color: #172e32;
+  }
+
+  body.moodle-ncku-edu-tw[id^="page-"]:not(.editing) #region-main form.mform
+    :is(.btn-primary, .btn-secondary):not(:disabled):not(.disabled) {
+    min-height: 40px;
+    
+  }
+}
+
+
+/* ===== messaging ===== */
+/* Messaging, notification preferences and popup notification surfaces. */
+@media screen {
+  body:is(#page-message-index, #page-message-edit, #page-message-notificationpreferences)
+    #region-main :is(.card, .generalbox, .box) {
+    border: 1px solid var(--nm-line, #dce5e2);
+    border-radius: var(--nm-radius, 10px);
+    background: rgb(255 255 255 / 84%);
+  }
+
+  body#page-message-index .message-app.main {
+    border: 1px solid var(--nm-line, #dce5e2) !important;
+    border-radius: var(--nm-radius, 10px);
+    overflow: hidden;
+  }
+
+  body#page-message-index .message-app.main
+    :is(.header-container, .panel-header-container, .body-container, .footer-container,
+      .conversationcontainer) {
+    border-color: var(--nm-line, #dce5e2) !important;
+  }
+
+  body:is(#page-message-notificationpreferences, #page-message-output-popup-notifications)
+    :is(table.generaltable, table.table) {
+    width: 100%;
+    border-color: var(--nm-line, #dce5e2);
+    background: rgb(255 255 255 / 88%);
+  }
+
+  body#page-message-output-popup-notifications
+    :is(.popover-region-container, .card, .generalbox, .box) {
+    border: 1px solid var(--nm-line, #dce5e2);
+    border-radius: var(--nm-radius, 10px);
+    background: #fff;
+  }
+
+  /* Notification history widget — flat stacked items inside the popup output page. */
+  body#page-message-output-popup-notifications:not(.editing)
+    #region-main :is(.notifications, .notification-area, [data-region="notification-area"]) {
+    width: 100%;
+    max-width: none;
+    margin-inline: 0;
+    background: transparent !important;
+    border: 0;
+    box-shadow: none;
+  }
+
+  body#page-message-output-popup-notifications:not(.editing)
+    #region-main :is(.content-item-container.notification,
+      [data-region="notification-content-item-container"]) {
+    margin-bottom: .65rem;
+    padding: .9rem 1rem;
+    border: 1px solid #d7e2de;
+    border-radius: var(--nm-control-radius, 6px);
+    background: rgb(255 255 255 / 68%) !important;
+    box-shadow: none;
+  }
+
+  body#page-message-output-popup-notifications:not(.editing)
+    #region-main :is(.content-item-container.notification,
+      [data-region="notification-content-item-container"]).unread {
+    border-left: 3px solid var(--nm-accent, #12665e);
+    background: rgb(237 244 240 / 82%) !important;
+  }
+
+  body#page-message-output-popup-notifications:not(.editing)
+    #region-main :is(.notification-message, .content-item-body) {
+    color: var(--nm-ink, #172e32);
+    line-height: 1.55;
+  }
+
+  body#page-message-output-popup-notifications:not(.editing)
+    #region-main :is(.notification-context-name, .notification-message .subject) {
+    font-weight: 700;
+  }
+
+  body#page-message-output-popup-notifications:not(.editing)
+    #region-main .notification-image img {
+    border-radius: 50%;
+    box-shadow: none;
+  }
+}
+
+/* ===== user-pages ===== */
+/* User profile, preference, portfolio and course-report pages. */
+@media screen {
+  body:is(
+    #page-user-course, #page-user-portfolio, #page-user-portfoliologs,
+    #page-user-calendar, #page-user-editor, #page-user-index,
+    #page-user-profile, #page-user-edit, #page-user-preferences,
+    #page-user-forum, #page-user-language, #page-user-view,
+    #page-course-user, #page-course-resources
+  ):not(.editing) #region-main :is(.card, .generalbox, .box, .userprofile, .profile_tree .node_category) {
+    min-width: 0;
+    border: 1px solid var(--nm-line, #dce5e2);
+    border-radius: var(--nm-radius, 10px);
+    background: rgb(255 255 255 / 82%);
+    box-shadow: var(--nm-shadow, 0 2px 8px rgb(23 46 50 / 6%));
+  }
+
+  body:is(
+    #page-user-course, #page-user-portfolio, #page-user-portfoliologs,
+    #page-user-calendar, #page-user-editor, #page-user-index,
+    #page-user-profile, #page-user-edit, #page-user-preferences,
+    #page-user-forum, #page-user-language, #page-user-view,
+    #page-course-user, #page-course-resources
+  ):not(.editing) #region-main :is(.table-responsive, .no-overflow) {
+    max-width: 100%;
+    overflow-x: auto;
+  }
+
+  body:is(
+    #page-user-course, #page-user-portfolio, #page-user-portfoliologs,
+    #page-user-calendar, #page-user-editor, #page-user-index,
+    #page-user-profile, #page-user-edit, #page-user-preferences,
+    #page-user-forum, #page-user-language, #page-user-view,
+    #page-course-user, #page-course-resources
+  ):not(.editing) #region-main :is(table.generaltable, table.table) :is(th, td) {
+    padding: 10px 12px;
+    border-color: var(--nm-line, #dce5e2);
+  }
+
+  /* Resources index table — rounded shell with flat, readable rows. */
+  body#page-course-resources:not(.editing) #region-main table.generaltable.mod_index {
+    width: 100%;
+    margin-block: 1rem;
+    border: 1px solid #c7d5d1;
+    border-collapse: separate !important;
+    border-spacing: 0;
+    border-radius: calc(var(--nm-radius, 10px) + 2px);
+    background: transparent;
+    box-shadow: none;
+    overflow: hidden;
+  }
+
+  body#page-course-resources:not(.editing) #region-main table.generaltable.mod_index :is(th, td) {
+    padding: .75rem .9rem;
+    vertical-align: middle;
+    border-width: 0 0 1px;
+    border-style: solid;
+    border-color: #dce5e2;
+    background-clip: padding-box;
+  }
+
+  body#page-course-resources:not(.editing) #region-main table.generaltable.mod_index thead th {
+    color: var(--nm-ink, #172e32);
+    font-weight: 700;
+    background: #edf4f0;
+  }
+
+  body#page-course-resources:not(.editing) #region-main table.generaltable.mod_index tbody tr {
+    background: rgb(255 255 255 / 66%);
+    box-shadow: none;
+  }
+
+  body#page-course-resources:not(.editing) #region-main table.generaltable.mod_index tbody tr:hover {
+    background: rgb(237 244 240 / 72%);
+  }
+
+  body#page-course-resources:not(.editing) #region-main table.generaltable.mod_index tbody tr:last-child >
+    :is(th, td) {
+    border-bottom: 0;
+  }
+
+  body#page-course-resources:not(.editing) #region-main table.generaltable.mod_index a {
+    color: var(--nm-accent, #12665e);
+    font-weight: 600;
+    text-underline-offset: 3px;
+  }
+}
+
+/* ===== plugins ===== */
+/* Custom enrolment and NCKU application plugins. */
+@media screen {
+  body:is(
+    #page-enrol-index,
+    #page-meta-apply-index, [id^="page-meta-apply-"],
+    #page-gesync-apply-index, [id^="page-gesync-apply-"]
+  ):not(.editing) #region-main :is(.card, .generalbox, .box) {
+    min-width: 0;
+    border: 1px solid var(--nm-line, #dce5e2);
+    border-radius: var(--nm-radius, 10px);
+    background: rgb(255 255 255 / 84%);
+    box-shadow: var(--nm-shadow, 0 2px 8px rgb(23 46 50 / 6%));
+  }
+
+  body:is(
+    #page-enrol-index,
+    #page-meta-apply-index, [id^="page-meta-apply-"],
+    #page-gesync-apply-index, [id^="page-gesync-apply-"]
+  ):not(.editing) #region-main :is(.table-responsive, .no-overflow) {
+    max-width: 100%;
+    overflow-x: auto;
+    border-radius: var(--nm-control-radius, 6px);
+  }
+
+  body:is(
+    #page-enrol-index,
+    #page-meta-apply-index, [id^="page-meta-apply-"],
+    #page-gesync-apply-index, [id^="page-gesync-apply-"]
+  ):not(.editing) #region-main table {
+    width: 100%;
+    border-color: var(--nm-line, #dce5e2);
+    background: rgb(255 255 255 / 80%);
+  }
+
+  body:is(
+    #page-enrol-index,
+    #page-meta-apply-index, [id^="page-meta-apply-"],
+    #page-gesync-apply-index, [id^="page-gesync-apply-"]
+  ):not(.editing) #region-main table :is(th, td) {
+    padding: 10px 12px;
+    border-color: var(--nm-line, #dce5e2);
+  }
+}
+
