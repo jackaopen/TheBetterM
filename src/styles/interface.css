@@ -1,28 +1,40 @@
 /* ===== shared-chrome ===== */
 /* YUI dialog IDs are regenerated each load. Style the shared shell, not its widgets. */
 @media screen {
-  body.moodle-ncku-edu-tw .moodle-dialogue-base .moodle-dialogue-wrap {
-    background-color: #fff;
-    color: #172e32;
-    border: 1px solid #c6d9d0;
+  body.moodle-ncku-edu-tw .moodle-dialogue-base
+    .moodle-dialogue-wrap.moodle-dialogue-content.yui3-widget-stdmod {
+    box-sizing: border-box;
+    background-color: var(--nm-paper, #fff);
+    color: var(--nm-ink, #172e32);
+    border: 1px solid var(--nm-line, #c6d9d0);
     border-radius: var(--nm-radius, 10px);
     box-shadow: var(--nm-shadow, 0 2px 8px rgb(23 46 50 / 6%));
     font-family: "Segoe UI", "Noto Sans TC", "Microsoft JhengHei", sans-serif;
   }
   body.moodle-ncku-edu-tw .moodle-dialogue-base .moodle-dialogue-wrap > .moodle-dialogue-hd {
+    padding: .8rem 1rem;
     background: #eff5f2;
-    color: #174c46;
-    border-bottom: 1px solid #dce7e2;
-    border-radius: 17px 17px 0 0;
+    color: var(--nm-ink, #172e32);
+    border-bottom: 1px solid var(--nm-line, #dce7e2);
+    font-size: 1.05rem;
+    font-weight: 650;
+    line-height: 1.4;
+    overflow-wrap: anywhere;
   }
-  body.moodle-ncku-edu-tw .moodle-dialogue-base .moodle-dialogue-hd h1 { color: #174c46; font-size: 1.25rem;
-    font-weight: 700; overflow-wrap: anywhere; }
-  body.moodle-ncku-edu-tw .moodle-dialogue-base .moodle-dialogue-wrap > .moodle-dialogue-bd { color: #172e32;
-    }
+  body.moodle-ncku-edu-tw .moodle-dialogue-base .moodle-dialogue-hd :is(h1, h2, h3, h4) {
+    margin: 0;
+    color: inherit;
+    font: inherit;
+  }
+  body.moodle-ncku-edu-tw .moodle-dialogue-base .moodle-dialogue-wrap > .moodle-dialogue-bd {
+    padding: 1rem;
+    color: inherit;
+    line-height: 1.6;
+  }
   body.moodle-ncku-edu-tw .moodle-dialogue-base .moodle-dialogue-wrap > .moodle-dialogue-ft {
+    padding: .75rem 1rem;
     background: #f5f9f7;
-    border-top-color: #dce7e2;
-    border-radius: 0 0 17px 17px;
+    border-top: 1px solid var(--nm-line, #dce7e2);
   }
   body.moodle-ncku-edu-tw .moodle-dialogue-base .moodle-dialogue-hd .closebutton { color: #174c46; opacity: 1;
     border-radius: var(--nm-control-radius, 6px); text-shadow: none; }
@@ -46,6 +58,9 @@
     --nm-radius: 10px;
     --nm-control-radius: 6px;
     --nm-shadow: 0 2px 8px rgb(23 46 50 / 6%);
+    --nm-paper: #fff;
+    --nm-surface: #f3f6f3;
+    color: var(--nm-ink);
     --nm-glass: rgb(255 255 255 / 76%);
     --nm-glass-strong: rgb(250 253 251 / 88%);
     font-family: "Segoe UI", "Noto Sans TC", "Microsoft JhengHei", sans-serif;
@@ -178,7 +193,7 @@
   /* Tabs are a single divider row. Preserve native active/disabled/collapse states. */
 
   /* Use one rhythm for reading widgets without relocating interactive components. */
-  body:is(#page-site-index, #page-my-index, #page-my-courses, #page-course-index, #page-course-index-category,
+  body:is(#page-site-index, #page-my-index, #page-message-index, #page-my-courses, #page-course-index, #page-course-index-category,
     #page-course-search, #page-calendar-view, #page-mod-forum-index, #page-mod-forum-view,
     #page-mod-forum-discuss, #page-mod-assign-view, #page-grade-report-user-index,
     #page-grade-report-overview-index, #page-user-profile, #page-user-view, #page-mod-page-view,
@@ -207,15 +222,7 @@
   body:is(#page-user-profile, #page-user-view, #page-user-index, #page-user-preferences, #page-user-edit,
     #page-user-editadvanced, #page-user-forum, #page-user-editor, #page-user-language,
     #page-user-calendar):not(.editing):is(#page-user-preferences) #region-main .card-body { padding: 20px; }
-  body#page-login-index .card-header,
-  body.moodle-ncku-edu-tw .moodle-dialogue-base .moodle-dialogue-wrap > .moodle-dialogue-hd { border-radius:
-    9px 9px 0 0; }
-  body.moodle-ncku-edu-tw .moodle-dialogue-base .moodle-dialogue-wrap > .moodle-dialogue-ft { border-radius: 0
-    0 9px 9px; }
-  body.moodle-ncku-edu-tw .moodle-dialogue-base .moodle-dialogue-fullscreen .moodle-dialogue-wrap >
-    :is(.moodle-dialogue-hd, .moodle-dialogue-ft) { border-radius: 0; }
-  body#page-message-index .message-app.main .conversationcontainer { border-radius: 9px 0 0 9px; }
-  body#page-message-index .message-app.main .footer-container { border-radius: 0 0 9px 0; }
+  body#page-login-index .card-header { border-radius: 9px 9px 0 0; }
 }
 @media screen and (max-width: 767px) {
   body:is(#page-user-profile, #page-user-view, #page-user-index, #page-user-preferences, #page-user-edit,
@@ -367,32 +374,8 @@ body.moodle-ncku-edu-tw .filemanager-container.card :is(.fp-pathbar, .dndupload-
  */
 @media screen {
   /* Shared radius; drawer fields and attendance inputs retain their old scope. */
-  body:is(#page-site-index, #page-my-index, #page-my-courses, #page-course-index, #page-course-index-category,
-    #page-course-search, #page-calendar-view, #page-mod-forum-index, #page-mod-forum-view,
-    #page-mod-forum-discuss, #page-mod-assign-view, #page-grade-report-user-index,
-    #page-grade-report-overview-index, #page-user-profile, #page-user-view, #page-mod-page-view,
-    #page-mod-book-view, #page-mod-resource-view, #page-mod-folder-view, #page-mod-url-view,
-    #page-course-view-topics, #page-course-view-weeks, #page-search-index, #page-mod-forum-search,
-    #page-user-index, #page-course-view-participants, #page-course-info, #page-course-recent,
-    #page-mod-assign-index, #page-mod-book-index, #page-mod-page-index, #page-mod-resource-index,
-    #page-mod-folder-index, #page-mod-url-index, #page-mod-glossary-index, #page-mod-data-index,
-    #page-mod-wiki-index, #page-mod-glossary-view, #page-mod-glossary-showentry, #page-mod-data-view,
-    #page-mod-wiki-view,
-    [id^="page-course-view-"]):not(.editing):not(:has(form.mform:not(body#page-search-index form),
-    .editor_atto_wrap, .tox-tinymce, [contenteditable="true"], .filemanager)) .btn-primary,
-  body:is(#page-site-index, #page-my-index, #page-my-courses, #page-course-index, #page-course-index-category,
-    #page-course-search, #page-calendar-view, #page-mod-forum-index, #page-mod-forum-view,
-    #page-mod-forum-discuss, #page-mod-assign-view, #page-grade-report-user-index,
-    #page-grade-report-overview-index, #page-user-profile, #page-user-view, #page-mod-page-view,
-    #page-mod-book-view, #page-mod-resource-view, #page-mod-folder-view, #page-mod-url-view,
-    #page-course-view-topics, #page-course-view-weeks, #page-search-index, #page-mod-forum-search,
-    #page-user-index, #page-course-view-participants, #page-course-info, #page-course-recent,
-    #page-mod-assign-index, #page-mod-book-index, #page-mod-page-index, #page-mod-resource-index,
-    #page-mod-folder-index, #page-mod-url-index, #page-mod-glossary-index, #page-mod-data-index,
-    #page-mod-wiki-index, #page-mod-glossary-view, #page-mod-glossary-showentry, #page-mod-data-view,
-    #page-mod-wiki-view,
-    [id^="page-course-view-"]):not(.editing):not(:has(form.mform:not(body#page-search-index form),
-    .editor_atto_wrap, .tox-tinymce, [contenteditable="true"], .filemanager)) .btn-secondary,
+  body.moodle-ncku-edu-tw .btn-primary:not(:where(.editor_atto_wrap, .tox-tinymce, [contenteditable="true"], .filemanager, .filepicker) *),
+  body.moodle-ncku-edu-tw .btn-secondary:not(:where(.editor_atto_wrap, .tox-tinymce, [contenteditable="true"], .filemanager, .filepicker) *),
   body#page-search-index:not(.editing):not(:has(.editor_atto_wrap, .tox-tinymce, [contenteditable="true"],
     .filemanager)) #region-main .btn-primary,
   body.moodle-ncku-edu-tw:not(.editing) .drawer :is(.form-control, .btn),
@@ -407,40 +390,17 @@ body.moodle-ncku-edu-tw .filemanager-container.card :is(.fp-pathbar, .dndupload-
   body.moodle-ncku-edu-tw:is([id^="page-"]):not(.pagelayout-embedded):not(.pagelayout-popup) #page-header .btn,
   body:is(#page-mod-attendance-view, #page-mod-attendance-index):not(.editing)
     #region-main .attfiltercontrols :is(select, input, .form-control, .custom-select, .btn),
+  body.moodle-ncku-edu-tw .fpwonderbox .btn.btn-secondary,
   body.moodle-ncku-edu-tw[id^="page-"]:not(.editing) #region-main form.mform
     :is(.btn-primary, .btn-secondary):not(:disabled):not(.disabled) {
     border-radius: var(--nm-control-radius, 6px);
   }
 
-  body:is(#page-site-index, #page-my-index, #page-my-courses, #page-course-index, #page-course-index-category,
-    #page-course-search, #page-calendar-view, #page-mod-forum-index, #page-mod-forum-view,
-    #page-mod-forum-discuss, #page-mod-assign-view, #page-grade-report-user-index,
-    #page-grade-report-overview-index, #page-user-profile, #page-user-view, #page-mod-page-view,
-    #page-mod-book-view, #page-mod-resource-view, #page-mod-folder-view, #page-mod-url-view,
-    #page-course-view-topics, #page-course-view-weeks, #page-search-index, #page-mod-forum-search,
-    #page-user-index, #page-course-view-participants, #page-course-info, #page-course-recent,
-    #page-mod-assign-index, #page-mod-book-index, #page-mod-page-index, #page-mod-resource-index,
-    #page-mod-folder-index, #page-mod-url-index, #page-mod-glossary-index, #page-mod-data-index,
-    #page-mod-wiki-index, #page-mod-glossary-view, #page-mod-glossary-showentry, #page-mod-data-view,
-    #page-mod-wiki-view,
-    [id^="page-course-view-"]):not(.editing):not(:has(form.mform:not(body#page-search-index form),
-    .editor_atto_wrap, .tox-tinymce, [contenteditable="true"], .filemanager)) .btn-primary {
+  body.moodle-ncku-edu-tw .btn-primary:not(:where(.editor_atto_wrap, .tox-tinymce, [contenteditable="true"], .filemanager, .filepicker) *) {
     background-color: var(--nm-accent); border-color: var(--nm-accent); color: white;
   }
 
-  body:is(#page-site-index, #page-my-index, #page-my-courses, #page-course-index, #page-course-index-category,
-    #page-course-search, #page-calendar-view, #page-mod-forum-index, #page-mod-forum-view,
-    #page-mod-forum-discuss, #page-mod-assign-view, #page-grade-report-user-index,
-    #page-grade-report-overview-index, #page-user-profile, #page-user-view, #page-mod-page-view,
-    #page-mod-book-view, #page-mod-resource-view, #page-mod-folder-view, #page-mod-url-view,
-    #page-course-view-topics, #page-course-view-weeks, #page-search-index, #page-mod-forum-search,
-    #page-user-index, #page-course-view-participants, #page-course-info, #page-course-recent,
-    #page-mod-assign-index, #page-mod-book-index, #page-mod-page-index, #page-mod-resource-index,
-    #page-mod-folder-index, #page-mod-url-index, #page-mod-glossary-index, #page-mod-data-index,
-    #page-mod-wiki-index, #page-mod-glossary-view, #page-mod-glossary-showentry, #page-mod-data-view,
-    #page-mod-wiki-view,
-    [id^="page-course-view-"]):not(.editing):not(:has(form.mform:not(body#page-search-index form),
-    .editor_atto_wrap, .tox-tinymce, [contenteditable="true"], .filemanager)) .btn-primary:hover {
+  body.moodle-ncku-edu-tw .btn-primary:not(:where(.editor_atto_wrap, .tox-tinymce, [contenteditable="true"], .filemanager, .filepicker) *):hover {
     background-color: #0c514b; border-color: #0c514b;
   }
 
@@ -725,4 +685,3 @@ body.moodle-ncku-edu-tw:is([id^="page-"]):not(.pagelayout-embedded):not(.pagelay
   body.moodle-ncku-edu-tw:is([id^="page-"]):not(.pagelayout-embedded):not(.pagelayout-popup) #page-header
     .card-body > .d-flex.flex-wrap { gap: 8px; margin-top: 12px !important; }
 }
-
