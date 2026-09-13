@@ -1,6 +1,9 @@
 # TheBetterM
-
 A Chrome extension that refreshes the appearance and navigation of NCKU Moodle.
+<img width="1902" height="906" alt="螢幕擷取畫面 2026-09-13 174409" src="https://github.com/user-attachments/assets/8088706b-d40d-41aa-b48f-1d1f57706b81" />
+<img width="1893" height="908" alt="image" src="https://github.com/user-attachments/assets/1cfd2a21-ee9d-498e-bc27-61502be850c7" />
+
+
 
 
 ## JavaScript responsibilities
