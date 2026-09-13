@@ -30,9 +30,10 @@ jobs:
         run: |
           $ErrorActionPreference = "Stop"
           $chromePath = "C:\Program Files\Google\Chrome\Application\chrome.exe"
-          
+          $srcPath = Join-Path $env:GITHUB_WORKSPACE "src"
+
           & $chromePath `
-          --pack-extension=src `
+          --pack-extension=$srcPath `
           --no-message-box
 
           if ($LASTEXITCODE -ne 0) {
