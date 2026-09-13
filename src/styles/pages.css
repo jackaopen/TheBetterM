@@ -201,7 +201,7 @@
 
   /* Compact information panels used by the three activity pages. */
   body:is(#page-mod-questionnaire-myreport, #page-mod-choice-view, #page-mod-quiz-view):not(.editing)
-    #region-main .box.py-3.generalbox {
+    #region-main .box.py-3:is(.generalbox, .quizinfo, .quizattempt) {
     margin: .9rem 0;
     padding: .9rem 1rem !important;
     color: var(--activity-ink);
@@ -214,12 +214,12 @@
   }
 
   body:is(#page-mod-questionnaire-myreport, #page-mod-choice-view, #page-mod-quiz-view):not(.editing)
-    #region-main .box.py-3.generalbox > :first-child {
+    #region-main .box.py-3:is(.generalbox, .quizinfo, .quizattempt) > :first-child {
     margin-top: 0;
   }
 
   body:is(#page-mod-questionnaire-myreport, #page-mod-choice-view, #page-mod-quiz-view):not(.editing)
-    #region-main .box.py-3.generalbox > :last-child {
+    #region-main .box.py-3:is(.generalbox, .quizinfo, .quizattempt) > :last-child {
     margin-bottom: 0;
   }
 
@@ -412,16 +412,6 @@
     padding: 0 !important;
     background: transparent !important;
     border: 0 !important;
-    box-shadow: none !important;
-  }
-
-  body#page-mod-quiz-view:not(.editing) #region-main #intro.generalbox {
-    margin-bottom: 1rem;
-    padding: .75rem .9rem;
-    background: var(--activity-soft) !important;
-    border: 0 !important;
-    border-left: 3px solid var(--activity-accent) !important;
-    border-radius: 0 6px 6px 0;
     box-shadow: none !important;
   }
 
@@ -762,23 +752,79 @@
 /* ===== messaging ===== */
 /* Messaging, notification preferences and popup notification surfaces. */
 @media screen {
-  body:is(#page-message-index, #page-message-edit, #page-message-notificationpreferences)
+  /* Shared component skin: full-page messaging and drawers on every route.
+   * Reuse parent surfaces; Moodle owns pane sizing, scrolling and visibility. */
+  body.moodle-ncku-edu-tw .message-app {
+    color: var(--nm-ink, #172e32);
+    background: transparent !important;
+
+    &.main { border-color: var(--nm-line) !important; border-radius: var(--nm-radius); }
+    :is(.bg-white, .bg-light, .conversationcontainer, .body-container,
+      .header-container, .panel-header-container, .footer-container, .list-group-item) {
+      background-color: transparent !important;
+    }
+    :is(.border, .border-top, .border-bottom, .border-left, .border-right,
+      .header-container, .panel-header-container, .footer-container, .list-group-item) {
+      border-color: var(--nm-line) !important;
+    }
+    :is(.header-container, .panel-header-container) { border-bottom: 1px solid var(--nm-line); }
+    .footer-container { border-top: 1px solid var(--nm-line); }
+    .list-group-item { color: inherit; }
+    .list-group-item-action:hover { background-color: rgb(18 102 94 / 8%) !important; }
+    .list-group-item-action:is(.active, [aria-current="true"], [aria-selected="true"]) {
+      background-color: #d8eee5 !important;
+      box-shadow: inset 3px 0 var(--nm-accent);
+    }
+    :is(.overview-section-toggle, .btn-link) { color: var(--nm-accent); }
+    :is(.text-muted, .time) { color: var(--nm-muted) !important; }
+    [data-region="unread-count"],
+    [data-action="send-message"]:not(:disabled):not(.disabled):not([aria-disabled="true"]) {
+      background: var(--nm-accent) !important; color: white;
+    }
+    :is(.form-control, .btn) { border-radius: var(--nm-control-radius); }
+    .form-control:not(:disabled):not([readonly]):not([aria-invalid="true"]):not(.is-invalid) {
+      background-color: var(--nm-paper, #fff) !important;
+      border-color: var(--nm-line); color: inherit;
+    }
+    /* Search icon and field share a surface with square inner corners. */
+    .input-group:has(> .input-group-prepend) {
+      border-radius: var(--nm-control-radius);
+      .input-group-text {
+        background-color: var(--nm-paper, #fff) !important;
+        border-color: var(--nm-line); color: var(--nm-muted);
+        border-radius: var(--nm-control-radius) 0 0 var(--nm-control-radius);
+      }
+      > .form-control {
+        border-radius: 0 var(--nm-control-radius) var(--nm-control-radius) 0 !important;
+        border-color: var(--nm-line) !important;
+      }
+      &:focus-within { outline: 3px solid #a45b00; outline-offset: 2px; }
+      > .form-control:focus { outline: none; box-shadow: none; }
+    }
+    .message {
+      --message-surface: var(--nm-paper, #fff);
+      background: var(--message-surface); color: inherit;
+      border-radius: var(--nm-radius) !important;
+      box-shadow: var(--nm-shadow);
+    }
+    .message.send { --message-surface: #d8eee5; }
+    .message .tail { border-bottom-color: var(--message-surface); }
+    .message[aria-checked="true"] { outline: 2px solid var(--nm-accent); outline-offset: 2px; }
+    [data-region="text-container"] { line-height: 1.7; overflow-wrap: anywhere; }
+    [data-region="text-container"] a {
+      color: var(--nm-accent); text-decoration: underline; text-underline-offset: 3px;
+    }
+    [data-region="text-container"] :is(img, video) { max-width: 100%; height: auto; }
+    :is(a, button, input, textarea, [tabindex]):focus-visible {
+      outline: 3px solid #a45b00; outline-offset: -3px;
+    }
+  }
+
+  body:is(#page-message-edit, #page-message-notificationpreferences)
     #region-main :is(.card, .generalbox, .box) {
     border: 1px solid var(--nm-line, #dce5e2);
     border-radius: var(--nm-radius, 10px);
     background: rgb(255 255 255 / 84%);
-  }
-
-  body#page-message-index .message-app.main {
-    border: 1px solid var(--nm-line, #dce5e2) !important;
-    border-radius: var(--nm-radius, 10px);
-    overflow: hidden;
-  }
-
-  body#page-message-index .message-app.main
-    :is(.header-container, .panel-header-container, .body-container, .footer-container,
-      .conversationcontainer) {
-    border-color: var(--nm-line, #dce5e2) !important;
   }
 
   body:is(#page-message-notificationpreferences, #page-message-output-popup-notifications)
@@ -974,4 +1020,3 @@
     border-color: var(--nm-line, #dce5e2);
   }
 }
-
