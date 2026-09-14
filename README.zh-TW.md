@@ -6,7 +6,7 @@
 
 [English](./README.md) | [繁體中文](./README.zh-TW.md)
 
-<a href="https://chromewebstore.google.com/"><img alt="Chrome 線上應用程式商店 — 即將推出" src="https://img.shields.io/badge/Chrome_Web_Store-Coming_Soon-4285F4?logo=googlechrome&amp;logoColor=white"></a>
+<a href="https://chromewebstore.google.com/detail/thebetterm-%E2%80%94-moodle-refre/ilkjjkjdocgjpljdkikeobcclpegjlpf" target="_blank" rel="noopener noreferrer"><img alt="Chrome 線上應用程式商店" src="https://img.shields.io/badge/Chrome_Web_Store-4285F4?logo=googlechrome&amp;logoColor=white"></a>
 
 <a href="https://github.com/jackaopen/TheBetterM/issues"><img alt="回報問題" src="https://img.shields.io/badge/GitHub-Report_an_Issue-181717?logo=github"></a>
 
@@ -64,7 +64,7 @@ TheBetterM 目前主要針對以下環境設計：
 
 ### Chrome 線上應用程式商店
 
-Chrome 線上應用程式商店版本**即將推出**。
+從 [Chrome 線上應用程式商店](https://chromewebstore.google.com/detail/thebetterm-%E2%80%94-moodle-refre/ilkjjkjdocgjpljdkikeobcclpegjlpf)取得 TheBetterM。
 
 ### 從原始碼安裝
 
@@ -80,7 +80,7 @@ Chrome 線上應用程式商店版本**即將推出**。
 
 ##  自訂外觀
 
-如果是從原始碼安裝或開發 TheBetterM，可以直接替換 [`src/assets`](./src/assets) 內的圖片。
+如果是從原始碼安裝或開發 TheBetterM，並透過「載入未封裝項目」載入 [`src`](./src) 資料夾，可以直接替換 `src/assets` 內的圖片。
 
 | 檔案 | 用途 |
 | --- | --- |
@@ -89,14 +89,12 @@ Chrome 線上應用程式商店版本**即將推出**。
 
 替換圖片後請保留相同的檔名，讓現有樣式可以繼續正確載入圖片。
 
-直接替換圖片素材的方式主要適用於**從原始碼安裝的版本**。未來 Chrome 線上應用程式商店版本是否仍適合使用相同方式進行自訂，將視擴充功能的封裝方式而定。
+### 圖片來源與用途
 
-### 視覺靈感
+- **橫幅參考來源：** [國立成功大學 Facebook](https://www.facebook.com/ncku.edu.tw)
+- **背景參考來源：** [國立成功大學圖書館 Facebook](https://www.facebook.com/NCKULibrary)
 
-- **橫幅設計靈感：** [National Cheng Kung University on Facebook](https://www.facebook.com/ncku.edu.tw)
-- **背景設計靈感：** [國立成功大學圖書館 — 大考中心](https://www.ceec.edu.tw/xcepaper/cont?xsmsid=0J066588036013658199&qperoid=0J114595071212135515&sid=0J115577477273652461)
-
-TheBetterM 內含的圖片皆經過視覺調整，使其更符合擴充功能整體的設計風格。
+本專案所使用的圖片皆經過視覺調整，僅用於此開源、非官方、非商業擴充功能，以自訂 NCKU Moodle 的介面外觀。
 
 ---
 

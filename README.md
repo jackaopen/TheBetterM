@@ -6,7 +6,8 @@
 
 [English](./README.md) | [繁體中文](./README.zh-TW.md)
 
-<a href="https://chromewebstore.google.com/"><img alt="Chrome Web Store — Coming Soon" src="https://img.shields.io/badge/Chrome_Web_Store-Coming_Soon-4285F4?logo=googlechrome&amp;logoColor=white"></a>
+<a href="https://chromewebstore.google.com/detail/thebetterm-%E2%80%94-moodle-refre/ilkjjkjdocgjpljdkikeobcclpegjlpf" target="_blank" rel="noopener noreferrer"><img alt="Chrome Web Store" src="https://img.shields.io/badge/Chrome_Web_Store-4285F4?logo=googlechrome&amp;logoColor=white"></a>
+
 <a href="https://github.com/jackaopen/TheBetterM/issues"><img alt="Report an Issue" src="https://img.shields.io/badge/GitHub-Report_an_Issue-181717?logo=github"></a>
 
 </div>
@@ -64,7 +65,7 @@ TheBetterM is currently designed for:
 
 ### Chrome Web Store
 
-The Chrome Web Store release is **coming soon**.
+Get TheBetterM from the [Chrome Web Store](https://chromewebstore.google.com/detail/thebetterm-%E2%80%94-moodle-refre/ilkjjkjdocgjpljdkikeobcclpegjlpf).
 
 ### Install from source
 
@@ -80,7 +81,7 @@ TheBetterM should now be active when you visit NCKU Moodle.
 
 ##  Customization
 
-When installing or developing TheBetterM from source, you can replace the images inside [`src/assets`](./src/assets).
+When running TheBetterM from source using **Load unpacked**, you can replace the images inside `src/assets`.
 
 | File | Used for |
 | --- | --- |
@@ -89,14 +90,13 @@ When installing or developing TheBetterM from source, you can replace the images
 
 Keep the same filenames after replacing the files so the existing styles can continue to locate them.
 
-Direct asset replacement is mainly intended for **source installations**. Whether the same customization method remains practical for the Chrome Web Store version depends on how the extension is packaged.
 
-### Visual inspiration
+### Image sources and use
 
-- **Banner inspiration:** [National Cheng Kung University on Facebook](https://www.facebook.com/ncku.edu.tw)
-- **Background inspiration:** [國立成功大學圖書館 — 大考中心](https://www.ceec.edu.tw/xcepaper/cont?xsmsid=0J066588036013658199&qperoid=0J114595071212135515&sid=0J115577477273652461)
+- **Banner reference:** [National Cheng Kung University on Facebook](https://www.facebook.com/ncku.edu.tw)
+- **Background reference:** [NCKU Library on Facebook](https://www.facebook.com/NCKULibrary)
 
-Images included with TheBetterM have been visually adjusted to better match the overall theme of the extension.
+The included images have been visually modified and are used solely to customize the appearance of NCKU Moodle in this open-source, unofficial, non-commercial extension.
 
 ---
 
