@@ -32,13 +32,11 @@
 
 **保留 Moodle 原有的功能，只讓它擁有更好的介面。**
 
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/8088706b-d40d-41aa-b48f-1d1f57706b81" />
-</p>
+<img width="1902" height="864" alt="螢幕擷取畫面 2026-09-16 143301" src="https://github.com/user-attachments/assets/da350eaf-779e-417c-8e5f-df98d56d0dae" />
 
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/1cfd2a21-ee9d-498e-bc27-61502be850c7" />
-</p>
+
+<img width="1902" height="870" alt="螢幕擷取畫面 2026-09-16 143207" src="https://github.com/user-attachments/assets/8f29fe0d-1667-47a3-97a2-a8733b4e7314" />
+
 
 ---
 
