@@ -91,8 +91,7 @@ TheBetterM 目前主要針對以下環境設計：
 
 ### 圖片來源與用途
 
-- **橫幅參考來源：** [國立成功大學 Facebook](https://www.facebook.com/ncku.edu.tw)
-- **背景參考來源：** [國立成功大學圖書館 Facebook](https://www.facebook.com/NCKULibrary)
+- **圖片來源：** [成大素材網](https://material.ncku.edu.tw/)
 
 本專案所使用的圖片皆經過視覺調整，僅用於此開源、非官方、非商業擴充功能，以自訂 NCKU Moodle 的介面外觀。
 
