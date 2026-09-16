@@ -93,8 +93,7 @@ Keep the same filenames after replacing the files so the existing styles can con
 
 ### Image sources and use
 
-- **Banner reference:** [National Cheng Kung University on Facebook](https://www.facebook.com/ncku.edu.tw)
-- **Background reference:** [NCKU Library on Facebook](https://www.facebook.com/NCKULibrary)
+- **Photo source:** [NCKU material](https://material.ncku.edu.tw/)
 
 The included images have been visually modified and are used solely to customize the appearance of NCKU Moodle in this open-source, unofficial, non-commercial extension.
 
