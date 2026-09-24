@@ -561,21 +561,21 @@ body.moodle-ncku-edu-tw:is([id^="page-"]):not(.pagelayout-embedded):not(.pagelay
     :is(.nav-tabs, [role="main"] > .nav-tabs) { border-bottom: 1px solid var(--nm-line); gap: 4px; }
 }
 
-/* Page shell and spacing overrides. Loaded after moodle.css. */
+/* Page shell and spacing, shared by reading, administration and editing pages. */
 @media screen {
-  body.moodle-ncku-edu-tw:not(.editing):not(.pagelayout-embedded):not(.pagelayout-popup) {
+  body.moodle-ncku-edu-tw:not(.pagelayout-embedded):not(.pagelayout-popup) {
     --nm-page-gutter: clamp(12px, 2vw, 28px);
     --nm-column-gap: clamp(12px, 1.4vw, 20px);
   }
 
   /* Keep a deliberate outer gutter so rounded cards have breathing room. */
-  body.moodle-ncku-edu-tw:not(.editing):not(.pagelayout-embedded):not(.pagelayout-popup)
+  body.moodle-ncku-edu-tw:not(.pagelayout-embedded):not(.pagelayout-popup)
     #page.container-fluid {
     width: 100%;
     max-width: none !important;
     padding-inline: var(--nm-page-gutter) !important;
   }
-  body.moodle-ncku-edu-tw:not(.editing):not(.pagelayout-embedded):not(.pagelayout-popup)
+  body.moodle-ncku-edu-tw:not(.pagelayout-embedded):not(.pagelayout-popup)
     #page-content {
     margin-inline: 0 !important;
     padding: var(--nm-column-gap) !important;
@@ -587,7 +587,7 @@ body.moodle-ncku-edu-tw:is([id^="page-"]):not(.pagelayout-embedded):not(.pagelay
   }
 
 
-  body.moodle-ncku-edu-tw:not(.editing):not(.pagelayout-embedded):not(.pagelayout-popup)
+  body.moodle-ncku-edu-tw:not(.pagelayout-embedded):not(.pagelayout-popup)
     #region-main-box {
     gap: var(--nm-column-gap);
     padding-inline: 0 !important;
@@ -621,14 +621,14 @@ body.moodle-ncku-edu-tw:is([id^="page-"]):not(.pagelayout-embedded):not(.pagelay
     align-self: stretch;
   }
 
-  body.moodle-ncku-edu-tw:not(.editing):not(.pagelayout-embedded):not(.pagelayout-popup)
+  body.moodle-ncku-edu-tw:not(.pagelayout-embedded):not(.pagelayout-popup)
     :is(#region-main, .blocks-column, [data-region="blocks-column"]) {
     margin-inline: 0 !important;
   }
 }
 
 @media screen and (max-width: 767px) {
-  body.moodle-ncku-edu-tw:not(.editing):not(.pagelayout-embedded):not(.pagelayout-popup) {
+  body.moodle-ncku-edu-tw:not(.pagelayout-embedded):not(.pagelayout-popup) {
     --nm-page-gutter: 8px;
     --nm-column-gap: 10px;
   }

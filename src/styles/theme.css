@@ -1,3 +1,16 @@
+/* Route-independent framing, including administration and TA editing pages.
+ * Keep this fallback low-specificity: existing page-specific layouts win.
+ * Only the outer panel is styled; editors, grading grids and forms stay native.
+ * Embedded/popup layouts retain their compact Moodle presentation. */
+@media screen {
+  :where(body.moodle-ncku-edu-tw:not(.pagelayout-embedded):not(.pagelayout-popup)) #region-main {
+    background-color: var(--nm-paper, #fff);
+    border: 1px solid var(--nm-line, #dce5e2);
+    border-radius: var(--nm-radius, 10px);
+    padding: clamp(16px, 2.4vw, 32px);
+  }
+}
+
 /* ===== moodle ===== */
 /* Main theme: reading pages, glass surfaces, login/user pages, then shared chrome.
  * Later rules intentionally override earlier ones. Keep this order.
@@ -834,7 +847,7 @@
 /* ===== surfaces ===== */
 /* Site background and banner. Content surfaces stay translucent. */
 @media screen {
-  body.moodle-ncku-edu-tw:not(.editing):is(#page-site-index, #page-my-index, [id^="page-"]) {
+  body.moodle-ncku-edu-tw:not(.pagelayout-embedded):not(.pagelayout-popup) {
     background-color: #b9d7eb !important;
     background-image: url("chrome-extension://__MSG_@@extension_id__/assets/site-background.png") !important;
     background-attachment: fixed !important;
@@ -842,20 +855,20 @@
     background-position: center center !important;
     background-repeat: no-repeat !important;
   }
-  body.moodle-ncku-edu-tw:not(.editing):is(#page-site-index, #page-my-index, [id^="page-"]) #page-wrapper,
-  body.moodle-ncku-edu-tw:not(.editing):is(#page-site-index, #page-my-index, [id^="page-"]) #page,
-  body.moodle-ncku-edu-tw:not(.editing):is(#page-site-index, #page-my-index, [id^="page-"]) #page-content,
-  body.moodle-ncku-edu-tw:not(.editing):is(#page-site-index, #page-my-index, [id^="page-"]) #region-main-box,
-  body.moodle-ncku-edu-tw:not(.editing):is(#page-site-index, #page-my-index, [id^="page-"]) #learningcontent {
+  body.moodle-ncku-edu-tw:not(.pagelayout-embedded):not(.pagelayout-popup) #page-wrapper,
+  body.moodle-ncku-edu-tw:not(.pagelayout-embedded):not(.pagelayout-popup) #page,
+  body.moodle-ncku-edu-tw:not(.pagelayout-embedded):not(.pagelayout-popup) #page-content,
+  body.moodle-ncku-edu-tw:not(.pagelayout-embedded):not(.pagelayout-popup) #region-main-box,
+  body.moodle-ncku-edu-tw:not(.pagelayout-embedded):not(.pagelayout-popup) #learningcontent {
     background-color: transparent !important;
   }
 
-  body.moodle-ncku-edu-tw:not(.editing):is(#page-site-index, #page-my-index, [id^="page-"]) #region-main {
+  body.moodle-ncku-edu-tw:not(.pagelayout-embedded):not(.pagelayout-popup):not(.editing) #region-main {
     background-color: rgb(242 247 245 / 78%) !important;
     -webkit-backdrop-filter: blur(3px) saturate(96%) brightness(98%);
     backdrop-filter: blur(3px) saturate(96%) brightness(98%);
   }
-  body.moodle-ncku-edu-tw:not(.editing):is(#page-site-index, #page-my-index, [id^="page-"]) #page-header
+  body.moodle-ncku-edu-tw:not(.pagelayout-embedded):not(.pagelayout-popup) #page-header
     .customimage {
     background-image: url("chrome-extension://__MSG_@@extension_id__/assets/header.jpg") !important;
     background-size: cover !important;
@@ -864,14 +877,14 @@
   }
 }
 @media screen and (max-width: 600px) {
-  body.moodle-ncku-edu-tw:not(.editing):is(#page-site-index, #page-my-index, [id^="page-"]) {
+  body.moodle-ncku-edu-tw:not(.pagelayout-embedded):not(.pagelayout-popup) {
     background-attachment: scroll !important;
     background-position: center center !important;
   }
-  body.moodle-ncku-edu-tw:not(.editing):is(#page-site-index, #page-my-index, [id^="page-"]) #region-main {
+  body.moodle-ncku-edu-tw:not(.pagelayout-embedded):not(.pagelayout-popup):not(.editing) #region-main {
     background-color: rgb(244 248 247 / 84%) !important;
   }
-  body.moodle-ncku-edu-tw:not(.editing):is(#page-site-index, #page-my-index, [id^="page-"]) #page-header
+  body.moodle-ncku-edu-tw:not(.pagelayout-embedded):not(.pagelayout-popup) #page-header
     .customimage {
     background-position: center center !important;
   }
