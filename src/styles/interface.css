@@ -258,6 +258,48 @@ body.moodle-ncku-edu-tw .paged-content-page-container .list-group-item.course-li
   border-color: var(--nm-line, rgb(42 79 66 / 16%)) !important;
 }
 
+/* Timeline: keep event groups readable in student, teacher and editing views. */
+body.moodle-ncku-edu-tw .block-timeline
+  :is([data-region="timeline-view-dates"] h5, [data-region="course-events-container"] > h4) {
+  margin: 1.1rem 0 .65rem;
+  padding-bottom: .45rem;
+  border-bottom: 1px solid var(--nm-line, rgb(42 79 66 / 16%));
+  color: var(--nm-muted, #53666a);
+  font-size: .88rem;
+  font-weight: 700;
+  line-height: 1.5;
+}
+body.moodle-ncku-edu-tw .block-timeline [data-region="course-events-container"] > h4 {
+  color: var(--nm-ink, #172e32);
+  font-size: 1rem;
+}
+body.moodle-ncku-edu-tw .block-timeline .list-group.list-group-flush {
+  gap: .65rem;
+}
+body.moodle-ncku-edu-tw .block-timeline
+  .list-group.list-group-flush > .list-group-item.flex-column {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 1rem 1.1rem !important;
+  border: 1px solid var(--nm-line, rgb(42 79 66 / 16%)) !important;
+  border-radius: var(--nm-radius, 10px) !important;
+  background: rgb(255 255 255 / 68%) !important;
+  color: var(--nm-ink, #172e32);
+  box-shadow: none;
+}
+body.moodle-ncku-edu-tw .block-timeline
+  .list-group.list-group-flush > .list-group-item.flex-column h6 {
+  margin-bottom: .35rem;
+  font-size: 1rem;
+  font-weight: 650;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+}
+body.moodle-ncku-edu-tw .block-timeline
+  .list-group.list-group-flush > .list-group-item.flex-column :is(.text-muted, .dimmed) {
+  color: var(--nm-muted, #53666a) !important;
+}
+
 /* Grade report: simple flat hierarchy. */
 body.moodle-ncku-edu-tw:is(#page-grade-report-user-index, #page-grade-report-overview-index)
   .boxaligncenter.generaltable.user-grade {
