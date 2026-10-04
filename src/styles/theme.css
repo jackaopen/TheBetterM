@@ -2,6 +2,14 @@
  * Keep this fallback low-specificity: existing page-specific layouts win.
  * Only the outer panel is styled; editors, grading grids and forms stay native.
  * Embedded/popup layouts retain their compact Moodle presentation. */
+:root {
+    --site-background:
+        url("chrome-extension://__MSG_@@extension_id__/assets/site-background.png");
+    --site-header:
+        url("chrome-extension://__MSG_@@extension_id__/assets/header.jpg");
+
+}
+
 @media screen {
   :where(body.moodle-ncku-edu-tw:not(.pagelayout-embedded):not(.pagelayout-popup)) #region-main {
     background-color: var(--nm-paper, #fff);
@@ -849,7 +857,7 @@
 @media screen {
   body.moodle-ncku-edu-tw:not(.pagelayout-embedded):not(.pagelayout-popup) {
     background-color: #b9d7eb !important;
-    background-image: url("chrome-extension://__MSG_@@extension_id__/assets/site-background.png") !important;
+    background-image: var(--site-background) !important;
     background-attachment: fixed !important;
     background-size: cover !important;
     background-position: center center !important;
@@ -870,7 +878,7 @@
   }
   body.moodle-ncku-edu-tw:not(.pagelayout-embedded):not(.pagelayout-popup) #page-header
     .customimage {
-    background-image: url("chrome-extension://__MSG_@@extension_id__/assets/header.jpg") !important;
+    background-image: var(--site-header) !important;
     background-size: cover !important;
     background-position: center center !important;
     background-repeat: no-repeat !important;
