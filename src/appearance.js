@@ -12,13 +12,25 @@
     customBackground: '--site-background',
     customHeader: '--site-header'
   };
+  const imageUrls = {};
 
-  function applyImages(data) {
+  async function applyImages(data) {
     // apply by overwrite
     for (const [key, variable] of Object.entries(imageSettings)) {
       if (data[key]) {
-        document.documentElement.style.setProperty(variable, `url(${JSON.stringify(data[key])})`);
+        const blob = await(await fetch(data[key])).blob();//make it a blob img data
+        const url = URL.createObjectURL(blob);// url pointer to that address
+        const oldUrl = imageUrls[key];
+
+        document.documentElement.style.setProperty(
+          variable,
+          `url(${JSON.stringify(url)})`);
+
+        imageUrls[key] = url;
+        if (oldUrl) URL.revokeObjectURL(oldUrl);
+        
       } else {
+        if(imageUrls[key])URL.revokeObjectURL(imageUrls[key]);
         document.documentElement.style.removeProperty(variable);
       }
     }
@@ -73,7 +85,7 @@
         }
       });
     } else {// apply to moodle 
-      applyImages(data);
+      await applyImages(data);
       chrome.storage.onChanged.addListener((changes, area) => {
         if (area !== 'local') return;// ignore non local storage
         for (const key of Object.keys(imageSettings)) {
@@ -84,7 +96,16 @@
       });
     }
   }
-
-  init();
+  //after init
+  init().finally(async () => {
+    if (document.readyState === 'loading') {
+      // resolve the promise when DOMContentLoaded
+      await new Promise(resolve =>
+        document.addEventListener('DOMContentLoaded', resolve, { once: true })
+      );
+    }
+    //add to html and reveal 
+    document.documentElement.classList.add('appearance-ready');
+  });
 
 })();

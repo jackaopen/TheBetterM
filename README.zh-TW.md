@@ -80,16 +80,19 @@ TheBetterM 目前主要針對以下環境設計：
 
 ##  自訂外觀
 
-如果是從原始碼安裝或開發 TheBetterM，並透過「載入未封裝項目」載入 [`src`](./src) 資料夾，可以直接替換 `src/assets` 內的圖片。
+### 在擴充功能中更換圖片
 
-| 檔案 | 用途 |
-| --- | --- |
-| [`header.jpg`](./src/assets/header.jpg) | 頁首 / 橫幅圖片 |
-| [`site-background.png`](./src/assets/site-background.png) | 網站背景圖片 |
+1. 點擊 Chrome 工具列中的 **TheBetterM** 圖示，開啟外觀設定。
+2. 在 **Background image（背景圖片）**、**Header image（頁首圖片）** 中選擇一張或兩張圖片。
+3. 點擊 **Save（儲存）**。已開啟的 Moodle 頁面會自動套用儲存的圖片。
 
-替換圖片後請保留相同的檔名，讓現有樣式可以繼續正確載入圖片。
+> [!TIP]
+>
+> - 只選擇一張圖片時，另一張會保持原樣。圖片儲存在此裝置。
+> - 點擊 **Use defaults（恢復預設）** 可將 *兩張* 圖片重設為擴充功能的預設圖片。
+> - 建議 **Header image（頁首圖片）** 使用橫向長條圖片。
 
-### 圖片來源與用途
+### 預設圖片來源與用途
 
 - **圖片來源：** [成大素材網](https://material.ncku.edu.tw/)
 

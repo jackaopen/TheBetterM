@@ -81,17 +81,19 @@ TheBetterM should now be active when you visit NCKU Moodle.
 
 ##  Customization
 
-When running TheBetterM from source using **Load unpacked**, you can replace the images inside `src/assets`.
+### Change images in the extension
 
-| File | Used for |
-| --- | --- |
-| [`header.jpg`](./src/assets/header.jpg) | Header / banner image |
-| [`site-background.png`](./src/assets/site-background.png) | Site background |
+1. Click the **TheBetterM** icon in Chrome's toolbar to open the appearance settings.
+2. Choose a file under **Background image**, **Header image**, or both.
+3. Click **Save**. Open Moodle pages will apply the saved images automatically.
 
-Keep the same filenames after replacing the files so the existing styles can continue to locate them.
+>[!Tip]
+> - If you choose only one image, the other stays unchanged. Images are stored on this device.
+> - Click **Use defaults** to reset *both* images to the extension's defaults.
+> - Its recommended to use a enlongated image for the **Header image**.
 
 
-### Image sources and use
+### Default Image sources and use
 
 - **Photo source:** [NCKU material](https://material.ncku.edu.tw/)
 

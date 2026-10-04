@@ -9,7 +9,10 @@
         url("chrome-extension://__MSG_@@extension_id__/assets/header.jpg");
 
 }
-
+html:not(.appearance-ready) {
+  visibility: hidden;
+  background: #fff !important;
+}
 @media screen {
   :where(body.moodle-ncku-edu-tw:not(.pagelayout-embedded):not(.pagelayout-popup)) #region-main {
     background-color: var(--nm-paper, #fff);

@@ -69,3 +69,13 @@ jobs:
           compression-level: 0
           if-no-files-found: error
 
+      - name: Upload to CWS
+        uses: mnao305/chrome-extension-upload@v7.0.0
+        with:
+          file-path: TheBetterM.zip
+          extension-id: ilkjjkjdocgjpljdkikeobcclpegjlpf
+          publisher-id: e6b843e2-7596-4ef3-b280-bfd3409f65ec
+          client-id: ${{ secrets.CLIENT_ID }}
+          client-secret: ${{ secrets.CLIENT_SECRET }}
+          refresh-token: ${{ secrets.REFRESH_TOKEN }}
+          publish: false
