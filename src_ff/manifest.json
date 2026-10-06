@@ -1,0 +1,58 @@
+{
+  "manifest_version": 3,
+  "permissions": ["storage","unlimitedStorage"],
+  "name": "TheBetterM — Moodle, refreshed",
+  "version": "1.3",
+  "description": "A local visual refresh of NCKU Moodle",
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "thebetterm@jackaopen",
+      "data_collection_permissions": {
+        "required": ["none"]
+      }
+    }
+  },
+  "icons": {
+    "128": "assets/ad-enhanced-128.png"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://moodle.ncku.edu.tw/*"
+      ],
+      "css": [
+        "styles/theme.css",
+        "styles/interface.css",
+        "styles/pages.css"
+      ],
+      "run_at": "document_start",
+      "all_frames": false,
+      "js": [
+        "appearance.js",
+        "navigation.js"
+      ]
+    }
+  ],
+  "background": {
+    "scripts": ["appearance.js"]
+  },
+  "action": {
+    "default_title": "TheBetterM — Project links"
+  },
+  "web_accessible_resources": [
+    {
+      "matches": [
+        "https://moodle.ncku.edu.tw/*"
+      ],
+      "resources": [
+        "assets/header.jpg",
+        "assets/site-background.png",
+        "assets/default-avatar.svg"
+      ]
+    }
+  ],
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": true
+  }
+}
