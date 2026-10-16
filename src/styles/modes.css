@@ -247,6 +247,25 @@
           color: var(--nm-ink) !important;
           border-color: var(--nm-line) !important;
         }
+        /* Shared file tiles and selection previews paint their own light surfaces.
+         * The filename child also needs a fill when a long name expands on focus.
+         * Change only background-color to preserve missing-file indicator images. */
+        :where(.fp-thumbnail, .fp-filename-field, .fp-filename-field .fp-filename) {
+          background-color: var(--nm-paper) !important;
+          color: var(--nm-ink) !important;
+          border-color: var(--nm-line) !important;
+        }
+        .fp-thumbnail, .fp-thumbnail img {
+          border-color: var(--nm-line) !important;
+          box-shadow: none !important;
+        }
+        .fp-iconview .fp-file:is(:hover, :focus, :focus-within) :is(.fp-thumbnail, .fp-filename-field, .fp-filename),
+        .fp-iconview .fp-thumbnail:hover {
+          background-color: var(--nm-dark-hover) !important;
+        }
+        .fp-iconview .fp-file:is(:active, .selected, [aria-selected="true"]) :is(.fp-thumbnail, .fp-filename-field, .fp-filename) {
+          background-color: var(--nm-dark-selected) !important;
+        }
         #region-main {
           background-color: var(--nm-glass-strong) !important; color: var(--nm-ink) !important;
           --activity-muted: var(--nm-muted) !important;
