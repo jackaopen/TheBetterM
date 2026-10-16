@@ -1,8 +1,19 @@
 (() => {
+  let extension = globalThis.browser;
+  if (!extension) extension = chrome;
+
   const moodleOrigin = 'https://moodle.ncku.edu.tw';
+  
   // check if the current page is in the moodle domain and not in an iframe
   if (location.origin !== moodleOrigin || top !== self) return;
   const dashboardURL = moodleOrigin + '/my/';
+
+  
+  extension.storage.onChanged.addListener(function (changes) {
+    if ('dashboardRedirToDash' in changes) {
+      updateBrand();
+    }
+  });
 
   // open syllabus links in a new tab
   // search for links with data-key="coursesyllabus" and add target="_blank" and rel="noopener noreferrer"
@@ -16,13 +27,17 @@
     }
   }
 
-  function updateBrand() {
+  async function updateBrand() {
     const brand = document.querySelector('.navbar a.navbar-brand');
     // Is link object, if not, return
     if (!(brand instanceof HTMLAnchorElement)) return;
+    const RedirToDashsetting = await extension.storage.local.get({
+      dashboardRedirToDash: true
+    });
 
-    brand.href = dashboardURL;
-    brand.title = 'Go to Dashboard';
+    if (RedirToDashsetting.dashboardRedirToDash)brand.href = dashboardURL;
+    else brand.href = moodleOrigin
+
     brand.querySelector('span.site-name')?.replaceChildren('NCKU TheBetterM');
   }
 

@@ -93,6 +93,11 @@ TheBetterM should now be active when you visit NCKU Moodle.
 > - Its recommended to use a enlongated image for the **Header image**.
 
 
+### Light and dark mode
+
+Choose **Light** or **Dark** under **Mode**, then click **Save**. Green and acrylic effects are always used.
+**Use defaults** restores Light and both bundled images.
+
 ### Default Image sources and use
 
 - **Photo source:** [NCKU material](https://material.ncku.edu.tw/)

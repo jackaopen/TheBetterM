@@ -15,7 +15,8 @@
       "css": [
         "styles/theme.css",
         "styles/interface.css",
-        "styles/pages.css"
+        "styles/pages.css",
+        "styles/modes.css"
       ],
       "run_at": "document_start",
       "all_frames": false,

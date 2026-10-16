@@ -4,9 +4,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>TheBetterM — Appearance</title>
+  <link rel="stylesheet" href="styles/modes.css">
   <style>
     * { box-sizing: border-box; }
     :root { color-scheme: light; font-family: "Segoe UI", sans-serif; font-size: 15px; }
+    html:not(.appearance-ready) { visibility: hidden; }
     body { margin: 0; min-width: 340px; background: #fafbf9; color: #25312c; }
     main { width: min(520px, 100%); margin: 0 auto; padding: 28px 24px; }
     header { padding-bottom: 20px; border-bottom: 1px solid #dde2dc; }
@@ -16,7 +18,11 @@
     p { margin: 0; color: #657067; line-height: 1.6; }
     form { display: grid; gap: 18px; padding-top: 24px; }
     label { display: grid; gap: 8px; font-weight: 600; }
-    input { width: 100%; min-width: 0; padding: 8px; border: 1px solid #d3dad2; border-radius: 5px; background: #fff; color: #657067; font: inherit; font-weight: 400; }
+    input, select { width: 100%; min-width: 0; padding: 8px; border: 1px solid #d3dad2; border-radius: 5px; background: #fff; color: #657067; font: inherit; font-weight: 400; }
+    .navigation-option { margin: 24px 0; }
+    .navigation-option small { margin-top: 8px; }
+    .checkbox-option { display: flex; align-items: center; gap: 8px; }
+    .checkbox-option input { width: auto; padding: 0; flex: none; }
     input::file-selector-button { margin-right: 10px; padding: 6px 10px; border: 1px solid #d3dad2; border-radius: 3px; background: #f2f4ef; color: #25312c; font: inherit; cursor: pointer; }
     .actions { display: flex; flex-wrap: wrap; gap: 8px; }
     button { padding: 9px 14px; border: 1px solid #d3dad2; border-radius: 5px; background: #fff; color: #25312c; font: inherit; font-weight: 600; cursor: pointer; }
@@ -24,7 +30,7 @@
     button[type="submit"] { background: #365b46; border-color: #365b46; color: #fff; }
     button[type="submit"]:hover { background: #2c4c3a; }
     button:disabled { opacity: .6; cursor: wait; }
-    :is(a, button, input):focus-visible { outline: 2px solid #365b46; outline-offset: 3px; }
+    :is(a, button, input, select):focus-visible { outline: 2px solid #365b46; outline-offset: 3px; }
     small { display: block; color: #657067; font-size: 13px; line-height: 1.6; }
     #appearance-status { min-height: 20px; overflow-wrap: anywhere; }
     nav { display: grid; border-top: 1px solid #dde2dc; }
@@ -37,7 +43,7 @@
     a small { margin-top: 3px; }
   </style>
 </head>
-<body>
+<body class="appearance-settings">
   <main>
     <header>
       <h1>TheBetterM</h1>
@@ -45,6 +51,12 @@
     </header>
     <form id="appearance-form">
       <h2>Appearance</h2>
+      <label>Mode
+        <select name="themeMode">
+          <option value="light">Light</option>
+          <option value="dark">Dark</option>
+        </select>
+      </label>
       <label><h2>Background image</h2>
         <input type="file" name="customBackground" accept="image/*">
       </label>
@@ -57,6 +69,13 @@
       </div>
       <small id="appearance-status" role="status"></small>
     </form>
+    <div class="navigation-option">
+      <label class="checkbox-option" for="brandToDashboard">
+        <input type="checkbox" id="brandToDashboard" name="brandToDashboard" checked aria-describedby="brandToDashboard-help">
+        NCKU TheBetterM opens Dashboard
+      </label>
+      <small id="brandToDashboard-help">Checked: Dashboard when logged in. Unchecked: Moodle main page.</small>
+    </div>
     <nav aria-label="Project links">
       <h2>Project links</h2>
       <a href="https://github.com/jackaopen/TheBetterM" target="_blank" rel="noopener noreferrer">
