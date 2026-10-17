@@ -5,7 +5,7 @@
   @media screen {
     /* Use a dark fallback until storage resolves; the saved mode then wins. */
     html:not(.appearance-ready) { visibility: hidden !important; background: #212b35 !important; }
-    html[data-nm-mode="light"]:not(.appearance-ready) { background: #fff !important; }
+    html[data-bgtheme="light"]:not(.appearance-ready) { background: #fff !important; }
   }
 }
 @layer nm-layout {
@@ -140,13 +140,13 @@
       background-color: transparent !important;
     }
     :root { --nm-dark-photo-overlay: rgb(5 11 18 / 35%); }
-    html:not([data-nm-mode="dark"]) body.moodle-ncku-edu-tw {
+    html:not([data-bgtheme="dark"]) body.moodle-ncku-edu-tw {
       /* Slightly lighter acrylic on every role/page, including editing. */
       #nav-drawer { background-color: rgb(255 255 255 / 70%) !important; }
       .usertext { color: var(--nm-accent, #12665e) !important; }
       :is(a[href], a[href] *, .site-name, .usertext)::selection { background-color: #c4e1d6 !important; color: #0c514b !important; }
     }
-    html[data-nm-mode="dark"] {
+    html[data-bgtheme="dark"] {
       color-scheme: dark !important;
       background-color: #212b35 !important;
       /* The root paints the full canvas, including below a shorter body. */
@@ -576,7 +576,7 @@
     }
   }
   @media screen and (max-width: 600px) {
-    html[data-nm-mode="dark"] body.moodle-ncku-edu-tw:not(.appearance-settings):not(.pagelayout-embedded):not(.pagelayout-popup) {
+    html[data-bgtheme="dark"] body.moodle-ncku-edu-tw:not(.appearance-settings):not(.pagelayout-embedded):not(.pagelayout-popup) {
       #region-main { background-color: rgb(42 49 52 / 92%) !important; }
     }
   }

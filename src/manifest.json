@@ -21,7 +21,7 @@
       "run_at": "document_start",
       "all_frames": false,
       "js": [
-        "appearance.js",
+        "setting.js",
         "navigation.js"
       ]
     }

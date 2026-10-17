@@ -29,13 +29,13 @@
       "run_at": "document_start",
       "all_frames": false,
       "js": [
-        "appearance.js",
+        "setting.js",
         "navigation.js"
       ]
     }
   ],
   "background": {
-    "scripts": ["appearance.js"]
+    "scripts": ["setting.js"]
   },
   "action": {
     "default_title": "TheBetterM — Project links"

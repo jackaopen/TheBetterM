@@ -4,59 +4,60 @@
   if (!extension) extension = chrome;
 
   const form = document.getElementById('appearance-form');
-  if (location.protocol === 'moz-extension:' && !form) {
-    extension.action.onClicked.addListener(function () {
-      extension.runtime.openOptionsPage();
-    });
-    return;
-  }
-
   const html = document.documentElement;
   const status = document.getElementById('appearance-status');
   const dashboardRedirSwitch = document.getElementById('brandToDashboard');
+  // used to map the img setting 
   const imageSettings = { customBackground: '--site-background', customHeader: '--site-header' };
   const imageKeys = Object.keys(imageSettings);
   const settingKeys = ['customBackground', 'customHeader', 'themeSettings'];
+  // store the img url to avoid storing deprecated objectURL in local storage
   const imageUrls = {};
+  // avoid loading prev img 
   const imageVersions = { customBackground: 0, customHeader: 0 };
 
   function applyMode(mode) {
-    html.dataset.nmMode = 'light';
-    if (mode === 'dark') html.dataset.nmMode = 'dark';
+    html.dataset.bgtheme = 'light';
+    if (mode === 'dark') html.dataset.bgtheme = 'dark';
   }
+
   function readMode(settings) {
     if (settings) return settings.mode;
     return 'light';
   }
+
   function setBusy(busy) {
     for (const control of form.querySelectorAll('input, select, button')) {
       control.disabled = busy;
     }
   }
 
+  /**save the img to local storage and apply it to the page*/
   async function applyImage(key, imageData) {
+    
     imageVersions[key] += 1;
     const requestNumber = imageVersions[key];
     let newUrl = null;
+    
     if (imageData) {
+      // data URL -> Blob -> ObjectURL.
       const response = await fetch(imageData);
       const imageBlob = await response.blob();
-      // Ignore an old load if the user has since replaced or reset this image.
       if (requestNumber !== imageVersions[key]) return;
+      
+      // create reference to the img bolb to save css
       newUrl = URL.createObjectURL(imageBlob);
     }
-    if (newUrl) {
-      html.style.setProperty(imageSettings[key], 'url("' + newUrl + '")');
-    } else {
-      html.style.removeProperty(imageSettings[key]);
-    }
+    if (newUrl) html.style.setProperty(imageSettings[key], 'url("' + newUrl + '")');
+    else html.style.removeProperty(imageSettings[key]);
+    
     // Release the previous image so it no longer occupies memory.
     if (imageUrls[key]) URL.revokeObjectURL(imageUrls[key]);
     imageUrls[key] = newUrl;
   }
 
+  /**Selected file → readImage → data URL → storage*/
   function readImage(file) {
-    // FileReader finishes later; this Promise lets Save wait for the result.
     return new Promise(function (resolve, reject) {
       const reader = new FileReader();
       reader.onload = function () { resolve(reader.result); };
@@ -65,6 +66,7 @@
     });
   }
 
+  /**save to local storage */
   async function saveSettings(event) {
     event.preventDefault();
     setBusy(true);
@@ -79,12 +81,14 @@
       }
       await extension.storage.local.set(settings);
       form.reset();
-      form.elements.themeMode.value = mode;
+      form.elements.themeMode.value = mode;// set the select to the saved value
       applyMode(mode);
       status.textContent = 'saved.';
-    } catch (error) {
+    } 
+    catch (error) {
       status.textContent = 'Saving failed: error msg: ' + error.message;
-    } finally {
+    } 
+    finally {
       setBusy(false);
     }
   }
@@ -92,17 +96,23 @@
   async function resetSettings() {
     setBusy(true);
     try {
-      await extension.storage.local.remove(['customBackground', 'customHeader', 'themeSettings', 'stylePreset']);
+      await extension.storage.local.remove(['customBackground', 
+                                            'customHeader', 
+                                            'themeSettings']);
+
       form.reset();
       applyMode('light');
       status.textContent = 'Defaults restored.';
-    } catch (error) {
+    } 
+    catch (error) {
       status.textContent = 'Reset failed. Please try again.';
-    } finally {
+    } 
+    finally {
       setBusy(false);
     }
   }
 
+  /** Handle changes to the local storage.*/
   function settingsChanged(changes, area) {
     if (area !== 'local') return;
     if ('themeSettings' in changes) {
@@ -116,6 +126,7 @@
     }
   }
 
+  /** Save the dashboard redirect setting to local storage*/
   async function savedashboardRedir(){
     const dashboardRedirToDash = dashboardRedirSwitch.checked;
     await extension.storage.local.set({
@@ -133,16 +144,15 @@
 
   async function start() {
     document.body.classList.add('moodle-ncku-edu-tw');
+    
     try {
       const data = await extension.storage.local.get(settingKeys);
       const mode = readMode(data.themeSettings);
       applyMode(mode);
-
+      
+      // on options page, set up the form to save changes. 
       if (form) {
-        form.elements.themeMode.value = html.dataset.nmMode;
-        form.elements.themeMode.addEventListener('change', function () {
-          applyMode(form.elements.themeMode.value);
-        });
+        form.elements.themeMode.value = mode;// load the dropdown to the saved value
         form.addEventListener('submit', saveSettings);
 
         dashboardRedirSwitch.addEventListener('change',savedashboardRedir);
@@ -150,26 +160,34 @@
         
         document.getElementById('appearance-defaults').addEventListener('click', resetSettings);
       } 
-      else {-
+      
+      //On the moodle, just apply the settings.
+      else {
         extension.storage.onChanged.addListener(settingsChanged);
         // Start both image loads, then wait for both before showing the page.
         const imageLoads = [];
         for (const key of imageKeys) {
-          imageLoads.push(applyImage(key, data[key]));
+          imageLoads.push(applyImage(key, data[key]));// push promise 
         }
         await Promise.all(imageLoads);
       }
-    } catch (error) {
+    } 
+
+    catch (error) {
       console.warn(error);
       if (form) {
         status.textContent = 'Loading failed. Please reopen appearance settings.';
         setBusy(true);
       }
-    } finally {
+    } 
+
+    finally {
+      // show the page 
       html.classList.add('appearance-ready');
     }
   }
-  // Start when the page's HTML is available.
+
+  // start when avail
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', start, { once: true });
   } else {
