@@ -114,6 +114,12 @@
     color: var(--nm-ink);
     overflow-wrap: anywhere;
   }
+  /* Context headings also appear inside profile content, outside #page-header.
+   * Override Fordson's inherited blue without changing heading sizes or actions. */
+  body.moodle-ncku-edu-tw .page-context-header .page-header-headings {
+    color: var(--nm-ink, #172e32);
+    background-color: transparent !important;
+  }
   body.moodle-ncku-edu-tw:is([id^="page-"]):not(.pagelayout-embedded):not(.pagelayout-popup) #page-header h1 {
     color: var(--nm-ink) !important; font-size: clamp(1.4rem, 2.2vw, 2rem); font-weight: 700; line-height:
     1.35; letter-spacing: -.025em; margin: 0; }

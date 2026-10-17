@@ -209,6 +209,43 @@
           color: var(--nm-ink) !important;
         }
 
+        /* Lift dark authored text without replacing its hue. Text fill can use
+         * the element's own color; setting color from currentColor would inherit
+         * the parent instead and lose nested editor colors. */
+        .course-content :is(.summary, .contentwithoutlink, .activity-description):not(
+          :where([contenteditable], [contenteditable] *)):not(:has(
+            .editor_atto_wrap, .tox-tinymce, [contenteditable="true"])) {
+          &, :where(div, p, span, strong, b, em, i, u, s, small, big, font, mark,
+            h1, h2, h3, h4, h5, h6, blockquote, pre, code, ul, ol, li, dl, dt, dd,
+            table, caption, thead, tbody, tfoot, tr, th, td, sub, sup):not(:where(
+              a, a *, button, button *, .btn, .btn *, .badge, .badge *,
+              [role="button"], [role="button"] *, [contenteditable], [contenteditable] *,
+              .editor_atto_wrap *, .tox-tinymce *, svg *, math *)) {
+            -webkit-text-fill-color: oklch(from currentColor max(l, 0.75) c h) !important;
+            background-color: transparent !important;
+            text-shadow: none !important;
+          }
+          /* Text fill inherits: keep controls, media, and editors unadjusted. */
+          :where(a, a *, button, button *, .btn, .btn *, .badge, .badge *,
+            [role="button"], [role="button"] *, [contenteditable], [contenteditable] *,
+            .editor_atto_wrap, .editor_atto_wrap *, .tox-tinymce, .tox-tinymce *,
+            img, video, audio, canvas, iframe, svg, svg *, math, math *) {
+            -webkit-text-fill-color: currentColor !important;
+          }
+          /* Keep linked text in the link palette, including nested editor spans.
+           * Native hover/focus/active backgrounds remain available on the link. */
+          a[href]:not(:where(.btn, .badge)) {
+            &:not(:is(:hover, :focus-visible, :active)),
+            :where(span, strong, b, em, i, u, s, small, big, font, mark, sub, sup) {
+              background-color: transparent !important;
+              text-shadow: none !important;
+            }
+            :where(span, strong, b, em, i, u, s, small, big, font, mark, sub, sup) {
+              color: inherit !important;
+            }
+          }
+        }
+
         &:not(.appearance-settings):not(.pagelayout-embedded):not(.pagelayout-popup) {
           background: transparent !important;
           :is(#page-wrapper, #page, #region-main-box, #learningcontent) { background-color: transparent !important; }
@@ -273,6 +310,15 @@
         }
         :is(.blocks-column, [data-region="blocks-column"]) { color: var(--nm-ink) !important; }
         .block.card { background-color: var(--nm-glass) !important; }
+        /* Standalone Bootstrap utilities lack #page-header and #region-main. */
+        &:has(> .navbar.navbar-custom) {
+          > .navbar.navbar-custom .navbar-toggler-icon { filter: brightness(0) invert(1); }
+          > .container {
+            table { background-color: var(--nm-glass-strong) !important; }
+            table > :is(thead, tbody, tfoot) > tr > th[scope="col"] { background-color: #30404d !important; }
+            table > tbody > tr:nth-child(even) { background-color: rgb(43 57 69 / 72%) !important; }
+          }
+        }
         #page-header .card { background-color: var(--nm-glass) !important; }
         .dropdown-menu { background-color: var(--nm-glass-strong) !important; }
         /* Shared dropdown triggers, including open menus and mouse focus. */

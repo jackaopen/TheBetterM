@@ -679,6 +679,65 @@
     color: #fff;
   }
 
+  /* Standalone Bootstrap utilities share this shell, but have no Moodle page ID.
+   * Keep its palette and table reset separate from course containers and widgets. */
+  body.moodle-ncku-edu-tw:has(> .navbar.navbar-custom) {
+    --nm-ink: #172e32;
+    --nm-muted: #53666a;
+    --nm-accent: #12665e;
+    --nm-line: #dce5e2;
+    --nm-paper: #fff;
+    --nm-surface: #f3f6f3;
+    --nm-glass-strong: rgb(250 253 251 / 92%);
+    background-color: var(--nm-surface);
+    color: var(--nm-ink);
+    font-family: "Segoe UI", "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+
+    > .navbar.navbar-custom {
+      background: var(--nm-glass-strong);
+      color: var(--nm-ink);
+      border-color: var(--nm-line);
+      box-shadow: none;
+
+      :is(.navbar-brand, .navbar-text, .nav-link) { color: inherit; }
+      .nav-link:hover {
+        color: var(--nm-dark-link, var(--nm-accent));
+        background: var(--nm-dark-hover, rgb(210 234 222 / 60%));
+      }
+      .navbar-toggler { color: inherit; border-color: var(--nm-line); }
+    }
+
+    > .container {
+      min-width: 0;
+
+      table {
+        background: var(--nm-paper);
+        color: var(--nm-ink);
+        border-color: var(--nm-line);
+      }
+      table :is(th, td) {
+        /* The legacy table stylesheet paints cells over the table's surface. */
+        background-color: transparent;
+        color: inherit;
+        border-color: var(--nm-line);
+        font-variant-numeric: tabular-nums;
+      }
+      table tr:nth-child(even), table th[scope="col"] {
+        background-color: var(--nm-surface);
+      }
+      table th[scope="row"] { text-align: start; font-weight: 600; }
+      table h1 {
+        margin: .25rem 0;
+        font-size: clamp(1.25rem, 2.2vw, 1.75rem);
+        font-weight: 650;
+        line-height: 1.4;
+        text-align: start;
+      }
+      .chartdep { background-color: var(--nm-paper); border-color: var(--nm-line); }
+      .chartcenter { margin-inline: 0; }
+    }
+  }
+
   body#page-report-usersessions-user:not(.editing) #region-main :is(.table-responsive, .no-overflow) {
     overflow-x: auto;
     border: 1px solid var(--nm-line, #dce5e2);
