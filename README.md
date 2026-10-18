@@ -8,6 +8,8 @@
 
 <a href="https://chromewebstore.google.com/detail/thebetterm-%E2%80%94-moodle-refre/ilkjjkjdocgjpljdkikeobcclpegjlpf" target="_blank" rel="noopener noreferrer"><img alt="Chrome Web Store" src="https://img.shields.io/badge/Chrome_Web_Store-4285F4?logo=googlechrome&amp;logoColor=white"></a>
 
+<a href="https://addons.mozilla.org/zh-TW/firefox/addon/thebetterm-moodle-refreshed/"><img alt="Firefox Add-ons" src="https://img.shields.io/badge/Firefox_Add--ons-FF7139?logo=firefoxbrowser&amp;logoColor=white"></a>
+
 <a href="https://github.com/jackaopen/TheBetterM/issues"><img alt="Report an Issue" src="https://img.shields.io/badge/GitHub-Report_an_Issue-181717?logo=github"></a>
 
 </div>
@@ -16,17 +18,18 @@
 
 ## ✨ About
 
-**TheBetterM** is a Chrome extension that redesigns the appearance and layout of **NCKU Moodle** while keeping the original Moodle functionality intact.
+**TheBetterM** is a Chrome and Firefox extension that redesigns the appearance and layout of **NCKU Moodle** while keeping the original Moodle functionality intact.
 
 It focuses on visual improvements, cleaner layouts, and a few small usability changes without replacing or modifying Moodle's core functionality.
 
 ### What it changes
 
 - Refreshes Moodle's colors and backgrounds.
+- Offers light/dark modes and custom background and header images.
 - Restyles cards, panels, navigation, and other common UI elements.
 - Reorganizes parts of the layout for a cleaner interface.
 - Changes the upper-left title to **NCKU TheBetterM**.
-- Makes the title button return to the Moodle **Dashboard** (`/my/`).
+- Lets you choose whether the title button opens the **Dashboard** (`/my/`) or Moodle home page.
 - Opens syllabus links in a new tab.
 - Applies only to NCKU Moodle and does not affect unrelated websites.
 
@@ -48,6 +51,7 @@ It focuses on visual improvements, cleaner layouts, and a few small usability ch
 TheBetterM is currently designed for:
 
 - **Desktop Google Chrome**
+- **Desktop Mozilla Firefox**
 - **NCKU Moodle only**
 
 
@@ -67,7 +71,11 @@ TheBetterM is currently designed for:
 
 Get TheBetterM from the [Chrome Web Store](https://chromewebstore.google.com/detail/thebetterm-%E2%80%94-moodle-refre/ilkjjkjdocgjpljdkikeobcclpegjlpf).
 
-### Install from source
+### Firefox Add-ons
+
+Get TheBetterM from [Firefox Add-ons](https://addons.mozilla.org/zh-TW/firefox/addon/thebetterm-moodle-refreshed/).
+
+### Install from source (Chrome)
 
 1. Download or clone this repository.
 2. Open `chrome://extensions` in Google Chrome.
@@ -77,26 +85,37 @@ Get TheBetterM from the [Chrome Web Store](https://chromewebstore.google.com/det
 
 TheBetterM should now be active when you visit NCKU Moodle.
 
+### Install from source (Firefox)
+
+1. Download or clone this repository.
+2. Open `about:debugging` in Firefox.
+3. Select **This Firefox**.
+4. Click **Load Temporary Add-on**.
+5. Select [`src_ff/manifest.json`](./src_ff/manifest.json).
+
 ---
 
 ##  Customization
 
-### Change images in the extension
+### Mode and images
 
-1. Click the **TheBetterM** icon in Chrome's toolbar to open the appearance settings.
-2. Choose a file under **Background image**, **Header image**, or both.
-3. Click **Save**. Open Moodle pages will apply the saved images automatically.
+1. Click the **TheBetterM** icon in your browser's toolbar.
+2. Choose **Light** or **Dark** under **Mode**. Optionally select files for **Background image**, **Header image**, or both.
+3. Click **Save & Apply**. Open Moodle pages update automatically.
 
 >[!Tip]
 > - If you choose only one image, the other stays unchanged. Images are stored on this device.
-> - Click **Use defaults** to reset *both* images to the extension's defaults.
-> - Its recommended to use a enlongated image for the **Header image**.
+> - **Load defaults** restores Light mode and both bundled images.
+> - Use a wide image for the **Header image**.
 
+### Dashboard redirect
 
-### Light and dark mode
+The **NCKU TheBetterM opens Dashboard** checkbox controls the upper-left title link:
 
-Choose **Light** or **Dark** under **Mode**, then click **Save**. Green and acrylic effects are always used.
-**Use defaults** restores Light and both bundled images.
+- **Checked (default):** opens the Dashboard when logged in.
+- **Unchecked:** opens the Moodle home page.
+
+This option saves automatically.
 
 ### Default Image sources and use
 
@@ -115,6 +134,7 @@ The styling is separated into several CSS files to make different parts of the i
 | `styles/theme.css` | Colors, backgrounds, glass surfaces, and shared theme styling |
 | `styles/interface.css` | Navigation, dialogs, controls, menus, layout, spacing, and responsive behavior |
 | `styles/pages.css` | Activities, statistics, forms, messaging, and page-specific styling |
+| `styles/modes.css` | Light/dark mode overrides and shared layout adjustments |
 
 ---
 
