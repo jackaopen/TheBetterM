@@ -209,10 +209,13 @@
           color: var(--nm-ink) !important;
         }
 
-        /* Lift dark authored text without replacing its hue. Text fill can use
+        /* Shared rendered rich text can carry inline white backgrounds on any page.
+         * Lift dark authored text without replacing its hue. Text fill can use
          * the element's own color; setting color from currentColor would inherit
          * the parent instead and lose nested editor colors. */
-        .course-content :is(.summary, .contentwithoutlink, .activity-description):not(
+        :is(.course-content :is(.summary, .contentwithoutlink, .activity-description),
+          .no-overflow, .text_to_html, .formattedtext, .mod_introbox,
+          .forumpost .post-content-container, .userprofile .description):not(
           :where([contenteditable], [contenteditable] *)):not(:has(
             .editor_atto_wrap, .tox-tinymce, [contenteditable="true"])) {
           &, :where(div, p, span, strong, b, em, i, u, s, small, big, font, mark,
@@ -451,6 +454,23 @@
           background-color: var(--nm-paper) !important;
           color: var(--nm-ink) !important;
           border-color: var(--nm-line) !important;
+        }
+        /* Moodle autocomplete is shared by forms on all pages, including modals.
+         * Its list and keyboard-selected options have their own light fills. */
+        :is(.form-autocomplete-suggestions, [data-region="form_autocomplete-suggestions"]) {
+          background-color: var(--nm-paper) !important;
+          color: var(--nm-ink) !important;
+          border-color: var(--nm-line) !important;
+          > :is(li, [role="option"]) {
+            background-color: transparent !important;
+            color: var(--nm-ink) !important;
+          }
+          > :is(li, [role="option"]):is(:hover, :focus, :focus-within) {
+            background-color: var(--nm-dark-hover) !important;
+          }
+          > :is(li, [role="option"])[aria-selected="true"] {
+            background-color: var(--nm-dark-selected) !important;
+          }
         }
         /* Shared notification/message markup; generated popover IDs change on reload. */
         :is(.popover-region-container, [data-region="popover-region-container"], .popover, .message-app,
