@@ -22,6 +22,7 @@
       "all_frames": false,
       "js": [
         "setting.js",
+        "captsolver.js",
         "navigation.js"
       ]
     }

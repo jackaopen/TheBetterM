@@ -45,7 +45,40 @@
   function initializeNavigation() {
     updateSyllabusLinks();
     updateBrand();
+    setupcaptsolver();
   }
+
+  function setupcaptsolver() {
+    const image = document.getElementById("imgcode");
+    const input = document.getElementById("reg_vcode");
+    if (!image || !input) return;
+    let latestRead = 0;
+
+    async function fillCode() {
+      const currentRead = ++latestRead;
+
+      try {
+        const answer = await readDigits(image);
+        if (currentRead !== latestRead) return;
+
+        input.value = answer;
+        input.dispatchEvent(new Event("input", { bubbles: true }));
+        input.dispatchEvent(new Event("change", { bubbles: true }));
+      } catch (error) {
+        console.error("Reading verification code failed:", error);
+      }
+    }
+    image.addEventListener("load", fillCode);
+    input.addEventListener("focus", () => {
+      if (!input.value) fillCode();
+    });
+
+    if (image.complete && image.naturalWidth) {
+      fillCode();
+    }
+  }
+
+
 
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initializeNavigation, { once: true });

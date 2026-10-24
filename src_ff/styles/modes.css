@@ -9,6 +9,15 @@
   }
 }
 @layer nm-layout {
+  @media screen and (forced-colors: none) {
+    /* Firefox's native autofill background overrides background-color.
+     * Paint the themed surface above it, keeping autofill and focus outlines. */
+    body.moodle-ncku-edu-tw:is(#page-login-index, #page-site-index) #login input:autofill {
+      box-shadow: inset 0 0 0 1000px var(--nm-paper, #fff) !important;
+      -webkit-text-fill-color: var(--nm-ink, #172e32) !important;
+      caret-color: var(--nm-ink, #172e32) !important;
+    }
+  }
   @media screen {
     body.moodle-ncku-edu-tw {
       /* Raise the shared panels owning an open dropdown, including glass layers.
@@ -631,11 +640,11 @@
         }
         &.appearance-settings {
           :is(p, small) { color: var(--nm-muted) !important; }
-          :is(header, nav, a + a, button) { border-color: var(--nm-line) !important; }
-          button:not([type="submit"]), input::file-selector-button {
+            :is(header, nav, a + a, button:not(.settings-tab)) { border-color: var(--nm-line) !important; }
+            button:not([type="submit"]):not(.settings-tab), input::file-selector-button {
             background-color: var(--nm-paper) !important; color: var(--nm-ink) !important; border-color: var(--nm-line) !important;
           }
-          button:not([type="submit"]):hover, input::file-selector-button:hover { background-color: #30404d !important; }
+            button:not([type="submit"]):not(.settings-tab):hover, input::file-selector-button:hover { background-color: #30404d !important; }
           :is(a, button, input, select):focus-visible { outline-color: var(--nm-dark-link) !important; }
         }
       }

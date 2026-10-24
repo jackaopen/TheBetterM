@@ -6,11 +6,11 @@
 
 [English](./README.md) | [繁體中文](./README.zh-TW.md)
 
-<a href="https://chromewebstore.google.com/detail/thebetterm-%E2%80%94-moodle-refre/ilkjjkjdocgjpljdkikeobcclpegjlpf" target="_blank" rel="noopener noreferrer"><img alt="Chrome Web Store" src="https://img.shields.io/badge/Chrome_Web_Store-4285F4?logo=googlechrome&amp;logoColor=white"></a>
-
-<a href="https://addons.mozilla.org/zh-TW/firefox/addon/thebetterm-moodle-refreshed/"><img alt="Firefox Add-ons" src="https://img.shields.io/badge/Firefox_Add--ons-FF7139?logo=firefoxbrowser&amp;logoColor=white"></a>
-
-<a href="https://github.com/jackaopen/TheBetterM/issues"><img alt="Report an Issue" src="https://img.shields.io/badge/GitHub-Report_an_Issue-181717?logo=github"></a>
+<p>
+  <a href="https://chromewebstore.google.com/detail/thebetterm-%E2%80%94-moodle-refre/ilkjjkjdocgjpljdkikeobcclpegjlpf" target="_blank" rel="noopener noreferrer"><img alt="Chrome Web Store" src="https://img.shields.io/badge/Chrome_Web_Store-4285F4?style=for-the-badge&amp;logo=googlechrome&amp;logoColor=white"></a>
+  <a href="https://addons.mozilla.org/zh-TW/firefox/addon/thebetterm-moodle-refreshed/" target="_blank" rel="noopener noreferrer"><img alt="Firefox Add-ons" src="https://img.shields.io/badge/Firefox_Add--ons-FF7139?style=for-the-badge&amp;logo=firefoxbrowser&amp;logoColor=white"></a>
+  <a href="https://github.com/jackaopen/TheBetterM/issues" target="_blank" rel="noopener noreferrer"><img alt="Report an Issue" src="https://img.shields.io/badge/Report_an_Issue-181717?style=for-the-badge&amp;logo=github&amp;logoColor=white"></a>
+</p>
 
 </div>
 
@@ -20,7 +20,7 @@
 
 **TheBetterM** is a Chrome and Firefox extension that redesigns the appearance and layout of **NCKU Moodle** while keeping the original Moodle functionality intact.
 
-It focuses on visual improvements, cleaner layouts, and a few small usability changes without replacing or modifying Moodle's core functionality.
+It focuses on visual improvements, cleaner layouts, and small usability changes, including local verification-code autofill, without replacing Moodle's core functionality.
 
 ### What it changes
 
@@ -31,6 +31,7 @@ It focuses on visual improvements, cleaner layouts, and a few small usability ch
 - Changes the upper-left title to **NCKU TheBetterM**.
 - Lets you choose whether the title button opens the **Dashboard** (`/my/`) or Moodle home page.
 - Opens syllabus links in a new tab.
+- Automatically reads and fills Moodle's four-digit image verification code locally.
 - Applies only to NCKU Moodle and does not affect unrelated websites.
 
  **Keep Moodle's original functionality, but give it a better interface.**
@@ -99,7 +100,7 @@ TheBetterM should now be active when you visit NCKU Moodle.
 
 ### Mode and images
 
-1. Click the **TheBetterM** icon in your browser's toolbar.
+1. Click the **TheBetterM** icon in your browser's toolbar and open the **Appearance** tab.
 2. Choose **Light** or **Dark** under **Mode**. Optionally select files for **Background image**, **Header image**, or both.
 3. Click **Save & Apply**. Open Moodle pages update automatically.
 
@@ -110,12 +111,20 @@ TheBetterM should now be active when you visit NCKU Moodle.
 
 ### Dashboard redirect
 
-The **NCKU TheBetterM opens Dashboard** checkbox controls the upper-left title link:
+The **Site logo opens Dashboard** switch in **Appearance** controls the upper-left title link:
 
 - **Checked (default):** opens the Dashboard when logged in.
 - **Unchecked:** opens the Moodle home page.
 
 This option saves automatically.
+
+### Verification-code autofill (CAPTCHA)
+
+When a Moodle page contains the supported four-digit image CAPTCHA, TheBetterM reads the image and fills the verification-code field automatically. It runs when the image loads or refreshes, and retries when you focus an empty code field.
+
+- Recognition uses the browser's canvas and bundled digit templates, entirely on your device. No API key or external solver service is needed.
+- Autofill is enabled automatically; there is no separate setting. It fills only the code field and does not submit the form or log in for you.
+- This supports Moodle's four-digit image CAPTCHA only.
 
 ### Default Image sources and use
 
@@ -127,7 +136,7 @@ The included images have been visually modified and are used solely to customize
 
 ##  Project Structure
 
-The styling is separated into several CSS files to make different parts of the interface easier to maintain.
+Main source files and their responsibilities:
 
 | Source | Responsibility |
 | --- | --- |
@@ -135,6 +144,7 @@ The styling is separated into several CSS files to make different parts of the i
 | `styles/interface.css` | Navigation, dialogs, controls, menus, layout, spacing, and responsive behavior |
 | `styles/pages.css` | Activities, statistics, forms, messaging, and page-specific styling |
 | `styles/modes.css` | Light/dark mode overrides and shared layout adjustments |
+| `captsolver.js` | Local recognition of Moodle's four-digit image CAPTCHA; `navigation.js` connects it to the image and code field |
 
 ---
 

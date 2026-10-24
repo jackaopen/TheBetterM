@@ -30,14 +30,13 @@
       "all_frames": false,
       "js": [
         "setting.js",
+        "captsolver.js",
         "navigation.js"
       ]
     }
   ],
-  "background": {
-    "scripts": ["setting.js"]
-  },
   "action": {
+    "default_popup": "options.html",
     "default_title": "TheBetterM — Project links"
   },
   "web_accessible_resources": [

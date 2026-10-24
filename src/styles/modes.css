@@ -631,11 +631,11 @@
         }
         &.appearance-settings {
           :is(p, small) { color: var(--nm-muted) !important; }
-          :is(header, nav, a + a, button) { border-color: var(--nm-line) !important; }
-          button:not([type="submit"]), input::file-selector-button {
+            :is(header, nav, a + a, button:not(.settings-tab)) { border-color: var(--nm-line) !important; }
+            button:not([type="submit"]):not(.settings-tab), input::file-selector-button {
             background-color: var(--nm-paper) !important; color: var(--nm-ink) !important; border-color: var(--nm-line) !important;
           }
-          button:not([type="submit"]):hover, input::file-selector-button:hover { background-color: #30404d !important; }
+            button:not([type="submit"]):not(.settings-tab):hover, input::file-selector-button:hover { background-color: #30404d !important; }
           :is(a, button, input, select):focus-visible { outline-color: var(--nm-dark-link) !important; }
         }
       }

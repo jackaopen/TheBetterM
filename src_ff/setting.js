@@ -4,13 +4,6 @@
   if (!extension) extension = chrome;
 
   const form = document.getElementById('appearance-form');
-  if (location.protocol === 'moz-extension:' && !form) {
-    extension.action.onClicked.addListener(function () {
-      extension.runtime.openOptionsPage();
-    });
-    return;
-  }
-
   const html = document.documentElement;
   const status = document.getElementById('appearance-status');
   const dashboardRedirSwitch = document.getElementById('brandToDashboard');
