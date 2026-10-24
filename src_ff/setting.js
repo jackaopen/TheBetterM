@@ -4,6 +4,30 @@
   if (!extension) extension = chrome;
 
   const form = document.getElementById('appearance-form');
+  if (location.protocol === 'moz-extension:' && !form) {
+    
+    //register the click event to open the options page when the extension icon is clicked.
+    extension.action.onClicked.addListener(async function () {
+  
+      //find existing page with ext id based url
+      const url = extension.runtime.getURL('options.html');
+      const existing = extension.extension.getViews({ type: 'tab' }).find(view => view.location.href === url);
+      
+      //if found, focus it; otherwise, open a new tab with the options page
+      if (existing) {
+        const settingsWindow = await existing.browser.windows.getCurrent();
+        await extension.windows.update(settingsWindow.id, { focused: true });
+        return;
+      }
+      await extension.windows.create({
+        url,
+        type: 'popup', width: 480, height: 700
+      });
+      return;
+    });
+    return;
+  }
+
   const html = document.documentElement;
   const status = document.getElementById('appearance-status');
   const dashboardRedirSwitch = document.getElementById('brandToDashboard');
