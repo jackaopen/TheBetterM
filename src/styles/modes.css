@@ -1,0 +1,649 @@
+/* Shared header alignment and mode overrides retain the green accent and blur.
+ * Layered !important rules override the original page-specific declarations. */
+@layer nm-loading, nm-layout, nm-dark;
+@layer nm-loading {
+  @media screen {
+    /* Use a dark fallback until storage resolves; the saved mode then wins. */
+    html:not(.appearance-ready) { visibility: hidden !important; background: #212b35 !important; }
+    html[data-bgtheme="light"]:not(.appearance-ready) { background: #fff !important; }
+  }
+}
+@layer nm-layout {
+  @media screen {
+    body.moodle-ncku-edu-tw {
+      /* Raise the shared panels owning an open dropdown, including glass layers.
+       * Keep navbar/modal overlay layers and inner scrolling widgets native. */
+      :where(#page-header, #page-content, #region-main-box, #region-main,
+        .blocks-column, [data-region="blocks-column"], .card, .card-body, .box,
+        .generalbox, .userprofile, .profile_tree, .node_category, .forumpost, .que,
+        .mform, .moodle-actionmenu, .dropdown, .dropup, .dropleft, .dropright,
+        .btn-group, .btn-group-vertical):has(.dropdown-menu.show) {
+        position: relative;
+        z-index: 1000 !important;
+        &:not(:where(.overflow-auto, .overflow-scroll, .table-responsive, .no-overflow,
+          .gradeparent, .filemanager, .filepicker, .fp-content, .editor_atto_wrap,
+          .tox-tinymce, [contenteditable="true"])) { overflow: visible !important; }
+      }
+      .modal-content:has(.dropdown-menu.show) { overflow: visible !important; }
+      /* Context headers are reused for profiles, courses and staff interfaces. */
+      .page-context-header {
+        display: flex !important; align-items: center !important; flex-wrap: wrap; gap: 12px;
+        .page-header-image { float: none !important; margin: 0 !important; }
+        .page-header-headings { float: none !important; margin-block: 0 !important; min-width: 0; }
+        .header-button-group {
+          display: inline-flex !important; float: none !important; align-items: center; align-self: center; flex-wrap: wrap; gap: .5rem;
+          > a { display: inline-flex !important; align-items: center; top: auto !important; }
+          > a > span { display: inline-flex; align-items: center; gap: .4rem; }
+          :is(.icon, .iconsmall) { margin: 0 !important; }
+        }
+      }
+      .navbar {
+        --nm-header-control-size: 36px;
+        .navbar-nav { align-items: center; gap: .375rem; }
+        .navbar-nav > :is(.nav-item, .d-none.d-lg-block) { align-self: center; line-height: normal; }
+        /* Do not override display utilities: desktop-only search stays hidden on mobile. */
+        .navbar-nav > .nav-item { display: flex; align-items: center; gap: .375rem; }
+        .popover-region { float: none !important; margin: 0 !important; }
+        .popover-region-toggle {
+          display: inline-flex !important; align-items: center; justify-content: center;
+          width: var(--nm-header-control-size) !important; height: var(--nm-header-control-size); padding: 0 !important;
+        }
+        .usermenu .dropdown-toggle {
+          display: inline-flex !important; align-items: center; gap: .25rem;
+          min-height: var(--nm-header-control-size); padding: 0 .375rem !important; border-radius: 6px;
+        }
+        .usermenu .userbutton { display: inline-flex; align-items: center; gap: .375rem; }
+        .usermenu .usertext { margin: 0 !important; height: auto !important; line-height: 1.25; }
+        .usermenu .avatars { vertical-align: middle; line-height: 0; }
+        .usermenu img.userpicture { width: 35px !important; height: 35px !important; object-fit: cover; margin: 0 !important; vertical-align: middle; }
+        .usermenu .dropdown-toggle::after { align-self: center; margin-left: .25rem; }
+        .popover-region-toggle .icon { margin: 0 !important; }
+        .count-container { top: 2px !important; right: 2px !important; }
+        .search-input-wrapper {
+          display: inline-flex !important; align-items: center; float: none !important; margin: 0 !important;
+          min-height: var(--nm-header-control-size);
+          &:not(.expanded) { width: var(--nm-header-control-size) !important; }
+          > div { display: flex; align-items: center; justify-content: center; flex: 0 0 var(--nm-header-control-size); }
+          > div .icon { margin: 0 !important; }
+          > form { margin-left: 0 !important; min-width: 0; }
+        }
+        .simplesearchform :is(.btn-open, .btn-close, .btn-submit) {
+          display: inline-flex; align-items: center; justify-content: center; min-height: var(--nm-header-control-size);
+        }
+      }
+      &.userloggedinas .navbar .usermenu .avatar.current img.userpicture { width: 20px !important; height: 20px !important; }
+      .modal-content .close { color: var(--nm-ink, #172e32) !important; text-shadow: none !important; opacity: 1 !important; }
+      /* Match Fordson's native dashboard structure across capabilities,
+       * including modals inserted after load; no JavaScript classes needed. */
+      .modal:has(> .modal-dialog > .modal-content > .modal-body > :is(.studentdashboard, .teacherdashboard)) { transition: none !important; overflow-y: hidden !important; }
+      .modal-dialog:has(> .modal-content > .modal-body > :is(.studentdashboard, .teacherdashboard)) {
+        transition: none !important; transform: none !important;
+        width: calc(100% - 2rem) !important; max-width: 1200px !important; margin: 1.5rem auto !important;
+        .modal-content { background: var(--nm-glass-strong, rgb(255 255 255 / 92%)) !important; }
+        .modal-body { padding: clamp(16px, 2vw, 24px) !important; padding-top: 2.75rem !important; max-height: calc(100dvh - 3rem - 2px); overflow-y: auto; overscroll-behavior-y: contain; }
+        .modal-body > .close { position: absolute; top: .75rem; right: .75rem; width: 28px; height: 28px; z-index: 1; }
+      }
+      :is(.studentdashboard, .teacherdashboard) {
+        padding: 0 !important;
+        > .container-fluid { padding: 0 !important; }
+        .row { margin: 0 !important; gap: 1rem; }
+        > .container-fluid > .row:has(> [class*="col-"] > .dashtitle) { display: grid !important; grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr)); }
+        > .container-fluid > .row:has(> [class*="col-"] > .dashtitle) > [class*="col-"] {
+          width: 100% !important; max-width: none !important; min-width: 0; padding: 1rem !important;
+          background: var(--nm-glass, rgb(255 255 255 / 76%)); border: 1px solid var(--nm-line, #dce5e2); border-radius: 10px;
+        }
+        .dashtitle h3 { display: flex; align-items: center; gap: .5rem; font-size: 1.25rem !important; line-height: 1.4 !important; margin: 0 0 .75rem !important; }
+        .dashtitle h3 .fa { float: none !important; flex: 0 0 1.5rem; width: 1.5rem; padding: 0 !important; font-size: 1.25rem; text-align: center; }
+        .dashtitle p { color: var(--nm-muted, #53666a); margin-bottom: .75rem; }
+        .card-block { padding: 0 !important; overflow-wrap: anywhere; }
+        .card-block > :last-child { margin-bottom: 0; }
+        .list-group-item { padding: .75rem !important; overflow-wrap: anywhere; }
+        .staffmember { display: flex; align-items: flex-start; gap: .75rem; }
+        .staffmember img.userpicture { float: none !important; width: 48px !important; height: 48px !important; margin: 0 !important; object-fit: cover; flex-shrink: 0; }
+        .staffinfo { flex: 1; min-width: 0; order: -1; }
+        .staffinfo h4 { font-size: 1.125rem !important; margin-bottom: .5rem !important; }
+        .staffinfo p { margin: 0 !important; }
+        .coursestafflisting .list-group + .list-group { margin-top: .75rem; }
+      }
+      .studentdashboard {
+        > .container-fluid > .row:has(> :is(.studentgradebook, .studentadministration), > [class*="col-"] > .studentdashboardtextbox) { align-items: center; justify-content: flex-end; margin-bottom: 1rem !important; }
+        > .container-fluid > .row > [class*="col-"]:has(> .studentdashboardtextbox) { flex: 1 1 16rem !important; max-width: none !important; padding: 0 !important; }
+        :is(.studentgradebook, .studentadministration) {
+          display: flex; align-items: center; gap: .75rem; flex: 0 1 auto !important; max-width: none !important; padding: .5rem .75rem !important;
+          border: 1px solid var(--nm-line, #dce5e2); border-radius: 8px;
+          p { margin: 0 !important; }
+          > a { order: -1; line-height: 1; }
+          .fa { font-size: 1.75rem !important; }
+        }
+        .studentprogress {
+          padding: 1rem 0 0 !important; font-weight: 600;
+          .progress { position: relative; height: 2rem !important; margin-top: .5rem; border-radius: 1rem !important; border-color: var(--nm-line, #dce5e2) !important; background: var(--nm-progress-track, var(--nm-line, #dce5e2)) !important; }
+          .progress-bar { position: static; overflow: visible; background-color: var(--nm-accent, #12665e) !important; }
+          .progress-bar .small {
+            position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: max-content; max-width: calc(100% - 1rem);
+            padding: .125rem .5rem; border-radius: 1rem; font-size: .875rem !important; line-height: 1.25;
+            color: var(--nm-ink, #172e32) !important; background: var(--nm-paper, #fff);
+          }
+        }
+      }
+    }
+  }
+  @media screen and (min-width: 481px) {
+    body.moodle-ncku-edu-tw .navbar .popover-region-container { top: 100% !important; }
+  }
+}
+@layer nm-dark {
+  @media screen {
+    /* Fordson's a:focus stays yellow while a clicked link waits for navigation.
+     * Keep keyboard focus and component states; later dark hover/press rules win. */
+    body.moodle-ncku-edu-tw :where(a[href]:focus:not(:focus-visible):not(.btn):not(.badge):not(.dropdown-item):not(.dropdown-toggle):not(.list-group-item):not(.nav-link):not(.page-link)) {
+      background-color: transparent !important;
+    }
+    :root { --nm-dark-photo-overlay: rgb(5 11 18 / 35%); }
+    html:not([data-bgtheme="dark"]) body.moodle-ncku-edu-tw {
+      /* Slightly lighter acrylic on every role/page, including editing. */
+      #nav-drawer { background-color: rgb(255 255 255 / 70%) !important; }
+      .usertext { color: var(--nm-accent, #12665e) !important; }
+      :is(a[href], a[href] *, .site-name, .usertext)::selection { background-color: #c4e1d6 !important; color: #0c514b !important; }
+    }
+    html[data-bgtheme="dark"] {
+      color-scheme: dark !important;
+      background-color: #212b35 !important;
+      /* The root paints the full canvas, including below a shorter body. */
+      &:has(body.moodle-ncku-edu-tw:not(.appearance-settings):not(.pagelayout-embedded):not(.pagelayout-popup)) {
+        background-image: var(--nm-dark-background, linear-gradient(var(--nm-dark-photo-overlay), var(--nm-dark-photo-overlay)), var(--site-background)) !important;
+        background-size: cover !important;
+        background-position: center !important;
+        background-repeat: no-repeat !important;
+        background-attachment: fixed !important;
+      }
+
+      body.moodle-ncku-edu-tw {
+        --nm-ink: #ebf0ee !important;
+        --nm-muted: #b7c1bd !important;
+        --nm-accent: #1c7068 !important;
+        --nm-paper: #2c3437 !important;
+        --nm-surface: #212b35 !important;
+        /* Subtle separators, like light mode's translucent frame borders. */
+        --nm-line: rgb(183 198 211 / 12%) !important;
+        --nm-progress-track: #496066 !important;
+        --nm-glass: rgb(42 49 52 / 72%) !important;
+        --nm-glass-strong: rgb(42 49 52 / 88%) !important;
+        --nm-dark-link: #a2e8dc;
+        --nm-dark-visited: #9bc7bd;
+        --nm-dark-hover: rgb(54 87 81 / 80%);
+        --nm-dark-selected: rgb(46 78 71 / 88%);
+        color: var(--nm-ink) !important;
+        background-color: var(--nm-surface) !important;
+
+        /* Shared native frames and dividers, including staff/admin utilities.
+         * Change only color; retain border geometry and semantic state colors. */
+        :where(.border, .border-top, .border-right, .border-bottom, .border-left,
+          .box, .generalbox, .panel, .panel-body, .loginbox, .subcontent, .chartdep,
+          table, .table-responsive, .gradeparent, .card-footer, .modal-header,
+          .modal-footer, .moodle-dialogue-bd, [role="dialog"], .dropdown-divider,
+          .editor_atto_wrap, .tox-tinymce, .filemanager, .filepicker, .fp-pathbar,
+          .fp-content, .nav-tabs, hr,
+          .nav-tabs .nav-link:is(:hover, .active)):not(:where(.border-primary,
+          .border-success, .border-danger, .border-warning, .border-info,
+          .is-valid, .is-invalid, [aria-invalid="true"])) {
+          border-color: var(--nm-line) !important;
+        }
+
+        /* Course formats use fixed light borders instead of --nm-line.
+         * Cover old and new Moodle structures without changing their layout. */
+        .course-content :where(li.section.main:not(.current), .section-summary,
+          .section-navigation, .section-go-link, .course-section, .section-item,
+          .activity-item, li.activity):not(:where(.alert, .is-valid, .is-invalid,
+          [aria-invalid="true"])) {
+          border-color: var(--nm-line) !important;
+        }
+        /* Section spacing already separates content; avoid boxes inside a box. */
+        .course-content :where(li.section.main:not(.current), .section-summary,
+          .course-section:not(.current), .course-section:not(.current) > .section-item) {
+          background: transparent !important;
+          border-color: transparent !important;
+          box-shadow: none !important;
+        }
+        .course-content :is(.sectionname, .sectionname a:not(:hover):not(:focus-visible):not(:active)) {
+          color: var(--nm-ink) !important;
+        }
+
+        /* Shared rendered rich text can carry inline white backgrounds on any page.
+         * Lift dark authored text without replacing its hue. Text fill can use
+         * the element's own color; setting color from currentColor would inherit
+         * the parent instead and lose nested editor colors. */
+        :is(.course-content :is(.summary, .contentwithoutlink, .activity-description),
+          .no-overflow, .text_to_html, .formattedtext, .mod_introbox,
+          .forumpost .post-content-container, .userprofile .description):not(
+          :where([contenteditable], [contenteditable] *)):not(:has(
+            .editor_atto_wrap, .tox-tinymce, [contenteditable="true"])) {
+          &, :where(div, p, span, strong, b, em, i, u, s, small, big, font, mark,
+            h1, h2, h3, h4, h5, h6, blockquote, pre, code, ul, ol, li, dl, dt, dd,
+            table, caption, thead, tbody, tfoot, tr, th, td, sub, sup):not(:where(
+              a, a *, button, button *, .btn, .btn *, .badge, .badge *,
+              [role="button"], [role="button"] *, [contenteditable], [contenteditable] *,
+              .editor_atto_wrap *, .tox-tinymce *, svg *, math *)) {
+            -webkit-text-fill-color: oklch(from currentColor max(l, 0.75) c h) !important;
+            background-color: transparent !important;
+            text-shadow: none !important;
+          }
+          /* Text fill inherits: keep controls, media, and editors unadjusted. */
+          :where(a, a *, button, button *, .btn, .btn *, .badge, .badge *,
+            [role="button"], [role="button"] *, [contenteditable], [contenteditable] *,
+            .editor_atto_wrap, .editor_atto_wrap *, .tox-tinymce, .tox-tinymce *,
+            img, video, audio, canvas, iframe, svg, svg *, math, math *) {
+            -webkit-text-fill-color: currentColor !important;
+          }
+          /* Keep linked text in the link palette, including nested editor spans.
+           * Native hover/focus/active backgrounds remain available on the link. */
+          a[href]:not(:where(.btn, .badge)) {
+            &:not(:is(:hover, :focus-visible, :active)),
+            :where(span, strong, b, em, i, u, s, small, big, font, mark, sub, sup) {
+              background-color: transparent !important;
+              text-shadow: none !important;
+            }
+            :where(span, strong, b, em, i, u, s, small, big, font, mark, sub, sup) {
+              color: inherit !important;
+            }
+          }
+        }
+
+        &:not(.appearance-settings):not(.pagelayout-embedded):not(.pagelayout-popup) {
+          background: transparent !important;
+          :is(#page-wrapper, #page, #region-main-box, #learningcontent) { background-color: transparent !important; }
+          #page-content {
+            /* One quiet outer wash, rather than another blue framed panel. */
+            background: rgb(42 49 52 / 20%) !important;
+            border-color: transparent !important;
+            box-shadow: none !important;
+            backdrop-filter: blur(10px) saturate(85%) !important;
+          }
+        }
+        :is(h1, h2, h3, h4, h5, h6, label, legend, .col-form-label, .activityname, .coursename,
+          .tree_item, .block-title, .header-button-title, .popover-region-header-text, .moodle-dialogue-hd .closebutton) {
+          color: var(--nm-ink) !important;
+        }
+        :where(a:not(.btn):not(.badge):not(.text-danger), .btn-link, .site-name) {
+          color: var(--nm-dark-link) !important;
+        }
+        .usertext { color: var(--nm-dark-link) !important; }
+        a[href]:not(:where(.btn, .badge, .text-danger, .text-muted, .dimmed, .dropdown-item, .dropdown-toggle, .nav-link, .list-group-item)):visited {
+          color: var(--nm-dark-visited) !important;
+          :is(.site-name, .activityname, .instancename, .coursename, .header-button-title) { color: var(--nm-dark-visited) !important; }
+        }
+        :is(#nav-drawer, .drawer, .block_navigation, .block_settings, .blocks-column, [data-region="blocks-column"]) :is(.icon, .fa) {
+          color: var(--nm-dark-link) !important;
+        }
+        :is(.text-muted, .dimmed, .activity-description, .profile_tree dt,
+          .blocks-column small, [data-region="blocks-column"] small) {
+          color: var(--nm-muted) !important;
+        }
+        :where(.card, .modal-content, .dropdown-menu, .popover, .moodle-dialogue-wrap,
+          .popover-region-container, .search-results, .userprofile, .profile_tree,
+          .profile_tree section, .profile_tree .node_category,
+          .course_category_tree .category[data-depth="1"], .fp-repo-items, .fp-content, .bg-white, .bg-light) {
+          background-color: var(--nm-paper) !important;
+          color: var(--nm-ink) !important;
+          border-color: var(--nm-line) !important;
+        }
+        /* Shared file tiles and selection previews paint their own light surfaces.
+         * The filename child also needs a fill when a long name expands on focus.
+         * Change only background-color to preserve missing-file indicator images. */
+        :where(.fp-thumbnail, .fp-filename-field, .fp-filename-field .fp-filename) {
+          background-color: var(--nm-paper) !important;
+          color: var(--nm-ink) !important;
+          border-color: var(--nm-line) !important;
+        }
+        .fp-thumbnail, .fp-thumbnail img {
+          border-color: var(--nm-line) !important;
+          box-shadow: none !important;
+        }
+        .fp-iconview .fp-file:is(:hover, :focus, :focus-within) :is(.fp-thumbnail, .fp-filename-field, .fp-filename),
+        .fp-iconview .fp-thumbnail:hover {
+          background-color: var(--nm-dark-hover) !important;
+        }
+        .fp-iconview .fp-file:is(:active, .selected, [aria-selected="true"]) :is(.fp-thumbnail, .fp-filename-field, .fp-filename) {
+          background-color: var(--nm-dark-selected) !important;
+        }
+        #region-main {
+          background-color: var(--nm-glass-strong) !important; color: var(--nm-ink) !important;
+          --activity-muted: var(--nm-muted) !important;
+          --activity-soft: rgb(43 57 69 / 68%) !important;
+        }
+        :is(.blocks-column, [data-region="blocks-column"]) { color: var(--nm-ink) !important; }
+        .block.card { background-color: var(--nm-glass) !important; }
+        /* Standalone Bootstrap utilities lack #page-header and #region-main. */
+        &:has(> .navbar.navbar-custom) {
+          > .navbar.navbar-custom .navbar-toggler-icon { filter: brightness(0) invert(1); }
+          > .container {
+            table { background-color: var(--nm-glass-strong) !important; }
+            table > :is(thead, tbody, tfoot) > tr > th[scope="col"] { background-color: #30404d !important; }
+            table > tbody > tr:nth-child(even) { background-color: rgb(43 57 69 / 72%) !important; }
+          }
+        }
+        #page-header .card { background-color: var(--nm-glass) !important; }
+        .dropdown-menu { background-color: var(--nm-glass-strong) !important; }
+        /* Shared dropdown triggers, including open menus and mouse focus. */
+        :where(.dropdown-toggle:not(.btn-primary):not(.btn-danger):not(.btn-success):not(.btn-warning):not(.btn-info)) {
+          background-color: var(--nm-paper) !important; color: var(--nm-ink) !important; border-color: var(--nm-line) !important;
+        }
+        :where(.dropdown, .btn-group).show > .dropdown-toggle:where(:not(.btn-primary):not(.btn-danger):not(.btn-success):not(.btn-warning):not(.btn-info)),
+        .dropdown-toggle:where(:not(.btn-primary):not(.btn-danger):not(.btn-success):not(.btn-warning):not(.btn-info)):is(:hover, :focus, .focus, :active, [aria-expanded="true"]):not(:disabled):not(.disabled) {
+          background-color: var(--nm-dark-hover) !important; color: var(--nm-ink) !important;
+          border-color: var(--nm-dark-link) !important; box-shadow: none !important;
+        }
+        /* Inline action icons should blend into their card/header instead of a button fill. */
+        .dropdown-toggle.icon-no-margin:not(.btn) {
+          background: transparent !important; border-color: transparent !important; color: inherit !important;
+        }
+        .dropdown-toggle.icon-no-margin:not(.btn):is(:hover, :focus, .focus, :active, [aria-expanded="true"]) {
+          background: var(--nm-dark-hover) !important; border-color: transparent !important; color: var(--nm-dark-link) !important;
+        }
+        .dropdown-toggle .icon { color: inherit !important; }
+        .header-button-group :is(.icon, .iconsmall) { color: var(--nm-dark-link) !important; }
+        /* Expanding navbar search uses the same markup on all role/page layouts. */
+        .navbar {
+          :is(.popover-region-toggle, .usermenu .dropdown-toggle, .search-input-wrapper > div) { color: var(--nm-dark-link) !important; }
+          :is(.simplesearchform .collapse, .simplesearchform .collapsing, .searchform-navbar) { background: var(--nm-glass-strong) !important; color: var(--nm-ink) !important; }
+          :where(.h-100.mr-2.d-flex.align-items-center):has(.simplesearchform, .search-input-wrapper),
+          :is(.search-input-wrapper, .simplesearchform) :is(.btn-open, .btn-close, .btn-clear, .search-icon) {
+            background: transparent !important; color: var(--nm-dark-link) !important; border-color: transparent !important;
+          }
+          .simplesearchform .btn-submit { background: var(--nm-paper) !important; color: var(--nm-ink) !important; border-color: var(--nm-line) !important; }
+          :is(.search-input-wrapper, .simplesearchform) :is(.btn-open, .btn-close, .btn-clear, .btn-submit, .search-icon):is(:hover, :focus) { background: var(--nm-dark-hover) !important; }
+        }
+        :is(.popover-region-container, [data-region="popover-region-container"], .popover) {
+          background-color: rgb(42 49 52 / 82%) !important; backdrop-filter: blur(12px) !important;
+        }
+        .popover-region-toggle::before { border-bottom-color: var(--nm-line) !important; }
+        .popover-region-toggle::after { border-bottom-color: var(--nm-paper) !important; }
+        :is(#nav-drawer, .drawer.bg-white) { background-color: var(--nm-glass) !important; }
+        :is(#nav-drawer, .block_navigation, .block_settings) .list-group-item:not(.active):not(:hover):not(:focus-visible) :is(.icon, .fa) {
+          color: var(--nm-muted) !important;
+        }
+        :is(.moodle-dialogue-hd, .moodle-dialogue-ft, .popover-region-header-container,
+          .popover-region-footer-container, .popover-header, .card-header, .panel-header-container, .editor_atto_toolbar) {
+          background-color: #30404d !important;
+          color: var(--nm-ink) !important;
+          border-color: var(--nm-line) !important;
+        }
+        :is(.dropdown-item, .list-group-item) { color: var(--nm-ink) !important; }
+        .dropdown-item { background: transparent !important; }
+        .dropdown-item:is(:disabled, .disabled, [aria-disabled="true"]) { color: var(--nm-muted) !important; }
+        :is(.dropdown-header, .dropdown-item-text, .currentlink) { color: var(--nm-muted) !important; }
+        .dropdown-item :is(.icon, .menu-action-text) { color: inherit !important; }
+        .dropdown-item:where(:not(:disabled):not(.disabled):not([aria-disabled="true"])):is(:hover, :focus, .focus, :focus-within) {
+          background: var(--nm-dark-hover) !important; color: var(--nm-ink) !important;
+        }
+        .dropdown-item:is(:active, .active, .selected, .checked, [aria-selected="true"], [aria-checked="true"], [aria-current]:not([aria-current="false"])) {
+          background: var(--nm-dark-selected) !important; color: var(--nm-ink) !important;
+        }
+        .dropdown-item:is(:hover, :focus, .focus, .active, .selected, .checked, [aria-selected="true"], [aria-checked="true"], [aria-current]:not([aria-current="false"])) :is(.icon, .menu-action-text, .text-muted, .text-primary) { color: inherit !important; }
+        .list-group-item { background-color: rgb(42 49 52 / 68%) !important; border-color: var(--nm-line) !important; }
+        :where(#nav-drawer, .block_navigation, .block_settings) .list-group-item {
+          background-color: transparent !important;
+          border-color: transparent !important;
+        }
+        :where(.dropdown-item, .list-group-item-action, .nav-link, .page-link, .course-listitem,
+          .btn-secondary, #guestlogin .btn, .moodle-dialogue-hd .closebutton, #region-main .card-text a):where(:not(:disabled):not(.disabled):not([aria-disabled="true"])):hover {
+          background-color: var(--nm-dark-hover) !important;
+          color: var(--nm-ink) !important;
+        }
+        :is(.dropdown-item, .list-group-item, .nav-link, .page-link, .btn-secondary):is(:active, .active, [aria-current="page"], [aria-current="true"], [aria-selected="true"], [aria-pressed="true"]),
+        .page-item.active .page-link, .choices .option:has(input:checked) {
+          background-color: var(--nm-dark-selected) !important;
+          color: var(--nm-ink) !important;
+        }
+        :is(.list-group-item, .nav-link):is(.active, [aria-selected="true"], [aria-current="page"], [aria-current="true"]):hover {
+          background-color: #3d695d !important;
+        }
+        :is(.list-group-item.active, .list-group-item[aria-selected="true"], .list-group-item[aria-current]) :is(a, .icon, .text-muted) {
+          color: var(--nm-ink) !important;
+        }
+        :is(a[href]:not(.btn):not(.badge):not(.text-danger):not(.text-muted):not(.dimmed):not(.dropdown-item):not(.dropdown-toggle), .site-name):is(:hover, :focus-visible, :active) {
+          color: var(--nm-dark-link) !important;
+        }
+        a[href]:is(:hover, :focus-visible, :active) :is(.site-name, .usertext) { color: var(--nm-dark-link) !important; }
+        :where(a[href]:not(.btn):not(.badge):not(.text-danger):not(.text-muted):not(.dimmed):not(.dropdown-item):not(.dropdown-toggle)):is(:hover, :focus-visible) { background-color: var(--nm-dark-hover) !important; }
+        :where(a[href]:not(.btn):not(.badge):not(.text-danger):not(.text-muted):not(.dimmed):not(.dropdown-item):not(.dropdown-toggle)):active { background-color: var(--nm-dark-selected) !important; }
+        :is(a[href], a[href] *, .site-name, .usertext)::selection { background-color: #306659 !important; color: var(--nm-dark-link) !important; }
+        /* Moodle reuses unread markers and forum controls across course and role pages. */
+        :where(span.unread, .course-content .unread) {
+          background-color: var(--nm-dark-selected) !important;
+          color: var(--nm-ink) !important;
+        }
+        :where(span.unread, .course-content .unread) a { color: var(--nm-dark-link) !important; }
+        .forumpost :is([data-region-content="forum-post-core"], .d-flex.flex-column.w-100) {
+          background-color: var(--nm-paper) !important;
+          color: var(--nm-ink) !important;
+        }
+        .forumpost .header.row {
+          background-color: transparent !important;
+          color: var(--nm-ink) !important;
+          border-color: var(--nm-line) !important;
+        }
+        .forumpost.unread .header.row { background-color: var(--nm-dark-selected) !important; }
+        /* Switch tracks are label pseudo-elements. Change only the off state. */
+        .custom-switch .custom-control-input:not(:checked) ~ .custom-control-label::before {
+          background-color: #364756 !important;
+          border-color: var(--nm-line) !important;
+        }
+        .custom-switch .custom-control-input:not(:checked) ~ .custom-control-label::after {
+          background-color: var(--nm-muted) !important;
+        }
+        /* Moodle quick forms and inline wrappers are reused across roles.
+         * Generated mform IDs vary; use classes in every editing state. */
+        :where(.mform, .form-inline) {
+          background-color: var(--nm-paper) !important;
+          color: var(--nm-ink) !important;
+          border-color: var(--nm-line) !important;
+        }
+        /* Questionnaire questions and number boxes are reused in responses,
+         * previews, reports and authoring, including capability/editing variants. */
+        :where(.qn-question, .qn-info) {
+          background: var(--nm-paper) !important;
+          color: var(--nm-ink) !important;
+          border-color: var(--nm-line) !important;
+        }
+        :where(.qn-number) { background: transparent !important; color: var(--nm-ink) !important; border-color: var(--nm-line) !important; }
+        .qn-question.unselected { color: var(--nm-muted) !important; }
+        :where(.form-control, .custom-select, .input-group-text, .editor_atto_content,
+          input:not([type="submit"]):not([type="button"]):not([type="checkbox"]):not([type="radio"]), select, textarea,
+          .btn-secondary, #guestlogin .btn, .page-link, #calendarviewdropdown button, .calendarviewdropdown .btn) {
+          background-color: var(--nm-paper) !important;
+          color: var(--nm-ink) !important;
+          border-color: var(--nm-line) !important;
+        }
+        /* Moodle autocomplete is shared by forms on all pages, including modals.
+         * Its list and keyboard-selected options have their own light fills. */
+        :is(.form-autocomplete-suggestions, [data-region="form_autocomplete-suggestions"]) {
+          background-color: var(--nm-paper) !important;
+          color: var(--nm-ink) !important;
+          border-color: var(--nm-line) !important;
+          > :is(li, [role="option"]) {
+            background-color: transparent !important;
+            color: var(--nm-ink) !important;
+          }
+          > :is(li, [role="option"]):is(:hover, :focus, :focus-within) {
+            background-color: var(--nm-dark-hover) !important;
+          }
+          > :is(li, [role="option"])[aria-selected="true"] {
+            background-color: var(--nm-dark-selected) !important;
+          }
+        }
+        /* Shared notification/message markup; generated popover IDs change on reload. */
+        :is(.popover-region-container, [data-region="popover-region-container"], .popover, .message-app,
+          #region-main:has([data-region="notification-content-item-container"])) {
+          :is(.popover-region-content-container, .popover-region-content, .popover-body,
+            .content-item-body, .content-item-footer, .notification-message, .content-item-container > a,
+            .content-item-container > [tabindex]) { background-color: transparent !important; color: var(--nm-ink) !important; }
+          :is(.timestamp, .content-item-footer, .empty-message) { color: var(--nm-muted) !important; }
+          .content-item-container { background-color: transparent !important; color: var(--nm-ink) !important; border-color: var(--nm-line) !important; }
+          .content-item-container.unread { background-color: var(--nm-dark-selected) !important; }
+          .content-item-container:is(:hover, :focus-within) { background-color: var(--nm-dark-hover) !important; }
+          .content-item-container:is(:active, .active, [aria-selected="true"], [aria-current="true"], [aria-current="page"]) { background-color: var(--nm-dark-selected) !important; }
+          .content-item-container > a:is(:hover, :focus-visible, :active),
+          .content-item-container > a:is(:hover, :focus-visible, :active) :is(.content-item-body, .notification-message) { color: var(--nm-dark-link) !important; }
+          :is(.view-more, .popover-region-header-actions a, .popover-region-header-actions button,
+            .popover-body a, .popover-body button):is(:hover, :focus-visible) {
+            background-color: var(--nm-dark-hover) !important; color: var(--nm-dark-link) !important;
+          }
+          .see-all-link:is(:hover, :focus-visible) .popover-region-footer-container { background-color: var(--nm-dark-hover) !important; }
+          .see-all-link:active .popover-region-footer-container { background-color: var(--nm-dark-selected) !important; }
+        }
+        :is(.btn-primary, #loginbtn, .appearance-settings button[type="submit"]):is(:active, .active, [aria-pressed="true"]):not(:disabled):not(.disabled) {
+          background-color: #0c514b !important; border-color: #0c514b !important; color: #fff !important;
+        }
+        :is(a, button, input, select, textarea, [tabindex]):focus-visible {
+          outline: 2px solid var(--nm-dark-link) !important; outline-offset: 2px !important; box-shadow: none !important;
+        }
+        :is(.form-control, .custom-select):focus { border-color: var(--nm-dark-link) !important; }
+        .choices .option:has(input:checked), .message[aria-checked="true"] { outline-color: var(--nm-dark-link) !important; border-color: var(--nm-dark-link) !important; }
+        &::selection, ::selection { background-color: #306659; color: #f4fffb; }
+        :is(input, textarea)::placeholder { color: var(--nm-muted) !important; opacity: 1; }
+        /* Calendar event colors also occur in blocks, filters and duration cells. */
+        :is(.calendar_event_category, :where(.minicalendar, .calendarmonth, .calendartable) .duration_category) { --nm-event-bg: #44364e; --nm-event-line: #be97d1; }
+        :is(.calendar_event_course, :where(.minicalendar, .calendarmonth, .calendartable) .duration_course) { --nm-event-bg: #553c31; --nm-event-line: #e6a27b; }
+        :is(.calendar_event_site, :where(.minicalendar, .calendarmonth, .calendartable) .duration_global) { --nm-event-bg: #2f4939; --nm-event-line: #97d1a3; }
+        :is(.calendar_event_group, :where(.minicalendar, .calendarmonth, .calendartable) .duration_group) { --nm-event-bg: #50432a; --nm-event-line: #dfc065; }
+        :is(.calendar_event_user, :where(.minicalendar, .calendarmonth, .calendartable) .duration_user) { --nm-event-bg: #2f4655; --nm-event-line: #8ec1db; }
+        :is(.calendar_event_other, :where(.minicalendar, .calendarmonth, .calendartable) .duration_other) { --nm-event-bg: #3c4550; --nm-event-line: #b6c5d2; }
+        :is(.calendar_event_category, .calendar_event_course, .calendar_event_site,
+          .calendar_event_group, .calendar_event_user, .calendar_event_other),
+        :where(.minicalendar, .calendarmonth, .calendartable) .duration_finish {
+          background-color: var(--nm-event-bg, var(--nm-dark-selected)) !important;
+          border-color: var(--nm-event-line, var(--nm-line)) !important; color: var(--nm-ink) !important;
+        }
+        :where(.minicalendar, .calendarmonth, .calendartable) {
+          :is(.duration_global, .duration_category, .duration_course, .duration_group, .duration_user, .duration_other) { border-color: var(--nm-event-line) !important; }
+          .day:is(.hasevent, .clickable):is(:hover, :focus-within) { background-color: var(--nm-dark-hover) !important; }
+          .day.clickable:not(.today):hover .day-number-circle { background-color: var(--nm-dark-hover) !important; }
+          .today .day-number-circle { background-color: var(--nm-accent) !important; color: #fff !important; }
+          .today { outline: 1px solid var(--nm-dark-link) !important; outline-offset: -1px !important; }
+        }
+        .calendar_filters .icon { color: var(--nm-dark-link) !important; }
+        /* Skin shared table structure, not page IDs or generated YUI IDs.
+         * Covers plain/plugin tables, flexible/collection reports, staff grading
+         * and file-picker tables in every role and editing state. */
+        table {
+          background-color: rgb(42 49 52 / 72%) !important;
+          color: var(--nm-ink) !important;
+        }
+        :is(th, td) { border-color: var(--nm-line) !important; color: var(--nm-ink) !important; }
+        /* Reset cell/row fills so shared tables retain their dark stripes and states. */
+        :where(table > :is(colgroup, col, thead, tbody, tfoot), table > colgroup > col,
+          table > :is(thead, tbody, tfoot) > tr,
+          table > :is(thead, tbody, tfoot) > tr > :is(th, td)) { background-color: transparent !important; }
+        :is(thead th, th.header, .attheader, .loginbox th) { background-color: #30404d !important; }
+        .quizreviewsummary th { background-color: #30404d !important; }
+        :where(table:is(.table-striped, .generaltable, .flexible, .collection, .forumheaderlist,
+          .grading-report, .rolecaps, .userenrolment)) > tbody > tr:nth-of-type(odd),
+        :where(table) > tbody > tr.yui3-datatable-odd,
+        :is(.attwidth tbody tr, .mod_index tbody tr) { background-color: rgb(43 57 69 / 72%) !important; }
+        :where(table:is(.table-hover, .generaltable, .flexible, .forumheaderlist, .grading-report,
+          .category_subcategories, .yui3-datatable-table, .attwidth, .mod_index, #participants,
+          #modules, #permissions)) > tbody > tr:is(:hover, :focus-within) {
+          background-color: var(--nm-dark-hover) !important; color: var(--nm-ink) !important;
+        }
+        /* Gradebook floating cells need opaque surfaces when overlapping rows. */
+        :where(.gradeparent) :is(.cell, .graderreportoverlay) { background-color: var(--nm-paper) !important; }
+        :where(.gradeparent tr:nth-of-type(even)) .cell { background-color: #2b3945 !important; }
+        :where(.gradeparent) :is(.floater .cell, .controls, .avg) { background-color: #30404d !important; }
+        /* Keep semantic table/permission/environment states visible in dark mode. */
+        :is(table, table :is(tbody, tr, th, td)) {
+          &.table-secondary, &.table-light, &.table-dark { background-color: var(--nm-paper) !important; }
+          &.table-primary, &.table-info, &.gradedattempt, &.bestrow {
+            background-color: #1c3242 !important; color: #bfe3fa !important;
+          }
+          &.table-success, &.allow, &.ok, &.highlight {
+            background-color: #1c392f !important; color: #b2e8cd !important;
+          }
+          &.table-warning, &.warn, &.prevent, &.overriddenpermission, &.overridden, &.ajaxoverridden {
+            background-color: #44371e !important; color: #f6de9b !important;
+          }
+          &.table-danger, &.error, &.prohibit {
+            background-color: #40242b !important; color: #ffd0d7 !important;
+          }
+          &.table-active, &.selected, &.selectedrow, &[aria-selected="true"] {
+            background-color: var(--nm-dark-selected) !important;
+          }
+        }
+        table tr:is(.gradedattempt, .bestrow) > td { background-color: #1c3242 !important; }
+        table tr:is(.table-primary, .table-secondary, .table-success, .table-info, .table-warning,
+          .table-danger, .table-light, .table-dark, .table-active) > :is(th, td) {
+          background-color: transparent !important; color: inherit !important;
+        }
+        /* Assignment status cells, badges and staff grading rows share these classes. */
+        :is(.submissionstatus, .submissionreopened, .submissionnotgraded, .submissionhistory) { background-color: var(--nm-paper) !important; color: var(--nm-ink) !important; }
+        :is(.submissionstatussubmitted, .submissiongraded, .earlysubmission) { background-color: #1c392f !important; color: #b2e8cd !important; }
+        :is(.submissionstatusdraft, .submissionlocked, .quickgrademodified) { background-color: #44371e !important; color: #f6de9b !important; }
+        :is(.latesubmission, .gradingreminder) { background-color: #40242b !important; color: #ffd0d7 !important; }
+        .submittedlate, .submissioneditable { color: #f08b96 !important; }
+        .gradingtable tr.selectedrow > :is(th, td) { background-color: var(--nm-dark-selected) !important; }
+        .gradingtable tr:is(:hover, :focus-within) > :is(th, td) { background-color: var(--nm-dark-hover) !important; }
+        /* The question renderer is reused for attempts, review, preview and grading. */
+        .questionflagsaveform {
+          background-color: transparent !important; color: var(--nm-ink) !important;
+        }
+        /* Shared question feedback occurs in attempts, reviews, previews and
+         * staff grading. Cloze/calculated types also paint each text child. */
+        :where(.specificfeedback, .feedbackspan) {
+          background: #44371e !important; color: #f6de9b !important; border-color: #6c5930 !important;
+        }
+        :where(.specificfeedback, .feedbackspan) :where(:not(input, select, textarea, button,
+          .btn, .badge, .form-control, .custom-select, .input-group-text)) { background: transparent !important; }
+        .que {
+          background-color: var(--nm-glass) !important; color: var(--nm-ink) !important; border-color: var(--nm-line) !important;
+          :is(.info, .formulation) { background: var(--nm-paper) !important; color: var(--nm-ink) !important; border-color: var(--nm-line) !important; }
+          :is(.qtext, .state, .grade) { color: var(--nm-ink) !important; }
+          .outcome { background: #44371e !important; color: #f6de9b !important; border-color: #6c5930 !important; }
+          .comment { background: #1c392f !important; color: #b2e8cd !important; border-color: #3e6855 !important; }
+          .correctness.correct { background-color: #1c392f !important; color: #b2e8cd !important; }
+          .correctness.partiallycorrect { background-color: #44371e !important; color: #f6de9b !important; }
+          .correctness:is(.incorrect, .notanswered) { background-color: #40242b !important; color: #ffd0d7 !important; }
+          .validationerror { color: #f08b96 !important; }
+        }
+        #region-main :is(.generalbox:not(.foldertree), .box.py-3, #intro, .notification,
+          [data-region="notification-content-item-container"], form.mform fieldset) {
+          background-color: rgb(43 57 69 / 68%) !important;
+          color: var(--nm-ink) !important;
+          border-color: var(--nm-line) !important;
+        }
+        .message-app .message { --message-surface: var(--nm-paper) !important; }
+        .message-app .message.send { --message-surface: #2e4e47 !important; }
+        .text-dark { color: var(--nm-ink) !important; }
+        :is(.alert-danger, #region-main .generalbox.expired) {
+          background-color: #40242b !important; color: #ffd0d7 !important; border-color: #824d57 !important;
+        }
+        .alert-warning { background-color: #44371e !important; color: #f6de9b !important; border-color: #6c5930 !important; }
+        .alert-success { background-color: #1c392f !important; color: #b2e8cd !important; border-color: #3e6855 !important; }
+        .alert-info { background-color: #1c3242 !important; color: #bfe3fa !important; border-color: #3e6278 !important; }
+        .text-danger { color: #f08b96 !important; }
+        .alert-danger.alert-block::before { color: #d1bfff !important; }
+
+        &#page-login-index {
+          #region-main { background: transparent !important; }
+          #region-main .card:not(.block) { background-color: rgb(42 49 52 / 86%) !important; }
+          .card-body > .row > .col-md-5 + .col-md-5 {
+            background-color: #30404d !important; color: var(--nm-muted) !important;
+          }
+        }
+        &.appearance-settings {
+          :is(p, small) { color: var(--nm-muted) !important; }
+            :is(header, nav, a + a, button:not(.settings-tab)) { border-color: var(--nm-line) !important; }
+            button:not([type="submit"]):not(.settings-tab), input::file-selector-button {
+            background-color: var(--nm-paper) !important; color: var(--nm-ink) !important; border-color: var(--nm-line) !important;
+          }
+            button:not([type="submit"]):not(.settings-tab):hover, input::file-selector-button:hover { background-color: #30404d !important; }
+          :is(a, button, input, select):focus-visible { outline-color: var(--nm-dark-link) !important; }
+        }
+      }
+    }
+  }
+  @media screen and (max-width: 600px) {
+    html[data-bgtheme="dark"] body.moodle-ncku-edu-tw:not(.appearance-settings):not(.pagelayout-embedded):not(.pagelayout-popup) {
+      #region-main { background-color: rgb(42 49 52 / 92%) !important; }
+    }
+  }
+}

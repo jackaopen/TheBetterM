@@ -3,27 +3,174 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>TheBetterM — Links</title>
+  <title>TheBetterM — Appearance</title>
+  <link rel="stylesheet" href="styles/modes.css">
   <style>
     * { box-sizing: border-box; }
-    :root { color-scheme: light; font-family: "Segoe UI", sans-serif; }
-    body { margin: 0; min-width: 340px; background: #f3f6f3; color: #172e32; }
-    main { width: min(560px, 100%); margin: 0 auto; padding: 24px; }
-    h1 { margin: 0 0 8px; font-size: 22px; }
-    p { margin: 0 0 20px; color: #53666a; line-height: 1.5; }
-    nav { display: grid; gap: 12px; }
-    a { display: block; padding: 14px 16px; border: 1px solid #c7d5d1; border-radius: 8px; background: #fff; color: #12665e; text-decoration: none; }
-    a:hover { background: #edf4f0; }
-    a:focus-visible { outline: 2px solid #12665e; outline-offset: 3px; }
-    strong { display: block; font-weight: 600; }
-    small { display: block; margin-top: 5px; color: #53666a; line-height: 1.4; }
+    :root { color-scheme: light; font-family: "Segoe UI", "Noto Sans TC", "Microsoft JhengHei", system-ui, sans-serif; font-size: 15px; }
+    html:not(.appearance-ready) { visibility: hidden; }
+    /* Hide the page scrollbar without disabling wheel, touch, or keyboard scrolling. */
+    html, body { scrollbar-width: none; }
+    html::-webkit-scrollbar, body::-webkit-scrollbar { width: 0; }
+
+    /* Tokens read modes.css's --nm-* values (dark mode sets them on body); light fallbacks mirror theme.css. */
+    body.appearance-settings {
+      --ink: var(--nm-ink, #172e32);
+      --muted: var(--nm-muted, #52655f);
+      --accent: var(--nm-accent, #12665e);
+      --page: var(--nm-surface, #f3f6f3);
+      --field: var(--nm-paper, #ffffff);
+      --line: var(--nm-line, #d5ddd9);
+      --link: var(--nm-dark-link, var(--accent));
+      --hover: var(--nm-dark-hover, #e2ece8);
+      --edge: #8a9b95;
+      --edge-soft: #c3cdc8;
+      --switch-off: #7d8f89;
+    }
+    html[data-bgtheme="dark"] body.appearance-settings {
+      --edge: rgb(183 198 211 / 45%);
+      --edge-soft: rgb(183 198 211 / 28%);
+      --switch-off: #627c82;
+    }
+
+    body { margin: 0; min-width: 340px; background: var(--page); color: var(--ink); border-top: 6px solid var(--accent); }
+    main { width: min(480px, 100%); margin: 0 auto; padding: 20px 24px 48px; }
+
+    header { padding-bottom: 12px; }
+    h1 { margin: 0 0 6px; font-size: 30px; font-weight: 700; letter-spacing: -.8px; line-height: 1.1; }
+    h2 { margin: 0; font-size: 16px; font-weight: 600; }
+    p { margin: 0; color: var(--muted); line-height: 1.6; }
+
+    form { display: grid; gap: 16px; padding: 20px 0 16px; }
+    #appearance-form > h2 { font-size: 18px; font-weight: 500; letter-spacing: -.2px; }
+
+    label { display: grid; gap: 8px; font-size: 14px; font-weight: 600; }
+    .appearance-controls { display: grid; gap: 14px; }
+    .appearance-controls > label { gap: 6px; font-size: 13px; }
+    .appearance-controls :is(input, select) {
+      width: 100%; min-width: 0; height: 44px; padding: 10px 12px;
+      border: 1px solid var(--edge-soft); border-radius: 6px;
+      background: var(--field); color: var(--ink); box-shadow: none;
+      font: inherit; font-size: 14px; font-weight: 400;
+      transition: border-color .15s;
+    }
+    .appearance-controls select {
+      appearance: none; padding-right: 36px; outline: none; cursor: pointer;
+      background-image: linear-gradient(45deg, transparent 50%, var(--muted) 50%), linear-gradient(135deg, var(--muted) 50%, transparent 50%);
+      background-position: calc(100% - 18px) 50%, calc(100% - 13px) 50%;
+      background-size: 5px 5px, 5px 5px;
+      background-repeat: no-repeat;
+    }
+    .appearance-controls input[type="file"] { padding: 0 12px 0 0; overflow: hidden; color: var(--muted); line-height: 42px; cursor: pointer; }
+    input::file-selector-button {
+      height: 42px; margin: 0 12px 0 0; padding: 0 14px; border: 0; border-right: 1px solid var(--edge-soft); border-radius: 0;
+      background: var(--page); color: var(--ink);
+      font: inherit; font-size: 14px; font-weight: 500; cursor: pointer;
+    }
+    input::file-selector-button:hover { background: var(--hover); }
+    .appearance-controls input:hover { border-color: var(--edge); }
+    .appearance-controls input:focus-visible { border-color: var(--link); }
+
+    .actions { display: flex; flex-wrap: wrap; gap: 10px; padding-top: 2px; }
+    button {
+      padding: 10px 18px; border: 0; border-radius: 4px; background: var(--field); color: var(--ink);
+      box-shadow: inset 0 0 0 1px var(--edge-soft); font: inherit; font-size: 14px; font-weight: 600; cursor: pointer;
+    }
+    button:hover { background: var(--hover); }
+    button[type="submit"] { background: var(--accent); color: #fff; box-shadow: none; }
+    button[type="submit"]:hover { background: color-mix(in srgb, var(--accent) 82%, #000); }
+    :is(input, select, button):disabled { opacity: .55; cursor: wait; }
+    :is(a, button, input):focus-visible { outline: 2px solid var(--link); outline-offset: 3px; }
+
+    .settings-bar { display: flex; align-items: center; gap: 16px; border-bottom: 1px solid var(--line); }
+    .settings-tabs { display: flex; flex: none; align-self: stretch; gap: 24px; }
+    .settings-tabs .settings-tab {
+      margin-bottom: -1px; padding: 12px 0; border: 0; border-bottom: 2px solid transparent;
+      border-radius: 0; background: transparent; color: var(--muted); box-shadow: none; font-weight: 500;
+    }
+    .settings-tabs .settings-tab:hover { background: transparent; color: var(--ink); }
+    .settings-tabs .settings-tab[aria-selected="true"] { border-bottom-color: var(--link); color: var(--ink); }
+
+    small { display: block; color: var(--muted); font-size: 13px; line-height: 1.6; }
+    #appearance-status { flex: 1; min-width: 0; margin: 0; text-align: right; font-size: 12px; line-height: 1.4; overflow-wrap: anywhere; }
+
+    .navigation-option { margin: 0; padding: 16px 0; border-top: 1px solid var(--line); }
+    .navigation-option small { margin: 4px 0 0 50px; }
+    .checkbox-option { display: flex; align-items: center; gap: 12px; font-size: 15px; cursor: pointer; }
+    .checkbox-option input {
+      appearance: none; position: relative; flex: none; width: 38px; height: 22px; margin: 0; padding: 0;
+      border-radius: 999px; background: var(--switch-off); box-shadow: none; cursor: pointer; transition: background .15s;
+    }
+    .checkbox-option input::before {
+      content: ""; position: absolute; top: 3px; left: 3px; width: 16px; height: 16px;
+      border-radius: 50%; background: #fff; transition: transform .15s;
+    }
+    .checkbox-option input:checked { background: var(--accent); }
+    .checkbox-option input:checked::before { transform: translateX(16px); }
+
+    nav { display: grid; padding-bottom: 8px; }
+    nav h2 { padding: 24px 0 8px; font-size: 18px; font-weight: 500; letter-spacing: -.2px; }
+    a { display: grid; grid-template-columns: 1fr auto; align-items: center; column-gap: 12px; margin: 0 -8px; padding: 12px 8px; color: var(--link); text-decoration: none; }
+    a:hover { background-color: var(--hover); }
+    a + a { border-top: 0; background-image: linear-gradient(var(--line), var(--line)); background-size: calc(100% - 16px) 1px; background-position: 8px 0; background-repeat: no-repeat; }
+    a::after { content: ""; grid-column: 2; grid-row: 1 / span 2; width: 7px; height: 7px; border-top: 2px solid currentColor; border-right: 2px solid currentColor; transform: rotate(45deg); opacity: .55; }
+    a:hover strong { text-decoration: underline; }
+    strong { grid-column: 1; font-size: 15px; font-weight: 600; }
+    a small { grid-column: 1; margin-top: 3px; }
+
+    @media (max-width: 380px) { main { padding: 16px 16px 40px; } }
+    @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
   </style>
 </head>
-<body>
+<body class="appearance-settings">
   <main>
-    <h1>TheBetterM</h1>
-    <p>A better Moodle experience.</p>
+    <header>
+      <h1>TheBetterM</h1>
+      <p>A better Moodle experience.</p>
+    </header>
+    <div class="settings-bar">
+      <div class="settings-tabs" role="tablist" aria-label="Settings sections">
+        <button type="button" class="settings-tab" id="appearance-tab" role="tab" aria-selected="true" aria-controls="appearance-panel">Appearance</button>
+        <button type="button" class="settings-tab" id="links-tab" role="tab" aria-selected="false" aria-controls="links-panel" tabindex="-1">Project links</button>
+      </div>
+      <small id="appearance-status" role="status"></small>
+    </div>
+    <section id="appearance-panel" role="tabpanel" aria-labelledby="appearance-tab">
+    <form id="appearance-form">
+      <h2>Appearance</h2>
+      <div class="appearance-controls">
+        <label>
+          <span>Mode</span>
+          <select name="themeMode">
+            <option value="light">Light</option>
+            <option value="dark">Dark</option>
+          </select>
+        </label>
+        <label>
+          <span>Header image</span>
+          <input type="file" name="customHeader" accept="image/*">
+        </label>
+        <label>
+          <span>Background image</span>
+          <input type="file" name="customBackground" accept="image/*">
+        </label>
+      </div>
+      <div class="actions">
+        <button type="submit">Save &amp; Apply</button>
+        <button type="button" id="appearance-defaults">Load defaults</button>
+      </div>
+    </form>
+    <div class="navigation-option">
+      <label class="checkbox-option" for="brandToDashboard">
+        <input type="checkbox" id="brandToDashboard" name="brandToDashboard" checked aria-describedby="brandToDashboard-help">
+        Site logo opens Dashboard
+      </label>
+      <small id="brandToDashboard-help">Clicking the logo in the top bar takes you to your Dashboard.</small>
+    </div>
+    </section>
+    <section id="links-panel" role="tabpanel" aria-labelledby="links-tab" hidden>
     <nav aria-label="Project links">
+      <h2>Project links</h2>
       <a href="https://github.com/jackaopen/TheBetterM" target="_blank" rel="noopener noreferrer">
         <strong>GitHub</strong>
         <small>Source code, updates, and issues</small>
@@ -32,7 +179,14 @@
         <strong>Chrome Web Store</strong>
         <small>Get the extension from Chrome Web Store.</small>
       </a>
+      <a href="https://addons.mozilla.org/zh-TW/firefox/addon/thebetterm-moodle-refreshed/" target="_blank" rel="noopener noreferrer">
+        <strong>Mozilla (Firefox) Add-ons</strong>
+        <small>Get the extension from Mozilla (Firefox) Add-ons.</small>
+      </a>
     </nav>
+    </section>
   </main>
+  <script src="setting.js"></script>
+  <script src="options-tabs.js"></script>
 </body>
 </html>

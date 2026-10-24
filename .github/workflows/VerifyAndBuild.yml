@@ -29,6 +29,9 @@ jobs:
       - name: Check out source
         uses: actions/checkout@v7
 
+      - name: Validate extension for Firefox
+        run: npx --yes web-ext lint --source-dir src_ff
+      
       - name: Validate extension with Chrome
         run: |
           $ErrorActionPreference = "Stop"
@@ -54,12 +57,24 @@ jobs:
               Write-Error "7-Zip failed with exit code $LASTEXITCODE"
               exit $LASTEXITCODE
           }
+
+          & 7z a TheBetterM_ff.zip .\src_ff\*
+
+          if ($LASTEXITCODE -ne 0) {
+              Write-Error "7-Zip failed with exit code $LASTEXITCODE"
+              exit $LASTEXITCODE
+          }
           write-Host "Extension pack completed successfully."
 
       - name: Github Attestation
         uses: actions/attest@v4
         with:
           subject-path: TheBetterM.zip
+        
+      - name: Github Firefox Attestation
+        uses: actions/attest@v4
+        with:
+          subject-path: TheBetterM_ff.zip
 
       - name: Upload artifact
         uses: actions/upload-artifact@v7
@@ -69,3 +84,30 @@ jobs:
           compression-level: 0
           if-no-files-found: error
 
+      - name: Upload firefox artifact
+        uses: actions/upload-artifact@v7
+        with:
+          name: TheBetterM_ff_artifact
+          path: TheBetterM_ff.zip
+          compression-level: 0
+          if-no-files-found: error
+
+      - name: Upload to CWS
+        uses: mnao305/chrome-extension-upload@v7.0.0
+        with:
+          file-path: TheBetterM.zip
+          extension-id: ilkjjkjdocgjpljdkikeobcclpegjlpf
+          publisher-id: e6b843e2-7596-4ef3-b280-bfd3409f65ec
+          client-id: ${{ secrets.CLIENT_ID }}
+          client-secret: ${{ secrets.CLIENT_SECRET }}
+          refresh-token: ${{ secrets.REFRESH_TOKEN }}
+          publish: false
+
+      - name: Upload to AMO
+        uses: hamzahamidi/publish-to-extension-stores@v1
+        with:
+          firefox-api-key: ${{ secrets.AMO_API_KEY }}
+          firefox-api-secret: ${{ secrets.AMO_API_SECRET }}
+          firefox-addon-id: thebetterm@jackaopen
+          firefox-zip: TheBetterM_ff.zip
+          firefox-channel: listed
